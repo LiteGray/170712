@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>order</title>
+  <link rel="stylesheet" href="../css/common.css" />
+  <style>
+    #content-wrap {
+      min-height: calc(100vh - 100px);
+    }
+    .content {
+      /*max-height: calc(100vh - 100px);*/
+      margin: 20px auto 0;
+      padding: 0 20px;
+      box-shadow: 1px 1px 1px 1px #ccc;
+    }
+    .content h3 {
+      padding: 1vw 0;
+      height: 4vw;
+      font-size: 1.6vw;
+    }
+    .content ul {
+      overflow: auto;
+      min-height: 62vh;
+    }
+    .content ul li {
+      border-top: 1px solid #ccc;
+    }
+    .content ul li:last-of-type {
+      border-bottom: 1px solid #ccc;
+    }
+    .content ul li dl {
+      display: flex;
+      height: 8vw;
+    }
+    .content ul li dl dt {
+      flex: 1;
+      margin: .8vw;
+      box-shadow: 1px 1px 1px 1px #ddd;
+      background: #eee;
+    }
+    .content ul li dl dt:hover {
+      cursor: pointer;
+      opacity: .2;
+      background: #0f0;
+    }
+    .content ul li dl dd {
+      flex: 4;
+      margin-left: 40px;
+      /*padding: 0 20px;*/
+      /*background: #0f0;*/
+    }
+    .content ul li dl dd div,
+    .content ul li dl dd p {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .content ul li dl dd div {
+      height: 3.4vw;
+    }
+    .content ul li dl dd p {
+      height: 4.6vw;
+      padding-bottom: 1vw;
+      border-top: 1px solid #ddd;
+    }
+    .content ul li dl dd div h5 {
+      color: #888;
+    }
+    .content ul li dl dd div i {
+      margin-left: 24vw;
+      font-size: .8vw;
+      color: #888;
+    }
+    .content ul li dl dd div input {
+      padding-right: .4vw;
+      width: 2.2vw;
+      height: 1.8vw;
+      border-radius: .4vw;
+      text-align: right;
+    }
+    .content ul li dl dd p span {
+      font-size: .8vw;
+      color: #bbb;
+    }
+    .content ul li dl dd p i {
+      cursor: pointer;
+      font-size: .8vw;
+      /*color: #07c;*/
+    }
+    .content div.page {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    .content div.page * {
+      margin: 1.6vw 1vw 1vw;
+      padding: .2vw .4vw;
+    }
+    .content div.page *:last-of-type {
+      margin-right: 0;
+    }
+    .content div.page a {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="header-wrap">
+    <header class="autoWidth">
+      <ul class="moreNav">
+        <li><a href="cart.html">购物袋&nbsp;<i>(2)</i></a></li>
+        <li><a href="#">订单</a></li>
+        <li><a href="#">账户</a></li>
+      </ul>
+      <a href="../index.html" id="logo">novatex</a>
+      <b class="cart"></b>
+    </header>
+  </div>
+  <div id="content-wrap">
+    <div class="autoWidth content">
+      <h3>历史订单</h3>
+      <ul class="listsOrders">
+        <!--<li>-->
+          <!--<dl>-->
+            <!--<dt></dt>-->
+            <!--<dd>-->
+              <!--<div>-->
+                <!--<h5>SFJ-3335</h5>-->
+                <!--<i>RMB 225</i>-->
+                <!--<span>1</span>-->
+                <!--<b>RMB 225</b>-->
+              <!--</div>-->
+              <!--<p>-->
+                <!--<span>订单号: 17081900</span>-->
+                <!--<i>2017/08/19</i>-->
+              <!--</p>-->
+            <!--</dd>-->
+          <!--</dl>-->
+        <!--</li>-->
+      </ul>
+      <div class="page">
+        <a class="get-btn">上一页</a>
+        <select class="pageSelect" name="2">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+        <a class="get-btn">下一页</a>
+      </div>
+    </div>
+  </div>
+  <div id="footer-wrap">
+    <footer class="autoWidth">
+      <p>© 诺华（杭州）纺织有限公司 - 2017 NOVATEX Inc.</p>
+    </footer>
+  </div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/common.js"></script>
+  <script>
+    const content = document.querySelector('.content');
+    const listsOrders = content.querySelector('.content ul.listsOrders');
+    const page = content.querySelector('.content div.page');
+    const pageSelect = content.querySelector('.content div.page select.pageSelect');
+    const pagePrev = content.querySelectorAll('.content div.page a')[0];
+    const pageNext = content.querySelectorAll('.content div.page a')[1];
+    let len = dataOrders.length;
+
+    //hash
+    (() => {
+      location.hash = '1';
+      setTimeout(() => location.hash = '#page1', 0);
+      window.addEventListener('hashchange', function () {
+        let p = location.hash.replace(/\D/g, '');
+        (() => {
+          let start = 4 * (p - 1);
+          let end = start + 4;
+          if (end >= len) end = len;
+          let str = '';
+          for (let n = 0, i = start; i < end; n++, i++) {
+            str += `
+            <li>
+              <dl>
+                <dt></dt>
+                <dd>
+                  <div>
+                    <h5>${dataOrders[i].name}</h5>
+                    <i>RMB ${dataOrders[i].price}</i>
+                    <span>${dataOrders[i].num}</span>
+                    <b>RMB ${dataOrders[i].sumPrice}</b>
+                  </div>
+                  <p>
+                    <span>订单号: ${dataOrders[i].serial}</span>
+                    <i>${dataOrders[i].date[0]}/${dataOrders[i].date[1]}/${dataOrders[i].date[2]}</i>
+                  </p>
+                </dd>
+              </dl>
+            </li>
+          `;
+            listsOrders.innerHTML = str;
+          }
+        })(p);
+      })
+    })();
+
+    //生成页码
+    (() => {
+      let str = '';
+      let pages = Math.round(len / 4);
+      for (let i = 1; i < pages + 1; i++ ) {
+        str += `
+          <option value="${i}">${i}</option>
+        `;
+      }
+      pageSelect.innerHTML = str;
+    })();
+
+    //切换页码
+    (() => {
+      let pages = Math.round(len / 4);
+      let n = 1;
+      pageNext.addEventListener('click', function () {
+        n++;
+        if (n >= pages) {
+          n = pages;
+        }
+        pageSelect.value = '' + n;
+        location.hash = '#page'+n;
+      });
+      pagePrev.addEventListener('click', function () {
+        n--;
+        if (n <= 1) {
+          n = 1;
+        }
+        pageSelect.value = '' + n;
+        location.hash = '#page'+n;
+      });
+    })();
+
+    (() => {
+      pageSelect.addEventListener('change', function () {
+        location.hash = this.value;
+      });
+    })();
+  </script>
+</body>
+</html>

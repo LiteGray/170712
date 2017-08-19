@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>novatex</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <style>
+    section {
+      min-height: calc(100vh - 80px);
+    }
+    section .banner {
+      margin: auto;
+      height: calc(100vh - 40px);
+      box-shadow: 1px 2px 1px 1px #ccc;
+      background: lightsalmon;
+    }
+    section ul {
+      margin: auto;
+      padding: 2vw 0;
+      display: flex;
+      flex-wrap: wrap;
+      /*border-top: 1px solid #ddd;*/
+    }
+    section ul li {
+      margin: 1vw 0 0 1.33vw;
+      width: 20vw;
+      height: 30vw;
+      min-width: 110px;
+      min-height: 180px;
+      border: 1px solid #eee;
+      box-shadow: 1px 1px 1px 1px #ddd;
+    }
+    section ul li:nth-of-type(4n+1) {
+      margin-left: 0;
+    }
+    section ul li dl dt {
+      height: 20vw;
+      background: #eee;
+    }
+    section ul li dl dt:hover {
+      cursor: pointer;
+      opacity: .2;
+      background: #0f0;
+    }
+    section ul li dl dd {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0.4vw 0 1vw;
+      height: 10vw;
+    }
+    section ul li dl dd span {
+      font-size: 0.9vw;
+      color: #aaa;
+    }
+    section ul li dl dd b {
+      color: #f00;
+    }
+    section ul li dl dd a.get-btn {
+      padding: 0.4vw 4vw;
+    }
+  </style>
+</head>
+<body>
+  <div id="header-wrap">
+    <header class="autoWidth">
+      <ul class="moreNav">
+        <li><a href="html/cart.html">购物袋&nbsp;<i>(2)</i></a></li>
+        <li><a href="html/order.html">订单</a></li>
+        <li><a href="#">账户</a></li>
+      </ul>
+      <a href="#" id="logo">novatex</a>
+      <b class="cart"></b>
+    </header>
+  </div>
+  <section>
+    <div class="autoWidth banner"></div>
+    <ul class="autoWidth lists">
+      <!--<li>-->
+        <!--<dl>-->
+          <!--<dt></dt>-->
+          <!--<dd>-->
+            <!--<span>SFJ-3335</span>-->
+            <!--<b>RMB 225</b>-->
+            <!--<a href="#" class="get-btn">添加到购物袋</a>-->
+          <!--</dd>-->
+        <!--</dl>-->
+      <!--</li>-->
+    </ul>
+  </section>
+  <div id="footer-wrap">
+    <footer class="autoWidth">
+      <p>© 诺华（杭州）纺织有限公司 - 2017 NOVATEX Inc.</p>
+    </footer>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    const section = document.querySelector('section');
+    const listsGoods = section.querySelector('ul');
+
+    //生成产品列表
+    (() => {
+      let str = '';
+      dataGoods.forEach(e => {
+        str += `
+          <li>
+          <dl>
+            <dt></dt>
+            <dd>
+              <span>${e.name}</span>
+              <b>RMB ${e.price}</b>
+              <a href="#" class="get-btn">添加到购物袋</a>
+            </dd>
+          </dl>
+        </li>
+        `;
+      });
+      listsGoods.innerHTML = str;
+    })();
+  </script>
+</body>
+</html>
