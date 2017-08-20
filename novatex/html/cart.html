@@ -121,7 +121,7 @@
   <div id="content-wrap">
     <div class="autoWidth content">
       <h3>购物袋内的产品</h3>
-      <ul class="listsCarts">
+      <ul class="listsCart">
         <!--<li>-->
           <!--<dl>-->
             <!--<dt></dt>-->
@@ -156,43 +156,87 @@
   <script src="../js/common.js"></script>
   <script>
     const content = document.querySelector('.content');
-    const listsCarts = content.querySelector('.content ul.listsCarts');
+    const listsCart = content.querySelector('.content ul.listsCart');
     const sumOther = content.querySelector('.content >div.sumOther');
-    const sumPrice = content.querySelector('.content >div b i');
+    const sumPrice = sumOther.querySelector('b i');
 
-    (() => {
+    cartShow();
+
+    //生成购物袋
+    function cartShow() {
       let str = '';
       dataCarts.forEach(e => {
         str += `
         <li>
-          <dl>
+          <dl class="carts">
             <dt></dt>
             <dd>
               <div>
                 <h5>${e.name}</h5>
                 <i>RMB ${e.price}</i>
-                <input type="text" value="${e.num}" />
+                <input type="text" value="${e.num}" class="cartNum" />
                 <b>RMB ${e.sumPrice}</b>
               </div>
               <p>
-                <span>编号: ${e.id}</span>
-                <i>删除</i>
+                <span class="cartId">编号: ${e.id}</span>
+                <i class="cartDel">删除</i>
               </p>
             </dd>
           </dl>
         </li>
       `;
       });
-      listsCarts.innerHTML = str;
-    })();
-
-    (() => {
+      listsCart.innerHTML = str;
+      sumTotal();
+      cartEvents();
+    }
+    //计算总计
+    function sumTotal() {
       let sum = 0;
       dataCarts.forEach((e) => {
         sum += e.price * e.num;
       });
       sumPrice.innerText = sum;
-    })();
+    }
+    //事件
+    function cartEvents() {
+      const cartNums = listsCart.querySelectorAll('.cartNum');
+      const cartIds = listsCart.querySelectorAll('.cartId');
+      const cartDels = listsCart.querySelectorAll('.cartDel');
+
+      //数量
+      cartNums.forEach((e, i) => {
+        e.addEventListener('blur', function () {
+//          if (!(+e.value)) {
+//            ev.preventDefault();
+//          }
+          const id = +cartIds[i].innerText.replace(/\D/g, '');
+          const num = +e.value;
+          dataCarts.forEach(e => {
+            if (e.id === id) {
+              e.num = num;
+              e.sumPrice = e.price * e.num;
+            }
+          });
+          e.nextElementSibling.innerText = `RMB ${dataCarts[i].sumPrice}`;
+          sumTotal();
+        });
+      });
+      //删除
+      cartDels.forEach((e, i) => {
+        e.addEventListener('click', function () {
+          const id = +cartIds[i].innerText.replace(/\D/g, '');
+          dataCarts.forEach(e => {
+            if (e.id === id) {
+              dataCarts.splice(i, 1);
+            }
+          });
+          console.log(dataCarts, listsCart.children[i]);
+          listsCart.removeChild(listsCart.children[i]);
+          sumTotal();
+        });
+      });
+    }
   </script>
 </body>
 </html>
