@@ -30,6 +30,9 @@
       border: 1px solid #eee;
       box-shadow: 1px 1px 1px 1px #ddd;
     }
+    section ul li:hover {
+      box-shadow: 0 4px 4px 1px #bbb;
+    }
     section ul li:nth-of-type(4n+1) {
       margin-left: 0;
     }
@@ -60,15 +63,84 @@
     section ul li dl dd a.get-btn {
       padding: 0.4vw 4vw;
     }
+
+    .register,
+    .login {
+      z-index: 1;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      display: none;
+      transition: 2s;
+      transform: translateX(-50%) translateY(-50%);
+      padding: 50px 30px;
+      width: 400px;
+      height: 300px;
+      box-shadow: 0 2px 2px 1px #ccc;
+      background: #fff;
+    }
+    .register i,
+    .register b {
+      cursor: pointer;
+      position: absolute;
+    }
+    .register i {
+      top: 0;
+      right: 10px;
+      transform: rotate(45deg);
+      font-size: 30px;
+      color: #ccc;
+    }
+    .register b {
+      right: 30px;
+      bottom: 36px;
+      padding: 6px 14px;
+      border-radius: 2px;
+      box-shadow: 1px 1px 1px #ccc;
+      font-size: 14px;
+      color: rgba(145,181,77,1);
+    }
+    .register input {
+      width: 100%;
+      height: 36px;
+      /*border-radius: 8px/4px;*/
+      /*box-shadow: inset 0 2px 2px 2px #eee;*/
+      text-indent: 10px;
+    }
+    .register input:nth-of-type(2) {
+      margin: 26px 0 30px;
+    }
+    .register a {
+      cursor: pointer;
+      display: block;
+      padding: 0;
+      line-height: 40px;
+      box-shadow: 1px 1px 1px rgba(145,181,77,.8);
+      background: rgba(145,181,77,1);
+    }
   </style>
 </head>
 <body>
+  <div class="register" style="display: none">
+    <i>+</i>
+    <b>登录</b>
+    <input type="text" placeholder="邮箱" />
+    <input type="password" placeholder="密码" />
+    <a class="get-btn register-sure">注册</a>
+  </div>
+  <div class="login register">
+    <i>+</i>
+    <b>注册</b>
+    <input type="text" placeholder="邮箱" />
+    <input type="password" placeholder="密码" />
+    <a class="get-btn login-sure">登录</a>
+  </div>
   <div id="header-wrap">
     <header class="autoWidth">
       <ul class="moreNav">
         <li><a href="html/cart.html">购物袋&nbsp;<i>(2)</i></a></li>
         <li><a href="html/order.html">订单</a></li>
-        <li><a href="#">账户</a></li>
+        <li><a href="#" id="account">账户</a></li>
       </ul>
       <a href="#" id="logo">novatex</a>
       <b class="cart"></b>
@@ -98,11 +170,83 @@
   <script src="js/data.js"></script>
   <script src="js/common.js"></script>
   <script>
+
+    dataCarts = JSON.parse(localStorage.getItem('dataCarts')) || dataCarts;
+
     const section = document.querySelector('section');
     const listsGoods = section.querySelector('ul');
 
-    //生成产品列表
+
     (() => {
+      const account = document.querySelector('#account');
+      let isLogin = false;
+      account.addEventListener('click', function () {
+        if (isLogin) {
+          isLogin = false;
+          account.innerText = '账户';
+        } else {
+          login.style.display = 'block';
+        }
+      });
+
+      const register = document.querySelector('.register');
+      const login = document.querySelector('.login');
+      login.children[0].addEventListener('click', function () {
+        login.style.display = '';
+      });
+      register.children[0].addEventListener('click', function () {
+        register.style.display = '';
+      });
+      login.children[1].addEventListener('click', function () {
+        loginChange(login, register);
+      });
+      register.children[1].addEventListener('click', function () {
+        loginChange(register, login);
+      });
+
+      (() => {
+        const registerSure = document.querySelector('.register .register-sure');
+        const loginSure = document.querySelector('.login .login-sure');
+
+        registerSure.addEventListener('click', function () {
+          const sData = {
+            id: +new Date(),
+            email: registerSure.previousElementSibling.previousElementSibling.value,
+            password: registerSure.previousElementSibling.value
+          };
+          dataUsers.push(sData);
+        });
+        loginSure.addEventListener('click', function () {
+          const email = loginSure.previousElementSibling.previousElementSibling.value;
+          const password = loginSure.previousElementSibling.value;
+          for (let e of dataUsers) {
+            if (e.email === email && e.password === password) {
+              isLogin = true;
+              break;
+            }
+          }
+          if (isLogin) {
+            login.style.display = 'none';
+            account.innerText = '退出';
+          }
+        });
+
+      })();
+
+      function loginChange(a, b) {
+        a.style.transform = "translateX(-50%) translateY(-50%) rotateY(90deg)";
+        b.style.display = 'block';
+        b.style.transform = "translateX(-50%) translateY(-50%) rotateY(-90deg)";
+        setTimeout(() => {
+          b.style.transform = "translateX(-50%) translateY(-50%) rotateY(0deg)";
+          a.style.display = 'none';
+        }, 2000);
+      }
+    })();
+
+    goodShow();
+    //生成产品列表
+    function goodShow() {
       let str = '';
       dataGoods.forEach(e => {
         str += `
@@ -110,16 +254,45 @@
           <dl>
             <dt></dt>
             <dd>
+              <em style="display: none">${e.id}</em>
               <span>${e.name}</span>
               <b>RMB ${e.price}</b>
-              <a href="javascript:;" class="get-btn">添加到购物袋</a>
+              <a href="javascript:;" class="get-btn cartAdd">添加到购物袋</a>
             </dd>
           </dl>
         </li>
         `;
       });
       listsGoods.innerHTML = str;
-    })();
+      goodEvents();
+    }
+    function goodEvents() {
+      const cartAdds = listsGoods.querySelectorAll('.cartAdd');
+      cartAdds.forEach(e => {
+        e.addEventListener('click', function () {
+          const id = +e.parentNode.firstElementChild.innerText;
+          let sData = [];
+          let isInclude = false;
+          dataGoods.forEach(e => {
+            if (e.id === id) {
+              sData = JSON.parse(JSON.stringify(e));
+            }
+          });
+          dataCarts.forEach(e => {
+            if (e.id === sData.id) {
+              e.num++;
+              isInclude = true;
+            }
+          });
+          if (!isInclude) {
+            sData.num = 1;
+            dataCarts.push(sData);
+          }
+
+          localStorage.setItem('dataCarts', JSON.stringify(dataCarts));
+        });
+      });
+    }
   </script>
 </body>
 </html>
