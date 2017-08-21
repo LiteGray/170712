@@ -71,7 +71,7 @@
       top: 50%;
       left: 50%;
       display: none;
-      transition: 2s;
+      transition: 1s;
       transform: translateX(-50%) translateY(-50%);
       padding: 50px 30px;
       width: 400px;
@@ -123,14 +123,14 @@
 <body>
   <div class="register" style="display: none">
     <i>+</i>
-    <b>登录</b>
+    <b>or&nbsp;登录</b>
     <input type="text" placeholder="邮箱" />
     <input type="password" placeholder="密码" />
     <a class="get-btn register-sure">注册</a>
   </div>
   <div class="login register">
     <i>+</i>
-    <b>注册</b>
+    <b>else&nbsp;注册</b>
     <input type="text" placeholder="邮箱" />
     <input type="password" placeholder="密码" />
     <a class="get-btn login-sure">登录</a>
@@ -172,23 +172,39 @@
   <script>
 
     dataCarts = JSON.parse(localStorage.getItem('dataCarts')) || dataCarts;
-
+    dataUsers = JSON.parse(localStorage.getItem('dataUsers')) || dataUsers;
+//    console.log(dataUsers);
     const section = document.querySelector('section');
     const listsGoods = section.querySelector('ul');
+    const account = document.querySelector('#account');
 
+    //是否已登录
+    for (let e of dataUsers) {
+      if (e.isLogin) {
+        account.innerText = '退出';
+        break;
+      }
+    }
 
     (() => {
-      const account = document.querySelector('#account');
-      let isLogin = false;
+      //登录,退出
       account.addEventListener('click', function () {
-        if (isLogin) {
-          isLogin = false;
-          account.innerText = '账户';
-        } else {
+        const text = account.innerText;
+        if (text === '账户') {
           login.style.display = 'block';
+        } else if (text === '退出') {
+          for (let e of dataUsers) {
+            if (e.isLogin) {
+              e.isLogin = false;
+              account.innerText = '账户';
+              localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
+              break;
+            }
+          }
         }
       });
 
+      //注册,登录-UI
       const register = document.querySelector('.register');
       const login = document.querySelector('.login');
       login.children[0].addEventListener('click', function () {
@@ -204,33 +220,34 @@
         loginChange(register, login);
       });
 
+      //注册,登录
       (() => {
         const registerSure = document.querySelector('.register .register-sure');
         const loginSure = document.querySelector('.login .login-sure');
-
         registerSure.addEventListener('click', function () {
           const sData = {
             id: +new Date(),
             email: registerSure.previousElementSibling.previousElementSibling.value,
-            password: registerSure.previousElementSibling.value
+            password: registerSure.previousElementSibling.value,
+            isLogin: false
           };
           dataUsers.push(sData);
+          localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
+          loginChange(register, login);
         });
         loginSure.addEventListener('click', function () {
           const email = loginSure.previousElementSibling.previousElementSibling.value;
           const password = loginSure.previousElementSibling.value;
           for (let e of dataUsers) {
             if (e.email === email && e.password === password) {
-              isLogin = true;
+              e.isLogin = true;
+              login.style.display = 'none';
+              account.innerText = '退出';
+              localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
               break;
             }
           }
-          if (isLogin) {
-            login.style.display = 'none';
-            account.innerText = '退出';
-          }
         });
-
       })();
 
       function loginChange(a, b) {
@@ -240,7 +257,7 @@
         setTimeout(() => {
           b.style.transform = "translateX(-50%) translateY(-50%) rotateY(0deg)";
           a.style.display = 'none';
-        }, 2000);
+        }, 1000);
       }
     })();
 
@@ -288,7 +305,6 @@
             sData.num = 1;
             dataCarts.push(sData);
           }
-
           localStorage.setItem('dataCarts', JSON.stringify(dataCarts));
         });
       });
