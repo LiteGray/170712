@@ -156,7 +156,7 @@
   <script src="../js/common.js"></script>
   <script>
 
-    dataCarts = JSON.parse(localStorage.getItem('dataCarts'));
+    dataCarts = JSON.parse(localStorage.getItem('dataCarts')) || dataCarts;
 
     const content = document.querySelector('.content');
     const listsCart = content.querySelector('.content ul.listsCart');
@@ -168,6 +168,7 @@
     //生成购物袋
     function cartShow() {
       let str = '';
+      console.log(dataCarts);
       dataCarts.forEach(e => {
         str += `
         <li>
