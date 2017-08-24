@@ -37,13 +37,19 @@
       margin-left: 0;
     }
     section ul li dl dt {
+      padding: .4vw;
       height: 20vw;
       background: #eee;
     }
-    section ul li dl dt:hover {
-      cursor: pointer;
-      opacity: .2;
-      background: #0f0;
+    /*section ul li dl dt:hover {*/
+      /*cursor: pointer;*/
+      /*opacity: .2;*/
+      /*background: #0f0;*/
+    /*}*/
+    section ul li dl dt img {
+      width: 100%;
+      height: 100%;
+      box-shadow: 0 0 4px 2px #ccc;
     }
     section ul li dl dd {
       display: flex;
@@ -77,7 +83,7 @@
       width: 400px;
       height: 300px;
       box-shadow: 0 2px 2px 1px #ccc;
-      background: #fff;
+      background: rgba(255,255,255,.6);
     }
     .register i,
     .register b {
@@ -98,14 +104,17 @@
       border-radius: 2px;
       box-shadow: 1px 1px 1px #ccc;
       font-size: 14px;
-      color: rgba(145,181,77,1);
+      color: rgba(33,163,213,.6);
+      /*color: rgba(145,181,77,1);*/
     }
     .register input {
       width: 100%;
       height: 36px;
       /*border-radius: 8px/4px;*/
       /*box-shadow: inset 0 2px 2px 2px #eee;*/
+      background: transparent;
       text-indent: 10px;
+      color: #fff;
     }
     .register input:nth-of-type(2) {
       margin: 26px 0 30px;
@@ -115,8 +124,9 @@
       display: block;
       padding: 0;
       line-height: 40px;
-      box-shadow: 1px 1px 1px rgba(145,181,77,.8);
-      background: rgba(145,181,77,1);
+      /*box-shadow: 1px 1px 1px rgba(145,181,77,.8);*/
+      /*background: rgba(145,181,77,1);*/
+      background: rgba(33,163,213,.6);
     }
   </style>
 </head>
@@ -269,7 +279,7 @@
         str += `
           <li>
           <dl>
-            <dt></dt>
+            <dt><img src="${e.pic}" /></dt>
             <dd>
               <em style="display: none">${e.id}</em>
               <span>${e.name}</span>
