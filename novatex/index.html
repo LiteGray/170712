@@ -37,6 +37,7 @@
       margin-left: 0;
     }
     section ul li dl dt {
+      position: relative;
       padding: .4vw;
       height: 20vw;
       background: #eee;
@@ -46,10 +47,31 @@
       /*opacity: .2;*/
       /*background: #0f0;*/
     /*}*/
-    section ul li dl dt img {
+    section ul li dl dt img.picGoods-min {
+      transition: 1s;
       width: 100%;
       height: 100%;
       box-shadow: 0 0 4px 2px #ccc;
+    }
+    section ul li dl dt span {
+      /*z-index: 1;*/
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+      width: 40%;
+      height: 40%;
+      overflow: hidden;
+      /*border: 4px solid #0f0;*/
+    }
+    section ul li dl dt span img.picGoods {
+      position: absolute;
+      top: 0;
+      left: 0;
+      /*display: none;*/
+      width: 800%;
+      height: 800%;
+      /*border: 1px solid #ccc;*/
     }
     section ul li dl dd {
       display: flex;
@@ -279,7 +301,7 @@
         str += `
           <li>
           <dl>
-            <dt><img src="${e.pic}" /></dt>
+            <dt><img _src="${e.pic_min}" class="picGoods-min" /><span><img src="${e.pic}" class="picGoods" /></span></dt>
             <dd>
               <em style="display: none">${e.id}</em>
               <span>${e.name}</span>
@@ -319,6 +341,80 @@
         });
       });
     }
+
+    //懒加载
+    (() => {
+      const picGoodsMin = listsGoods.querySelectorAll('.picGoods-min');
+      window.addEventListener('scroll', lazyLoading);
+      function lazyLoading() {
+        picGoodsMin.forEach(e => {
+          if (e.getBoundingClientRect().top < window.innerHeight) {
+            const _src = e.getAttribute('_src');
+            if (_src) {
+              e.src = _src;
+              e.removeAttribute('_src');
+            }
+          }
+        });
+      }
+    })();
+
+    //放大镜magnifier
+
+    (() => {
+      const picGoodsMin = listsGoods.querySelectorAll('.picGoods-min');
+      const picGoods = listsGoods.querySelectorAll('.picGoods');
+
+      picGoodsMin.forEach((e, i) => {
+        const target = e.nextElementSibling;
+        e.addEventListener('mouseover', function () {
+          target.style.display = 'block';
+        });
+        e.addEventListener('mouseout', function () {
+          target.style.display = '';
+        });
+        e.addEventListener('mousemove', function (ev) {
+          let l = ev.clientX - e.getBoundingClientRect().left - target.offsetWidth/2;
+          let t = ev.clientY - e.getBoundingClientRect().top - target.offsetHeight/2;
+          const maxL = e.clientWidth - target.offsetWidth;
+          const maxT = e.clientHeight - target.offsetHeight;
+          if (l <=0 ) {
+            l = 0;
+          }
+          if (l >= maxL) {
+            l = maxL;
+          }
+          if (t <=0 ) {
+            t = 0;
+          }
+          if (t >= maxT) {
+            t = maxT;
+          }
+          target.style.left = l + 'px';
+          target.style.top = t + 'px';
+
+          let rateL = (ev.clientX - e.getBoundingClientRect().left) / e.clientWidth;
+          let rateT = (ev.clientY - e.getBoundingClientRect().top) / e.clientHeight;
+          let bL = picGoods[i].clientWidth*rateL - target.offsetWidth/2;
+          let bT = picGoods[i].clientHeight*rateT - target.offsetHeight/2;
+//          if (bL <= target.offsetWidth/2) {
+//            bL = 0;
+//          }
+//          if (bL >= picGoodsBig[i].clientWidth - target.offsetWidth) {
+//            bL = picGoodsBig[i].clientWidth - target.offsetWidth
+//          }
+//          if (bT <= target.offsetHeight/2) {
+//            bT = 0;
+//          }
+//          if (bT >= picGoodsBig[i].clientHeight - target.offsetHeight) {
+//            bT = picGoodsBig[i].clientHeight - target.offsetHeight
+//          }
+          picGoods[i].style.left = -bL + 'px';
+          picGoods[i].style.top = -bT + 'px';
+        });
+      });
+    })();
+
   </script>
 </body>
 </html>
