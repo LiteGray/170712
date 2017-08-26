@@ -234,12 +234,12 @@
   <div id="header-wrap">
     <header class="autoWidth">
       <ul class="moreNav">
-        <li><a href="html/cart.html">购物袋&nbsp;<i>(2)</i></a></li>
+        <li><a href="html/cart.html">购物袋&nbsp;<i class="cart-num"></i></a></li>
         <li><a href="html/order.html">订单</a></li>
-        <li><a href="#" id="account">账户</a></li>
+        <li><a href="#" id="account">登录</a></li>
       </ul>
       <a href="#" id="logo">novatex</a>
-      <b class="cart"></b>
+      <b class="cart"><i></i></b>
     </header>
   </div>
   <section>
@@ -269,6 +269,7 @@
 
     dataUsers = JSON.parse(localStorage.getItem('dataUsers')) || dataUsers;
     dataCarts = JSON.parse(localStorage.getItem('dataCarts')) || dataCarts;
+    isCart(dataCarts);
 //    console.log(dataUsers);
     const section = document.querySelector('section');
     const listsGoods = section.querySelector('ul');
@@ -286,13 +287,13 @@
       //登录,退出
       account.addEventListener('click', function () {
         const text = account.innerText;
-        if (text === '账户') {
+        if (text === '登录') {
           login.style.display = 'block';
         } else if (text === '退出') {
           for (let e of dataUsers) {
             if (e.isLogin) {
               e.isLogin = false;
-              account.innerText = '账户';
+              account.innerText = '登录';
               localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
               break;
             }
@@ -403,6 +404,7 @@
             sData.pic_min = path + sData.pic_min;
             dataCarts.unshift(sData);
           }
+          isCart(dataCarts);
           localStorage.setItem('dataCarts', JSON.stringify(dataCarts));
         });
       });

@@ -126,12 +126,12 @@
   <div id="header-wrap">
   <header class="autoWidth">
     <ul class="moreNav">
-      <li><a href="#">购物袋&nbsp;<i>(2)</i></a></li>
+      <li><a href="#">购物袋&nbsp;<i class="cart-num"></i></a></li>
       <li><a href="order.html">订单</a></li>
-      <li><a href="#">账户</a></li>
+      <!--<li><a href="#">账户</a></li>-->
     </ul>
     <a href="../index.html" id="logo">novatex</a>
-    <b class="cart"></b>
+    <b class="cart"><i></i></b>
   </header>
 </div>
   <div id="content-wrap">
@@ -174,8 +174,7 @@
 
     dataCarts = JSON.parse(localStorage.getItem('dataCarts')) || dataCarts;
     dataOrders = JSON.parse(localStorage.getItem('dataOrders')) || dataOrders;
-
-    console.log(dataCarts);
+    isCart(dataCarts);
 
     const content = document.querySelector('.content');
     const listsCart = content.querySelector('.content ul.listsCart');
@@ -277,6 +276,7 @@
           dataOrders.unshift(e);
         });
         dataCarts = [];
+        isCart(dataCarts);
         localStorage.setItem('dataCarts', JSON.stringify(dataCarts));
         localStorage.setItem('dataOrders', JSON.stringify(dataOrders));
       });
