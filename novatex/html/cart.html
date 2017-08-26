@@ -13,6 +13,7 @@
       margin: 20px auto 0;
       padding: 0 20px;
       box-shadow: 1px 1px 1px 1px #ccc;
+      background: rgba(230,230,230,1);
     }
     .content h3 {
       padding: 1vw 0;
@@ -34,18 +35,26 @@
       height: 8vw;
     }
     .content ul li dl dt {
-      flex: 1;
-      margin: .8vw;
-      box-shadow: 1px 1px 1px 1px #ddd;
+      /*flex: 1;*/
+      /*display: flex;*/
+      /*justify-content: center;*/
+      /*align-items: center;*/
+      padding: .6vw;
+      /*box-shadow: 1px 1px 4px 1px #ddd;*/
       background: #eee;
     }
     .content ul li dl dt:hover {
       cursor: pointer;
-      opacity: .2;
-      background: #0f0;
+      opacity: .8;
+      background: rgba(145,181,77,.2);
+    }
+    .content ul li dl dt img {
+      width: 8vw;
+      height: 6.8vw;
+      box-shadow: 1px 1px 2px 2px #ccc
     }
     .content ul li dl dd {
-      flex: 4;
+      flex: 5;
       margin-left: 40px;
       /*padding: 0 20px;*/
       /*background: #0f0;*/
@@ -65,18 +74,25 @@
       border-top: 1px solid #ddd;
     }
     .content ul li dl dd div h5 {
+      flex: 2.4;
       color: #888;
     }
     .content ul li dl dd div i {
-      margin-left: 24vw;
+      flex: 1;
+      /*margin-left: 24vw;*/
       font-size: .8vw;
       color: #888;
     }
     .content ul li dl dd div input {
+      /*flex: 1;*/
       padding-right: .4vw;
       width: 2.2vw;
       height: 1.8vw;
       border-radius: .4vw;
+      text-align: right;
+    }
+    .content ul li dl dd div b {
+      flex: 1;
       text-align: right;
     }
     .content ul li dl dd p span {
@@ -142,7 +158,7 @@
       </ul>
       <div class="sumOther">
         <b>总计 RMB <i>5,646</i></b>
-        <a href="order.html" class="get-btn">结算</a>
+        <a href="order.html" class="get-btn" id="cart-account">结算</a>
       </div>
     </div>
   </div>
@@ -157,6 +173,9 @@
   <script>
 
     dataCarts = JSON.parse(localStorage.getItem('dataCarts')) || dataCarts;
+    dataOrders = JSON.parse(localStorage.getItem('dataOrders')) || dataOrders;
+
+    console.log(dataCarts);
 
     const content = document.querySelector('.content');
     const listsCart = content.querySelector('.content ul.listsCart');
@@ -168,18 +187,18 @@
     //生成购物袋
     function cartShow() {
       let str = '';
-      console.log(dataCarts);
+//      console.log(dataCarts);
       dataCarts.forEach(e => {
         str += `
         <li>
           <dl class="carts">
-            <dt></dt>
+            <dt><img src="${e.pic_min}" /></dt>
             <dd>
               <div>
                 <h5>${e.name}</h5>
                 <i>RMB ${e.price}</i>
                 <input type="text" value="${e.num}" class="cartNum" />
-                <b>RMB ${e.sumPrice}</b>
+                <b class="cart-ePrice">RMB ${e.sumPrice}</b>
               </div>
               <p>
                 <span class="cartId">编号: ${e.id}</span>
@@ -191,9 +210,17 @@
       `;
       });
       listsCart.innerHTML = str;
+
+      (function () {
+        const cartEPrice = listsCart.querySelectorAll('.cart-ePrice');
+        dataCarts.forEach((e, i) => {
+          cartEPrice[i].innerHTML = `RMB ${e.price * e.num}`;
+        });
+      })();
       sumTotal();
       cartEvents();
     }
+
     //计算总计
     function sumTotal() {
       let sum = 0;
@@ -207,6 +234,7 @@
       const cartNums = listsCart.querySelectorAll('.cartNum');
       const cartIds = listsCart.querySelectorAll('.cartId');
       const cartDels = listsCart.querySelectorAll('.cartDel');
+      const cartAccount = document.querySelector('#cart-account');
 
       //数量
       cartNums.forEach((e, i) => {
@@ -240,6 +268,49 @@
           sumTotal();
         });
       });
+      //结算
+      cartAccount.addEventListener('click', function () {
+        dataCarts.reverse();
+        dataCarts.forEach(e => {
+          e.date = getDate();
+          e.serial_num = getSerialNum(e.date);
+          dataOrders.unshift(e);
+        });
+        dataCarts = [];
+        localStorage.setItem('dataCarts', JSON.stringify(dataCarts));
+        localStorage.setItem('dataOrders', JSON.stringify(dataOrders));
+      });
+    }
+
+    function getDate() {
+      let formDate = [];
+      const time = new Date();
+      formDate.push(time.getFullYear());
+      formDate.push(time.getMonth());
+      formDate.push(time.getDate());
+      formDate.push(time.getHours());
+      formDate.push(time.getMinutes());
+      formDate.push(time.getSeconds());
+      formDate.forEach((e, i) => {
+        formDate[i] = addZero(e);
+      });
+      return formDate;
+    }
+    function addZero(e) {
+      let tmp = e;
+      if (tmp < 10) {
+        tmp = `0` + tmp;
+      }
+      return tmp;
+    }
+    function getSerialNum(date) {
+      let str = '';
+      let str0 = '' + Math.trunc(8999 * Math.random() + 1000);
+      date.forEach(e => {
+        str += ('' + e);
+      });
+      str = str.slice(2);
+      return str + str0;
     }
   </script>
 </body>

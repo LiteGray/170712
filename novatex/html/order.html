@@ -13,6 +13,7 @@
       margin: 20px auto 0;
       padding: 0 20px;
       box-shadow: 1px 1px 1px 1px #ccc;
+      background: rgba(230,230,230,1);
     }
     .content h3 {
       padding: 1vw 0;
@@ -34,15 +35,22 @@
       height: 8vw;
     }
     .content ul li dl dt {
-      flex: 1;
-      margin: .8vw;
-      box-shadow: 1px 1px 1px 1px #ddd;
+      padding: .6vw;
       background: #eee;
+      /*flex: 1;*/
+      /*margin: .8vw;*/
+      /*box-shadow: 1px 1px 1px 1px #ddd;*/
+      /*background: #eee;*/
     }
     .content ul li dl dt:hover {
       cursor: pointer;
-      opacity: .2;
-      background: #0f0;
+      opacity: .8;
+      background: rgba(145,181,77,.2);
+    }
+    .content ul li dl dt img {
+      width: 8vw;
+      height: 6.8vw;
+      box-shadow: 1px 1px 2px 2px #ccc
     }
     .content ul li dl dd {
       flex: 4;
@@ -65,10 +73,12 @@
       border-top: 1px solid #ddd;
     }
     .content ul li dl dd div h5 {
+      flex: 2.4;
       color: #888;
     }
     .content ul li dl dd div i {
-      margin-left: 24vw;
+      flex: 1;
+      /*margin-left: 24vw;*/
       font-size: .8vw;
       color: #888;
     }
@@ -77,6 +87,10 @@
       width: 2.2vw;
       height: 1.8vw;
       border-radius: .4vw;
+      text-align: right;
+    }
+    .content ul li dl dd div b {
+      flex: 1;
       text-align: right;
     }
     .content ul li dl dd p span {
@@ -163,6 +177,9 @@
   <script src="../js/data.js"></script>
   <script src="../js/common.js"></script>
   <script>
+
+    dataOrders = JSON.parse(localStorage.getItem('dataOrders')) || dataOrders;
+
     const content = document.querySelector('.content');
     const listsOrders = content.querySelector('.content ul.listsOrders');
     const page = content.querySelector('.content div.page');
@@ -181,29 +198,38 @@
           let start = 4 * (p - 1);
           let end = start + 4;
           if (end >= len) end = len;
+          let dataTmps = dataOrders.slice(start, end);
           let str = '';
           for (let n = 0, i = start; i < end; n++, i++) {
             str += `
             <li>
               <dl>
-                <dt></dt>
+                <dt><img src="${dataOrders[i].pic_min}" /></dt>
                 <dd>
                   <div>
                     <h5>${dataOrders[i].name}</h5>
                     <i>RMB ${dataOrders[i].price}</i>
                     <span>${dataOrders[i].num}</span>
-                    <b>RMB ${dataOrders[i].sumPrice}</b>
+                    <b class="order-ePrice">RMB ${dataOrders[i].sumPrice}</b>
                   </div>
                   <p>
-                    <span>订单号: ${dataOrders[i].serial}</span>
+                    <span>订单号: ${dataOrders[i].serial_num}</span>
                     <i>${dataOrders[i].date[0]}/${dataOrders[i].date[1]}/${dataOrders[i].date[2]}</i>
                   </p>
                 </dd>
               </dl>
             </li>
           `;
-            listsOrders.innerHTML = str;
           }
+          listsOrders.innerHTML = str;
+
+          (function () {
+            const orderEPrices = listsOrders.querySelectorAll('.order-ePrice');
+//            console.log(dataTmps);
+            dataTmps.forEach((e, i) => {
+              orderEPrices[i].innerHTML = `RMB ${e.price * e.num}`;
+            });
+          })();
         })(p);
       })
     })();
@@ -213,9 +239,7 @@
       let str = '';
       let pages = Math.round(len / 4);
       for (let i = 1; i < pages + 1; i++ ) {
-        str += `
-          <option value="${i}">${i}</option>
-        `;
+        str += `<option value="${i}">${i}</option>`;
       }
       pageSelect.innerHTML = str;
     })();
@@ -247,6 +271,7 @@
         location.hash = this.value;
       });
     })();
+
   </script>
 </body>
 </html>

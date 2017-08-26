@@ -62,32 +62,16 @@ let dataGoods = [
 ];
 
 let dataCarts = [
-  {id: 1010101, name: 'SFJ-3335', price: '200', pic: '#', num: 1},
-  {id: 1010201, name: 'SFJ-4200', price: '200', pic: '#', num: 1},
-  {id: 1010301, name: 'SFJ-3275', price: '200', pic: '#', num: 1},
-  {id: 1010401, name: 'SFJ-62779', price: '200', pic: '#', num: 1},
-  {id: 1010501, name: 'SFJ-HD078小绣花', price: '200', pic: '#', num: 1},
-  {id: 1010601, name: 'SFJ-4283', price: '200', pic: '#', num: 1},
-  {id: 1010701, name: 'SFJ-3385', price: '200', pic: '#', num: 1},
-  {id: 1010801, name: 'SFJ-HD021', price: '200', pic: '#', num: 1},
-  {id: 1010901, name: 'SFJ-3391', price: '200', pic: '#', num: 1}
+  {id: 1010101, name: 'SFJ-3335', price: '200', pic_min: '../img/SFJ-3275-min.jpg', num: 1},
+  {id: 1010201, name: 'SFJ-4200', price: '200', pic_min: '../img/SFJ-3275-min.jpg', num: 1}
 ];
 
 let dataOrders = [
-  {id: 10604, name: 'SFJ-3335', price: 200, pic: '#', num: 2, sumPrice: 400, serial: 17081900, date: [2017,8,19]},
-  {id: 10604, name: 'SFJ-3335', price: 200, pic: '#', num: 2, sumPrice: 400, serial: 17081900, date: [2017,8,19]},
-  {id: 10604, name: 'SFJ-3335', price: 200, pic: '#', num: 2, sumPrice: 400, serial: 17081900, date: [2017,8,19]},
-  {id: 10604, name: 'SFJ-3335', price: 200, pic: '#', num: 2, sumPrice: 400, serial: 17081900, date: [2017,8,19]},
-  {id: 10604, name: 'SFJ-3335', price: 200, pic: '#', num: 2, sumPrice: 400, serial: 17081900, date: [2017,8,19]},
-  {id: 10604, name: 'SFJ-3335', price: 200, pic: '#', num: 2, sumPrice: 400, serial: 17081900, date: [2017,8,19]},
-  {id: 10604, name: 'SFJ-3335', price: 200, pic: '#', num: 2, sumPrice: 400, serial: 17081900, date: [2017,8,19]},
-  {id: 10604, name: 'SFJ-3335', price: 200, pic: '#', num: 2, sumPrice: 400, serial: 17081900, date: [2017,8,19]},
-  {id: 10604, name: 'SFJ-3335', price: 200, pic: '#', num: 2, sumPrice: 400, serial: 17081900, date: [2017,8,19]},
-  {id: 10604, name: 'SFJ-3335', price: 200, pic: '#', num: 2, sumPrice: 400, serial: 17081900, date: [2017,8,19]},
-  {id: 10604, name: 'SFJ-3335', price: 200, pic: '#', num: 2, sumPrice: 400, serial: 17081900, date: [2017,8,19]},
-  {id: 10604, name: 'SFJ-3335', price: 200, pic: '#', num: 2, sumPrice: 400, serial: 17081900, date: [2017,8,19]},
-  {id: 10604, name: 'SFJ-3335', price: 200, pic: '#', num: 2, sumPrice: 400, serial: 17081900, date: [2017,8,19]},
-  {id: 10604, name: 'SFJ-3335', price: 200, pic: '#', num: 2, sumPrice: 400, serial: 17081900, date: [2017,8,19]}
+  {id: 1010901, name: 'SFJ-3335', price: 200, pic_min: '../img/SFJ-62779-min.jpg', num: 2, serial_num: '1708192022115941', date: [2017,8,19,19,50,49]},
+  {id: 1010901, name: 'SFJ-3335', price: 200, pic_min: '../img/SFJ-62779-min.jpg', num: 2, serial_num: '1708192022115941', date: [2017,8,19,19,50,49]},
+  {id: 1010901, name: 'SFJ-3335', price: 200, pic_min: '../img/SFJ-62779-min.jpg', num: 2, serial_num: '1708192022115941', date: [2017,8,19,19,50,49]},
+  {id: 1010901, name: 'SFJ-3335', price: 200, pic_min: '../img/SFJ-62779-min.jpg', num: 2, serial_num: '1708192022115941', date: [2017,8,19,19,50,49]},
+  {id: 1010901, name: 'SFJ-3335', price: 200, pic_min: '../img/SFJ-62779-min.jpg', num: 2, serial_num: '1708192022115941', date: [2017,8,19,19,50,49]}
 ];
 
 let dataUsers = [
