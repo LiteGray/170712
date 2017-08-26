@@ -79,3 +79,22 @@ let dataUsers = [
   {id: 2, email: '2@gmail.com', password: '15280807171'},
   {id: 3, email: '3@gmail.com', password: '15280807171'}
 ];
+
+let TdataUSers = [
+  {
+    info: {userId: 1, email: 'momo0@gmail.com', password: '15280807171'},
+    data: {
+      carts: [
+        {goodsId: 1010101, name: 'SFJ-3335', price: '200', pic_min: '../img/SFJ-3275-min.jpg', num: 1},
+        {goodsId: 1010201, name: 'SFJ-4200', price: '200', pic_min: '../img/SFJ-3275-min.jpg', num: 1}
+        ],
+      orders: [
+        {goodsId: 1010901, name: 'SFJ-3335', price: 200, pic_min: '../img/SFJ-62779-min.jpg', num: 2, serial_num: '1708192022115941', date: [2017,8,19,19,50,49]},
+        {goodsId: 1010901, name: 'SFJ-3335', price: 200, pic_min: '../img/SFJ-62779-min.jpg', num: 2, serial_num: '1708192022115941', date: [2017,8,19,19,50,49]},
+        {goodsId: 1010901, name: 'SFJ-3335', price: 200, pic_min: '../img/SFJ-62779-min.jpg', num: 2, serial_num: '1708192022115941', date: [2017,8,19,19,50,49]},
+        {goodsId: 1010901, name: 'SFJ-3335', price: 200, pic_min: '../img/SFJ-62779-min.jpg', num: 2, serial_num: '1708192022115941', date: [2017,8,19,19,50,49]},
+        {goodsId: 1010901, name: 'SFJ-3335', price: 200, pic_min: '../img/SFJ-62779-min.jpg', num: 2, serial_num: '1708192022115941', date: [2017,8,19,19,50,49]}
+      ]
+    }
+  }
+];

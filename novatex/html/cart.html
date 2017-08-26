@@ -262,8 +262,10 @@
               dataCarts.splice(i, 1);
             }
           });
-          console.log(dataCarts, listsCart.children[i]);
+//          console.log(dataCarts, listsCart.children[i]);
           listsCart.removeChild(listsCart.children[i]);
+          isCart(dataCarts);
+          localStorage.setItem('dataCarts', JSON.stringify(dataCarts));
           sumTotal();
         });
       });
