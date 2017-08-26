@@ -15,7 +15,8 @@ html,
 body {
   width: 100vw;
   height: 100vh;
-  /*background: #eee;*/
+  background: linear-gradient(rgba(200,200,200,.4) 5%, rgba(200,200,200,.2) 5%);
+  background-size: 20px 20px;
 }
 li {
   list-style: none;
