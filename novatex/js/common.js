@@ -6,7 +6,6 @@ const moreNav = header.querySelector('ul.moreNav');
 
 const showMoreNav = () => {
   moreNav.style.display = 'block';
-  console.log(4);
 };
 cart.addEventListener('click', showMoreNav);
 // cartDot.addEventListener('click', showMoreNav);

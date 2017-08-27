@@ -172,9 +172,15 @@
   <script src="../js/common.js"></script>
   <script>
 
-    dataCarts = JSON.parse(localStorage.getItem('dataCarts')) || dataCarts;
-    dataOrders = JSON.parse(localStorage.getItem('dataOrders')) || dataOrders;
-    isCart(dataCarts);
+    //
+    let dataNow = JSON.parse(localStorage.getItem('dataNow')) || {};
+
+//    dataCarts = JSON.parse(localStorage.getItem('dataCarts')) || dataCarts;
+//    dataOrders = JSON.parse(localStorage.getItem('dataOrders')) || dataOrders;
+//    isCart(dataCarts);
+
+    //
+    isCart(dataNow.carts);
 
     const content = document.querySelector('.content');
     const listsCart = content.querySelector('.content ul.listsCart');
@@ -187,7 +193,7 @@
     function cartShow() {
       let str = '';
 //      console.log(dataCarts);
-      dataCarts.forEach(e => {
+      dataNow.carts.forEach(e => {
         str += `
         <li>
           <dl class="carts">
@@ -212,7 +218,7 @@
 
       (function () {
         const cartEPrice = listsCart.querySelectorAll('.cart-ePrice');
-        dataCarts.forEach((e, i) => {
+        dataNow.carts.forEach((e, i) => {
           cartEPrice[i].innerHTML = `RMB ${e.price * e.num}`;
         });
       })();
@@ -223,7 +229,7 @@
     //计算总计
     function sumTotal() {
       let sum = 0;
-      dataCarts.forEach((e) => {
+      dataNow.carts.forEach((e) => {
         sum += e.price * e.num;
       });
       sumPrice.innerText = sum;
@@ -243,7 +249,7 @@
 //          }
           const id = +cartIds[i].innerText.replace(/\D/g, '');
           const num = +e.value;
-          dataCarts.forEach(e => {
+          dataNow.carts.forEach(e => {
             if (e.id === id) {
               e.num = num;
               e.sumPrice = e.price * e.num;
@@ -257,30 +263,39 @@
       cartDels.forEach((e, i) => {
         e.addEventListener('click', function () {
           const id = +cartIds[i].innerText.replace(/\D/g, '');
-          dataCarts.forEach(e => {
+          dataNow.carts.forEach(e => {
             if (e.id === id) {
-              dataCarts.splice(i, 1);
+              dataNow.carts.splice(i, 1);
             }
           });
 //          console.log(dataCarts, listsCart.children[i]);
           listsCart.removeChild(listsCart.children[i]);
-          isCart(dataCarts);
-          localStorage.setItem('dataCarts', JSON.stringify(dataCarts));
+
+          //
+          isCart(dataNow.carts);
+          localStorage.setItem('dataNow', JSON.stringify(dataNow));
+
+//          isCart(dataCarts);
+//          localStorage.setItem('dataCarts', JSON.stringify(dataCarts));
           sumTotal();
         });
       });
       //结算
       cartAccount.addEventListener('click', function () {
-        dataCarts.reverse();
-        dataCarts.forEach(e => {
+        dataNow.carts.reverse();
+        dataNow.carts.forEach(e => {
           e.date = getDate();
           e.serial_num = getSerialNum(e.date);
-          dataOrders.unshift(e);
+          dataNow.orders.unshift(e);
         });
-        dataCarts = [];
-        isCart(dataCarts);
-        localStorage.setItem('dataCarts', JSON.stringify(dataCarts));
-        localStorage.setItem('dataOrders', JSON.stringify(dataOrders));
+        dataNow.carts = [];
+        isCart(dataNow.carts);
+
+        //
+        localStorage.setItem('dataNow', JSON.stringify(dataNow));
+
+//        localStorage.setItem('dataCarts', JSON.stringify(dataCarts));
+//        localStorage.setItem('dataOrders', JSON.stringify(dataOrders));
       });
     }
 

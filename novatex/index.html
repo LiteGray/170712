@@ -267,9 +267,16 @@
   <script src="js/common.js"></script>
   <script>
 
+    //
+    let dataNow = JSON.parse(localStorage.getItem('dataNow')) || {};
+
     dataUsers = JSON.parse(localStorage.getItem('dataUsers')) || dataUsers;
-    dataCarts = JSON.parse(localStorage.getItem('dataCarts')) || dataCarts;
-    isCart(dataCarts);
+//    dataCarts = JSON.parse(localStorage.getItem('dataCarts')) || dataCarts;
+
+//    //
+//    isCart(dataNow.carts);
+
+//    isCart(dataCarts);
 //    console.log(dataUsers);
     const section = document.querySelector('section');
     const listsGoods = section.querySelector('ul');
@@ -278,6 +285,11 @@
     //是否已登录
     for (let e of dataUsers) {
       if (e.isLogin) {
+
+        //
+//        dataNow = e;
+//        localStorage.setItem('dataNow', JSON.stringify(dataNow));
+
         account.innerText = '退出';
         break;
       }
@@ -292,6 +304,11 @@
         } else if (text === '退出') {
           for (let e of dataUsers) {
             if (e.isLogin) {
+
+              //
+              dataNow = {};
+              localStorage.removeItem('dataNow');
+
               e.isLogin = false;
               account.innerText = '登录';
               localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
@@ -322,21 +339,33 @@
         const registerSure = document.querySelector('.register .register-sure');
         const loginSure = document.querySelector('.login .login-sure');
         registerSure.addEventListener('click', function () {
-          const sData = {
-            id: +new Date(),
-            email: registerSure.previousElementSibling.previousElementSibling.value,
-            password: registerSure.previousElementSibling.value,
-            isLogin: false
-          };
-          dataUsers.push(sData);
-          localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
-          loginChange(register, login);
+          const email = registerSure.previousElementSibling.previousElementSibling.value;
+          const password = registerSure.previousElementSibling.value;
+          if (!dataUsers.some(e => email === e.email)) {
+            const sData = {
+              id: +new Date(),
+              email: email,
+              password: password,
+              isLogin: false,
+              carts: [],
+              orders: []
+            };
+            dataUsers.push(sData);
+            localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
+            loginChange(register, login);
+          }
         });
         loginSure.addEventListener('click', function () {
           const email = loginSure.previousElementSibling.previousElementSibling.value;
           const password = loginSure.previousElementSibling.value;
           for (let e of dataUsers) {
             if (e.email === email && e.password === password) {
+
+              //
+              dataNow = e;
+              isCart(dataNow.carts);
+              localStorage.setItem('dataNow', JSON.stringify(dataNow));
+
               e.isLogin = true;
               login.style.display = 'none';
               account.innerText = '退出';
@@ -393,19 +422,38 @@
               sData = JSON.parse(JSON.stringify(e));
             }
           });
-          dataCarts.forEach(e => {
+
+          //
+          dataNow.carts.forEach(e => {
             if (e.id === sData.id) {
               e.num++;
               isInclude = true;
             }
           });
+
+//          dataCarts.forEach(e => {
+//            if (e.id === sData.id) {
+//              e.num++;
+//              isInclude = true;
+//            }
+//          });
           if (!isInclude) {
             sData.num = 1;
             sData.pic_min = path + sData.pic_min;
-            dataCarts.unshift(sData);
+
+            //
+            dataNow.carts.unshift(sData);
+
+//            dataCarts.unshift(sData);
           }
-          isCart(dataCarts);
-          localStorage.setItem('dataCarts', JSON.stringify(dataCarts));
+
+          console.log(dataNow);
+          isCart(dataNow.carts);
+          localStorage.setItem('dataNow', JSON.stringify(dataNow));
+
+
+//          isCart(dataCarts);
+//          localStorage.setItem('dataCarts', JSON.stringify(dataCarts));
         });
       });
     }
