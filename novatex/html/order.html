@@ -179,7 +179,6 @@
   <script>
 
     let dataNow = JSON.parse(localStorage.getItem('dataNow')) || {};
-//    console.log(dataUsers);
     isCart(dataNow.carts);
 
     const content = document.querySelector('.content');
@@ -245,7 +244,7 @@
       pageSelect.innerHTML = str;
     })();
 
-    //切换页码
+    //上一页,下一页
     (() => {
       let pages = Math.round(len / 4);
       let n = 1;
@@ -267,6 +266,7 @@
       });
     })();
 
+    //选择页码
     (() => {
       pageSelect.addEventListener('change', function () {
         location.hash = this.value;

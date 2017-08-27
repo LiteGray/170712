@@ -29,5 +29,4 @@ function calCartNum(data) {
     sum += e.num;
   });
   cartNum.innerHTML = `(${sum})`;
-  // return sum;
 }

@@ -38,11 +38,6 @@
       /*background-size: 10px 10px;*/
       background: lightsalmon;
     }
-    /*section .banner img {*/
-      /*width: 100%;*/
-      /*height: 100%;*/
-      /*transition: 2s;*/
-    /*}*/
     section ul {
       margin: auto;
       padding: 2vw 0;
@@ -74,11 +69,6 @@
       /*opacity: .8;*/
       background: #eee;
     }
-    /*section ul li dl dt:hover {*/
-      /*cursor: pointer;*/
-      /*opacity: .2;*/
-      /*background: #0f0;*/
-    /*}*/
     section ul li dl dt img.picGoods-min {
       transition: 1s;
       width: 100%;
@@ -90,26 +80,6 @@
       height: 110%;
       transform: translateX(-5%);
     }
-    /*section ul li dl dt span {*/
-      /*!*z-index: 1;*!*/
-      /*position: absolute;*/
-      /*top: 0;*/
-      /*left: 0;*/
-      /*display: none;*/
-      /*width: 40%;*/
-      /*height: 40%;*/
-      /*overflow: hidden;*/
-      /*!*border: 4px solid #0f0;*!*/
-    /*}*/
-    /*section ul li dl dt span img.picGoods {*/
-      /*position: absolute;*/
-      /*top: 0;*/
-      /*left: 0;*/
-      /*!*display: none;*!*/
-      /*width: 800%;*/
-      /*height: 800%;*/
-      /*!*border: 1px solid #ccc;*!*/
-    /*}*/
     section ul li dl dd {
       display: flex;
       flex-direction: column;
@@ -199,7 +169,6 @@
       border-width: 0 1.6vw 1.6vw 1.6vw;
       border-style: solid;
       border-color: transparent transparent rgba(33,163,213,.6) transparent;
-      /*border-color: transparent transparent rgba(135,186,232, .8) transparent;*/
     }
     #timeLine {
       z-index: 2;
@@ -208,7 +177,6 @@
       left: 0;
       width: 100%;
       height: .2vw;
-      /*background: linear-gradient(90deg, rgba(33,163,213,.6) 50%, transparent 50%);*/
     }
   </style>
 </head>
@@ -234,8 +202,8 @@
   <div id="header-wrap">
     <header class="autoWidth">
       <ul class="moreNav">
-        <li><a href="html/cart.html">购物袋&nbsp;<i class="cart-num"></i></a></li>
-        <li><a href="html/order.html">订单</a></li>
+        <li><a href="html/cart.html" id="cart-page">购物袋&nbsp;<i class="cart-num"></i></a></li>
+        <li><a href="html/order.html" id="order-page">订单</a></li>
         <li><a href="#" id="account">登录</a></li>
       </ul>
       <a href="#" id="logo">novatex</a>
@@ -272,7 +240,33 @@
 
     const section = document.querySelector('section');
     const listsGoods = section.querySelector('ul');
+    const cartPage = document.querySelector('#cart-page');
+    const orderPage = document.querySelector('#order-page');
     const account = document.querySelector('#account');
+    const register = document.querySelector('.register');
+    const login = document.querySelector('.login');
+    const registerSure = document.querySelector('.register .register-sure');
+    const loginSure = document.querySelector('.login .login-sure');
+
+    //登录后方可查看购物袋,订单
+    (() => {
+      cartPage.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        if (!dataNow.isLogin) {
+          login.style.display = 'block';
+        } else {
+          location.href = 'html/cart.html';
+        }
+      });
+      orderPage.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        if (!dataNow.isLogin) {
+          login.style.display = 'block';
+        } else {
+          location.href = 'html/order.html';
+        }
+      });
+    })();
 
     (() => {
       isCart(dataNow.carts);
@@ -282,23 +276,7 @@
     })();
 
     (() => {
-      //登录,退出
-      account.addEventListener('click', function () {
-        if (!dataNow.isLogin) {
-          login.style.display = 'block';
-        } else {
-          account.innerText = '登录';
-          dataNow.isLogin = false;
-          dataNow = {};
-          isCart(dataNow.carts);
-          localStorage.removeItem('dataNow');
-          localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
-        }
-      });
-
       //注册,登录-UI
-      const register = document.querySelector('.register');
-      const login = document.querySelector('.login');
       login.children[0].addEventListener('click', function () {
         login.style.display = '';
       });
@@ -314,8 +292,6 @@
 
       //注册,登录
       (() => {
-        const registerSure = document.querySelector('.register .register-sure');
-        const loginSure = document.querySelector('.login .login-sure');
         registerSure.addEventListener('click', function () {
           const email = registerSure.previousElementSibling.previousElementSibling.value;
           const password = registerSure.previousElementSibling.value;
@@ -329,7 +305,6 @@
               orders: []
             };
             dataUsers.unshift(sData);
-//            console.log(dataUsers);
             localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
             loginChange(register, login);
           }
@@ -339,7 +314,6 @@
           const password = loginSure.previousElementSibling.value;
           for (let e of dataUsers) {
             if (e.email === email && e.password === password) {
-//              localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
               login.style.display = 'none';
               account.innerText = '退出';
               e.isLogin = true;
@@ -353,6 +327,21 @@
         });
       })();
 
+      //登录,退出
+      account.addEventListener('click', function () {
+        if (!dataNow.isLogin) {
+          login.style.display = 'block';
+        } else {
+          account.innerText = '登录';
+          dataNow.isLogin = false;
+          dataNow = {};
+          isCart(dataNow.carts);
+          localStorage.removeItem('dataNow');
+          localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
+        }
+      });
+
+      //切换注册,登录
       function loginChange(a, b) {
         a.style.transform = "translateX(-50%) translateY(-50%) rotateY(90deg)";
         b.style.display = 'block';
@@ -365,6 +354,7 @@
     })();
 
     goodShow();
+
     //生成产品列表
     function goodShow() {
       let str = '';
@@ -373,9 +363,8 @@
           <li>
           <dl>
             <dt><img _src="${e.pic_min}" class="picGoods-min" /></dt>
-            <!--<dt><img _src="${e.pic_min}" class="picGoods-min" /><span><img _src="${e.pic}" class="picGoods" /></span></dt>-->
             <dd>
-              <em style="display: none">${e.id}</em>
+              <em style="display: none">${e.goodsId}</em>
               <span>${e.name}</span>
               <b>RMB ${e.price}</b>
               <a href="javascript:;" class="get-btn cartAdd">添加到购物袋</a>
@@ -390,18 +379,26 @@
     function goodEvents() {
       const cartAdds = listsGoods.querySelectorAll('.cartAdd');
       cartAdds.forEach(e => {
+
+        e.addEventListener('click', function (ev) {
+          ev.preventDefault();
+          if (!dataNow.isLogin) {
+            login.style.display = 'block';
+          }
+        });
+
         e.addEventListener('click', function () {
-          const id = +e.parentNode.firstElementChild.innerText;
+          const goodsId = +e.parentNode.firstElementChild.innerText;
           const path = `../`;
           let sData = [];
           let isInclude = false;
           dataGoods.forEach(e => {
-            if (e.id === id) {
+            if (e.goodsId === goodsId) {
               sData = JSON.parse(JSON.stringify(e));
             }
           });
           dataNow.carts.forEach(e => {
-            if (e.id === sData.id) {
+            if (e.goodsId === sData.goodsId) {
               e.num++;
               isInclude = true;
             }
@@ -421,10 +418,8 @@
     //懒加载
     (() => {
       const picGoodsMin = listsGoods.querySelectorAll('.picGoods-min');
-//      const picGoods = listsGoods.querySelectorAll('.picGoods');
       let Lazyloading = function () {
         lazyLoading(picGoodsMin);
-//        lazyLoading(picGoods);
       };
       window.addEventListener('scroll', Lazyloading);
       function lazyLoading(eles) {

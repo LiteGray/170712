@@ -200,7 +200,7 @@
                 <b class="cart-ePrice">RMB ${e.sumPrice}</b>
               </div>
               <p>
-                <span class="cartId">编号: ${e.id}</span>
+                <span class="cartId">编号: ${e.goodsId}</span>
                 <i class="cartDel">删除</i>
               </p>
             </dd>
@@ -241,10 +241,10 @@
 //          if (!(+e.value)) {
 //            ev.preventDefault();
 //          }
-          const id = +cartIds[i].innerText.replace(/\D/g, '');
+          const goodsId = +cartIds[i].innerText.replace(/\D/g, '');
           const num = +e.value;
           dataNow.carts.forEach(e => {
-            if (e.id === id) {
+            if (e.goodsId === goodsId) {
               e.num = num;
               e.sumPrice = e.price * e.num;
             }
@@ -253,12 +253,13 @@
           sumTotal();
         });
       });
+
       //删除
       cartDels.forEach((e, i) => {
         e.addEventListener('click', function () {
-          const id = +cartIds[i].innerText.replace(/\D/g, '');
+          const goodsId = +cartIds[i].innerText.replace(/\D/g, '');
           dataNow.carts.forEach(e => {
-            if (e.id === id) {
+            if (e.goodsId === goodsId) {
               dataNow.carts.splice(i, 1);
             }
           });
@@ -269,6 +270,7 @@
           sumTotal();
         });
       });
+
       //结算
       cartAccount.addEventListener('click', function () {
         dataNow.carts.reverse();
@@ -284,6 +286,7 @@
       });
     }
 
+    //获取时间
     function getDate() {
       let formDate = [];
       const time = new Date();
@@ -298,6 +301,8 @@
       });
       return formDate;
     }
+
+    //补零
     function addZero(e) {
       let tmp = e;
       if (tmp < 10) {
@@ -305,6 +310,8 @@
       }
       return tmp;
     }
+
+    //获取订单号
     function getSerialNum(date) {
       let str = '';
       let str0 = '' + Math.trunc(8999 * Math.random() + 1000);

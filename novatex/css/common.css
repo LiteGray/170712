@@ -6,7 +6,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /*background: #eee;*/
   /*font-family: "goo-ado";*/
   font-size: 1vw;
   color: #444;
@@ -71,12 +70,6 @@ header #logo {
 header #logo:hover {
   color: #f00;
 }
-/*header b.cart {*/
-  /*transform: translateY(3px);*/
-  /*font-size: 12px;*/
-  /*line-height: 16px;*/
-  /*text-align: center;*/
-/*}*/
 header b.cart {
   position: relative;
   width: 16px;
