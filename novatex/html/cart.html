@@ -172,14 +172,8 @@
   <script src="../js/common.js"></script>
   <script>
 
-    //
+    dataUsers = JSON.parse(localStorage.getItem('dataUsers')) || dataUsers;
     let dataNow = JSON.parse(localStorage.getItem('dataNow')) || {};
-
-//    dataCarts = JSON.parse(localStorage.getItem('dataCarts')) || dataCarts;
-//    dataOrders = JSON.parse(localStorage.getItem('dataOrders')) || dataOrders;
-//    isCart(dataCarts);
-
-    //
     isCart(dataNow.carts);
 
     const content = document.querySelector('.content');
@@ -255,7 +249,7 @@
               e.sumPrice = e.price * e.num;
             }
           });
-          e.nextElementSibling.innerText = `RMB ${dataCarts[i].sumPrice}`;
+          e.nextElementSibling.innerText = `RMB ${dataNow.carts[i].sumPrice}`;
           sumTotal();
         });
       });
@@ -268,15 +262,10 @@
               dataNow.carts.splice(i, 1);
             }
           });
-//          console.log(dataCarts, listsCart.children[i]);
           listsCart.removeChild(listsCart.children[i]);
-
-          //
           isCart(dataNow.carts);
           localStorage.setItem('dataNow', JSON.stringify(dataNow));
-
-//          isCart(dataCarts);
-//          localStorage.setItem('dataCarts', JSON.stringify(dataCarts));
+          localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
           sumTotal();
         });
       });
@@ -290,12 +279,8 @@
         });
         dataNow.carts = [];
         isCart(dataNow.carts);
-
-        //
         localStorage.setItem('dataNow', JSON.stringify(dataNow));
-
-//        localStorage.setItem('dataCarts', JSON.stringify(dataCarts));
-//        localStorage.setItem('dataOrders', JSON.stringify(dataOrders));
+        localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
       });
     }
 

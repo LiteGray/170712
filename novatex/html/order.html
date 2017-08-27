@@ -178,14 +178,8 @@
   <script src="../js/common.js"></script>
   <script>
 
-    //
     let dataNow = JSON.parse(localStorage.getItem('dataNow')) || {};
-
-//    dataCarts = JSON.parse(localStorage.getItem('dataCarts')) || dataCarts;
-//    dataOrders = JSON.parse(localStorage.getItem('dataOrders')) || dataOrders;
-//    isCart(dataCarts);
-
-    //
+//    console.log(dataUsers);
     isCart(dataNow.carts);
 
     const content = document.querySelector('.content');
@@ -233,7 +227,6 @@
 
           (function () {
             const orderEPrices = listsOrders.querySelectorAll('.order-ePrice');
-//            console.log(dataTmps);
             dataTmps.forEach((e, i) => {
               orderEPrices[i].innerHTML = `RMB ${e.price * e.num}`;
             });

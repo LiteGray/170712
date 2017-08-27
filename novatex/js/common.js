@@ -16,7 +16,7 @@ document.addEventListener('click', function (ev) {
 });
 
 function isCart(data) {
-  if (data.length) {
+  if (data && data.length) {
     cartDot.classList.add('active');
     calCartNum(data);
   } else {
