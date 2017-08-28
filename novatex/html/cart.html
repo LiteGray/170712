@@ -248,6 +248,9 @@
       cartNums.forEach((e, i) => {
         e.addEventListener('blur', function () {
           const goodsId = +cartIds[i].innerText.replace(/\D/g, '');
+          if (!(+e.value)) {
+            e.value = 1;
+          }
           const num = +e.value;
           dataNow.carts.forEach((e, i) => {
             if (e.goodsId === goodsId) {
