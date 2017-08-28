@@ -68,7 +68,7 @@ header #logo {
   color: #999;
 }
 header #logo:hover {
-  color: rgba(33,163,213,.6);
+  color: #f00;
 }
 header b.cart {
   position: relative;

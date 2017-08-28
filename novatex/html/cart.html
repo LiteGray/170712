@@ -175,10 +175,11 @@
     dataUsers = JSON.parse(localStorage.getItem('dataUsers')) || dataUsers;
     let dataNow = JSON.parse(localStorage.getItem('dataNow')) || {};
     isCart(dataNow.carts);
-    let dataChangeOrigin = {};
+    let dataNowOriginSync = {};
+    //取登录用户数据
     for (let e of dataUsers) {
       if (e.email === dataNow.email) {
-        dataChangeOrigin = e;
+        dataNowOriginSync = e;
         break;
       }
     }
@@ -216,6 +217,7 @@
       });
       listsCart.innerHTML = str;
 
+      //计算每种商品价格合计
       (function () {
         const cartEPrice = listsCart.querySelectorAll('.cart-ePrice');
         dataNow.carts.forEach((e, i) => {
@@ -226,7 +228,7 @@
       cartEvents();
     }
 
-    //计算总计
+    //计算价格总计
     function sumTotal() {
       let sum = 0;
       dataNow.carts.forEach((e) => {
@@ -245,18 +247,13 @@
       //数量
       cartNums.forEach((e, i) => {
         e.addEventListener('blur', function () {
-//          if (!(+e.value)) {
-//            ev.preventDefault();
-//          }
           const goodsId = +cartIds[i].innerText.replace(/\D/g, '');
           const num = +e.value;
           dataNow.carts.forEach((e, i) => {
             if (e.goodsId === goodsId) {
               e.num = num;
-
-              //
-              dataChangeOrigin.carts[i].num = num;
-
+              //同步更改原数据
+              dataNowOriginSync.carts[i].num = num;
               cartEPrices[i].innerText = `RMB ${e.price * e.num}`;
             }
           });
@@ -274,10 +271,8 @@
           dataNow.carts.forEach((e, i) => {
             if (e.goodsId === goodsId) {
               dataNow.carts.splice(i, 1);
-
-              //
-              dataChangeOrigin.carts.splice(i, 1);
-
+              //同步更改原数据
+              dataNowOriginSync.carts.splice(i, 1);
             }
           });
           listsCart.removeChild(listsCart.children[i]);
@@ -291,26 +286,20 @@
       //结算
       cartAccount.addEventListener('click', function () {
         dataNow.carts.reverse();
-
-        //
-        dataChangeOrigin.carts.reverse();
-
+        //同步更改原数据
+        dataNowOriginSync.carts.reverse();
         dataNow.carts.forEach((e,i) => {
           e.date = getDate();
           e.serial_num = getSerialNum(e.date);
           dataNow.orders.unshift(e);
-
-          //
-          dataChangeOrigin.carts[i].date = getDate();
-          dataChangeOrigin.carts[i].serial_num = getSerialNum(e.date);
-          dataChangeOrigin.orders.unshift(e);
-
+          //同步更改原数据
+          dataNowOriginSync.carts[i].date = getDate();
+          dataNowOriginSync.carts[i].serial_num = getSerialNum(e.date);
+          dataNowOriginSync.orders.unshift(e);
         });
         dataNow.carts = [];
-
-        //
-        dataChangeOrigin.carts = [];
-
+        //同步更改原数据
+        dataNowOriginSync.carts = [];
         isCart(dataNow.carts);
         localStorage.setItem('dataNow', JSON.stringify(dataNow));
         localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
