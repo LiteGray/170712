@@ -175,7 +175,7 @@
     dataUsers = JSON.parse(localStorage.getItem('dataUsers')) || dataUsers;
     let dataNow = JSON.parse(localStorage.getItem('dataNow')) || {};
     isCart(dataNow.carts);
-    let dataTmp = {};
+    let dataChangeOrigin = {};
     for (let e of dataUsers) {
       if (e.email === dataNow.email) {
         dataChangeOrigin = e;
@@ -219,7 +219,7 @@
       (function () {
         const cartEPrice = listsCart.querySelectorAll('.cart-ePrice');
         dataNow.carts.forEach((e, i) => {
-          cartEPrice[i].innerHTML = `RMB ${e.price * e.num}`;
+          cartEPrice[i].innerText = `RMB ${e.price * e.num}`;
         });
       })();
       sumTotal();
@@ -237,6 +237,7 @@
     //事件
     function cartEvents() {
       const cartNums = listsCart.querySelectorAll('.cartNum');
+      const cartEPrices = listsCart.querySelectorAll('.cart-ePrice');
       const cartIds = listsCart.querySelectorAll('.cartId');
       const cartDels = listsCart.querySelectorAll('.cartDel');
       const cartAccount = document.querySelector('#cart-account');
@@ -254,11 +255,14 @@
               e.num = num;
 
               //
-              dataChangeOrigin[i].num = num;
+              dataChangeOrigin.carts[i].num = num;
 
-              e.nextElementSibling.innerText = `RMB ${dataNow.carts[i].e.price * e.num}`;
+              cartEPrices[i].innerText = `RMB ${e.price * e.num}`;
             }
           });
+          isCart(dataNow.carts);
+          localStorage.setItem('dataNow', JSON.stringify(dataNow));
+          localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
           sumTotal();
         });
       });
