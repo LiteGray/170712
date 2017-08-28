@@ -175,6 +175,13 @@
     dataUsers = JSON.parse(localStorage.getItem('dataUsers')) || dataUsers;
     let dataNow = JSON.parse(localStorage.getItem('dataNow')) || {};
     isCart(dataNow.carts);
+    let dataTmp = {};
+    for (let e of dataUsers) {
+      if (e.email === dataNow.email) {
+        dataChangeOrigin = e;
+        break;
+      }
+    }
 
     const content = document.querySelector('.content');
     const listsCart = content.querySelector('.content ul.listsCart');
@@ -186,7 +193,6 @@
     //生成购物袋
     function cartShow() {
       let str = '';
-//      console.log(dataCarts);
       dataNow.carts.forEach(e => {
         str += `
         <li>
@@ -197,7 +203,7 @@
                 <h5>${e.name}</h5>
                 <i>RMB ${e.price}</i>
                 <input type="text" value="${e.num}" class="cartNum" />
-                <b class="cart-ePrice">RMB ${e.sumPrice}</b>
+                <b class="cart-ePrice"></b>
               </div>
               <p>
                 <span class="cartId">编号: ${e.goodsId}</span>
@@ -243,13 +249,16 @@
 //          }
           const goodsId = +cartIds[i].innerText.replace(/\D/g, '');
           const num = +e.value;
-          dataNow.carts.forEach(e => {
+          dataNow.carts.forEach((e, i) => {
             if (e.goodsId === goodsId) {
               e.num = num;
-              e.sumPrice = e.price * e.num;
+
+              //
+              dataChangeOrigin[i].num = num;
+
+              e.nextElementSibling.innerText = `RMB ${dataNow.carts[i].e.price * e.num}`;
             }
           });
-          e.nextElementSibling.innerText = `RMB ${dataNow.carts[i].sumPrice}`;
           sumTotal();
         });
       });
@@ -258,9 +267,13 @@
       cartDels.forEach((e, i) => {
         e.addEventListener('click', function () {
           const goodsId = +cartIds[i].innerText.replace(/\D/g, '');
-          dataNow.carts.forEach(e => {
+          dataNow.carts.forEach((e, i) => {
             if (e.goodsId === goodsId) {
               dataNow.carts.splice(i, 1);
+
+              //
+              dataChangeOrigin.carts.splice(i, 1);
+
             }
           });
           listsCart.removeChild(listsCart.children[i]);
@@ -274,12 +287,26 @@
       //结算
       cartAccount.addEventListener('click', function () {
         dataNow.carts.reverse();
-        dataNow.carts.forEach(e => {
+
+        //
+        dataChangeOrigin.carts.reverse();
+
+        dataNow.carts.forEach((e,i) => {
           e.date = getDate();
           e.serial_num = getSerialNum(e.date);
           dataNow.orders.unshift(e);
+
+          //
+          dataChangeOrigin.carts[i].date = getDate();
+          dataChangeOrigin.carts[i].serial_num = getSerialNum(e.date);
+          dataChangeOrigin.orders.unshift(e);
+
         });
         dataNow.carts = [];
+
+        //
+        dataChangeOrigin.carts = [];
+
         isCart(dataNow.carts);
         localStorage.setItem('dataNow', JSON.stringify(dataNow));
         localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
