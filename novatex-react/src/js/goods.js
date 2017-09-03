@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import '../css/goods.css';
 // import '../data/data';
 
-let dataGoods = [
-  {goodsId: 1010101, name: 'SFJ-3335', price: '200', pic: 'img/SFJ-3335.jpg', pic_min: 'img/SFJ-3335-min.jpg'},
+const dataGoods = [
+  {goodsId: 1010101, name: 'SFJ-3335', price: '200', pic: 'img/SFJ-3335.jpg', pic_min: '../img/SFJ-3335-min.jpg'},
   {goodsId: 1010201, name: 'SFJ-4200', price: '114', pic: 'img/SFJ-4200.jpg', pic_min: 'img/SFJ-4200-min.jpg'},
   {goodsId: 1010301, name: 'SFJ-3275', price: '129', pic: 'img/SFJ-3275.jpg', pic_min: 'img/SFJ-3275-min.jpg'},
   {goodsId: 1010401, name: 'SFJ-62779', price: '128', pic: 'img/SFJ-62779.jpg', pic_min: 'img/SFJ-62779-min.jpg'},
@@ -67,12 +67,12 @@ let dataGoods = [
 
 class GoodsList extends Component {
   render() {
-    const {goodsId, name, price, picMin} = this.props;
+    const {goodsId, name, price, pic_min} = this.props;
 
     return (
       <li>
         <dl>
-          <dt><img src={picMin} alt="" className="picGoods-min" /></dt>
+          <dt><img src={pic_min} alt="" className="picGoods-min" /></dt>
           <dd>
             <em style={{display: 'none'}}>{goodsId}</em>
             <span>{name}</span>

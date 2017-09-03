@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import './data/data';
-import {Goods} from "./js/goods";
+// import './data/data';
+// import {Goods} from "./js/goods";
+// import {Cart} from "./js/cart";
+import {Order} from "./js/order";
 
 class Header extends Component {
   render() {
@@ -10,7 +12,7 @@ class Header extends Component {
       <div id="header-wrap">
         <header className="autoWidth">
           <ul className="moreNav">
-            <li><a href="#" id="cart-page">购物袋&nbsp;<i className="cart-num"></i></a></li>
+            <li><a href="#" id="cart-page">购物袋 <i className="cart-num"></i></a></li>
             <li><a href="#" id="order-page">订单</a></li>
             <li><a href="#" id="account">登录</a></li>
           </ul>
@@ -39,7 +41,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <Goods />
+        <Order />
         <Footer />
       </div>
     )
