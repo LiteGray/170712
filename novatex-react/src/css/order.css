@@ -1,0 +1,115 @@
+#content-wrap {
+  min-height: calc(100vh - 100px);
+}
+.content {
+  /*max-height: calc(100vh - 100px);*/
+  margin: 20px auto 0;
+  padding: 0 20px;
+  box-shadow: 1px 1px 1px 1px #ccc;
+  background: rgba(230,230,230,1);
+}
+.content h3 {
+  padding: 1vw 0;
+  height: 4vw;
+  font-size: 1.6vw;
+}
+.content ul {
+  overflow: auto;
+  min-height: 62vh;
+}
+.content ul li {
+  border-top: 1px solid #ccc;
+}
+.content ul li:last-of-type {
+  border-bottom: 1px solid #ccc;
+}
+.content ul li dl {
+  display: flex;
+  height: 8vw;
+}
+.content ul li dl dt {
+  padding: .6vw;
+  background: #eee;
+  /*flex: 1;*/
+  /*margin: .8vw;*/
+  /*box-shadow: 1px 1px 1px 1px #ddd;*/
+  /*background: #eee;*/
+}
+.content ul li dl dt:hover {
+  cursor: pointer;
+  opacity: .8;
+  background: rgba(145,181,77,.2);
+}
+.content ul li dl dt img {
+  width: 8vw;
+  height: 6.8vw;
+  box-shadow: 1px 1px 2px 2px #ccc
+}
+.content ul li dl dd {
+  flex: 4;
+  margin-left: 40px;
+  /*padding: 0 20px;*/
+  /*background: #0f0;*/
+}
+.content ul li dl dd div,
+.content ul li dl dd p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.content ul li dl dd div {
+  height: 3.4vw;
+}
+.content ul li dl dd p {
+  height: 4.6vw;
+  padding-bottom: 1vw;
+  border-top: 1px solid #ddd;
+}
+.content ul li dl dd div h5 {
+  flex: 2.4;
+  color: #888;
+}
+.content ul li dl dd div i {
+  flex: 1;
+  /*margin-left: 24vw;*/
+  font-size: .8vw;
+  color: #888;
+}
+.content ul li dl dd div input {
+  padding-right: .4vw;
+  width: 2.2vw;
+  height: 1.8vw;
+  border-radius: .4vw;
+  text-align: right;
+}
+.content ul li dl dd div b {
+  flex: 1;
+  text-align: right;
+}
+.content ul li dl dd p span {
+  font-size: .8vw;
+  color: #bbb;
+}
+.content ul li dl dd p i {
+  cursor: pointer;
+  font-size: .8vw;
+  /*color: #07c;*/
+}
+.content div.page {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.content div.page * {
+  margin: 1.6vw 0 1vw;
+  padding: .2vw .4vw;
+}
+.content div.page .pageSelect {
+  margin: 1.6vw 1vw 1vw;
+}
+.content div.page *:last-of-type {
+  /*margin-right: 0;*/
+}
+.content div.page a {
+  cursor: pointer;
+}

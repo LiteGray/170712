@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>novatex</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <style>
+    section {
+      min-height: calc(100vh - 80px);
+    }
+    section .banner {
+      margin: auto;
+      height: calc(100vh - 40px);
+      transition: 2s;
+      box-shadow: 2px 1px 2px 2px #ddd;
+      /*background: lightsalmon;*/
+    }
+    section .banner0 {
+      background: rgba(33,163,213,.4);
+      background-image: linear-gradient(#fff 1px, transparent 0),
+                        linear-gradient(90deg, #fff 1px, transparent 0);
+      background-size: 30px 30px;
+    }
+    section .banner1 {
+      background: rgba(255,255,255,.4);
+      background-image: linear-gradient(rgba(200,0,0,.2) 50%, transparent 0),
+                        linear-gradient(90deg, rgba(200,0,0,.2) 50%, transparent 0);
+      background-size: 30px 30px;
+    }
+    section .banner2 {
+      background: rgba(240,240,240,.4);
+      background-image: radial-gradient(rgba(200,200,200,.4) 30%, transparent 0);
+      background-size: 40px 40px;
+    }
+    section .banner3 {
+      background: linear-gradient(rgba(200,200,200,.2) 50%, transparent),
+                  linear-gradient(90deg, rgba(200,200,200,.2) 50%, transparent);
+      /*background-size: 10px 10px;*/
+      background: lightsalmon;
+    }
+    section ul {
+      margin: auto;
+      padding: 2vw 0;
+      display: flex;
+      flex-wrap: wrap;
+      /*border-top: 1px solid #ddd;*/
+    }
+    section ul li {
+      margin: 1vw 0 0 1.33vw;
+      width: 20vw;
+      height: 30vw;
+      min-width: 110px;
+      min-height: 180px;
+      border: 1px solid #eee;
+      box-shadow: 1px 1px 1px 1px #ddd;
+    }
+    section ul li:hover {
+      box-shadow: 0 4px 4px 1px #bbb;
+    }
+    section ul li:nth-of-type(4n+1) {
+      margin-left: 0;
+    }
+    section ul li dl dt {
+      position: relative;
+      padding: .4vw;
+      height: 20vw;
+      overflow: hidden;
+      /*transition: 1s;*/
+      /*opacity: .8;*/
+      background: #eee;
+    }
+    section ul li dl dt img.picGoods-min {
+      transition: 1s;
+      width: 100%;
+      height: 100%;
+      box-shadow: 0 0 4px 2px #ccc;
+    }
+    section ul li dl dt img.picGoods-min:hover {
+      width: 110%;
+      height: 110%;
+      transform: translateX(-5%);
+    }
+    section ul li dl dd {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0.4vw 0 1vw;
+      height: 10vw;
+    }
+    section ul li dl dd span {
+      font-size: 0.9vw;
+      color: #aaa;
+    }
+    section ul li dl dd b {
+      color: #f00;
+    }
+    section ul li dl dd a.get-btn {
+      padding: 0.4vw 4vw;
+    }
+
+    .register,
+    .login {
+      z-index: 1;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      display: none;
+      transition: 1s;
+      transform: translateX(-50%) translateY(-50%);
+      padding: 50px 30px;
+      width: 400px;
+      height: 300px;
+      box-shadow: 0 2px 2px 1px #ccc;
+      background: rgba(255,255,255,.6);
+    }
+    .register i,
+    .register b {
+      cursor: pointer;
+      position: absolute;
+    }
+    .register i {
+      top: 0;
+      right: 10px;
+      transform: rotate(45deg);
+      font-size: 30px;
+      color: #ccc;
+    }
+    .register b {
+      right: 30px;
+      bottom: 36px;
+      padding: 6px 14px;
+      border-radius: 2px;
+      box-shadow: 1px 1px 1px #ccc;
+      font-size: 14px;
+      color: rgba(33,163,213,.6);
+      /*color: rgba(145,181,77,1);*/
+    }
+    .register input {
+      width: 100%;
+      height: 36px;
+      /*border-radius: 8px/4px;*/
+      /*box-shadow: inset 0 2px 2px 2px #eee;*/
+      background: transparent;
+      text-indent: 10px;
+      color: #999;
+    }
+    .register input:nth-of-type(2) {
+      margin: 26px 0 30px;
+    }
+    .register a {
+      cursor: pointer;
+      display: block;
+      padding: 0;
+      line-height: 40px;
+      /*box-shadow: 1px 1px 1px rgba(145,181,77,.8);*/
+      /*background: rgba(145,181,77,1);*/
+      background: rgba(33,163,213,.6);
+    }
+
+    #back-top {
+      z-index: 2;
+      position: fixed;
+      right: 4vw;
+      bottom: 40px;
+      display: none;
+      width: 0;
+      height: 0;
+      border-width: 0 1.6vw 1.6vw 1.6vw;
+      border-style: solid;
+      border-color: transparent transparent rgba(33,163,213,.6) transparent;
+    }
+    #timeLine {
+      z-index: 2;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: .2vw;
+    }
+  </style>
+</head>
+<body>
+  <div id="timeLine"></div>
+  <a href="#" id="back-top"></a>
+  <div>
+    <div class="register" style="display: none">
+      <i>+</i>
+      <b>or&nbsp;登录</b>
+      <input type="text" placeholder="邮箱" />
+      <input type="password" placeholder="密码" />
+      <a class="get-btn register-sure">注册</a>
+    </div>
+    <div class="login register">
+      <i>+</i>
+      <b>else&nbsp;注册</b>
+      <input type="text" placeholder="邮箱" />
+      <input type="password" placeholder="密码" />
+      <a class="get-btn login-sure">登录</a>
+    </div>
+  </div>
+  <div id="header-wrap">
+    <header class="autoWidth">
+      <ul class="moreNav">
+        <li><a href="html/cart.html" id="cart-page">购物袋&nbsp;<i class="cart-num"></i></a></li>
+        <li><a href="html/order.html" id="order-page">订单</a></li>
+        <li><a href="#" id="account">登录</a></li>
+      </ul>
+      <a href="#" id="logo">novatex</a>
+      <b class="cart"><i></i></b>
+    </header>
+  </div>
+  <section>
+    <div class="autoWidth banner"></div>
+    <ul class="autoWidth lists">
+      <!--<li>-->
+        <!--<dl>-->
+          <!--<dt></dt>-->
+          <!--<dd>-->
+            <!--<span>SFJ-3335</span>-->
+            <!--<b>RMB 225</b>-->
+            <!--<a href="#" class="get-btn">添加到购物袋</a>-->
+          <!--</dd>-->
+        <!--</dl>-->
+      <!--</li>-->
+    </ul>
+  </section>
+  <div id="footer-wrap">
+    <footer class="autoWidth">
+      <p>© 诺华（杭州）纺织有限公司 - 2017 NOVATEX Inc.</p>
+    </footer>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+
+    dataUsers = JSON.parse(localStorage.getItem('dataUsers')) || dataUsers;
+    let dataNow = JSON.parse(localStorage.getItem('dataNow')) || {};
+    let dataNowOriginSync = {};
+    //如果已登录,取登录用户数据
+    if (dataNow.isLogin) {
+      for (let e of dataUsers) {
+        if (e.email === dataNow.email) {
+          dataNowOriginSync = e;
+          break;
+        }
+      }
+    }
+
+    const section = document.querySelector('section');
+    const listsGoods = section.querySelector('ul');
+    const cartPage = document.querySelector('#cart-page');
+    const orderPage = document.querySelector('#order-page');
+    const account = document.querySelector('#account');
+    const register = document.querySelector('.register');
+    const login = document.querySelector('.login');
+    const registerSure = document.querySelector('.register .register-sure');
+    const loginSure = document.querySelector('.login .login-sure');
+
+    //页面载入时,确认购物袋提示,账户登录以否提示
+    (() => {
+      isCart(dataNow.carts);
+      if (dataNow.isLogin) {
+        account.innerText = '退出';
+      }
+    })();
+
+    //登录后方可查看购物袋,订单
+    (() => {
+      cartPage.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        if (!dataNow.isLogin) {
+          login.style.display = 'block';
+        } else {
+          location.href = 'html/cart.html';
+        }
+      });
+      orderPage.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        if (!dataNow.isLogin) {
+          login.style.display = 'block';
+        } else {
+          location.href = 'html/order.html';
+        }
+      });
+    })();
+
+    (() => {
+      //注册,登录-UI
+      login.children[0].addEventListener('click', function () {
+        login.style.display = '';
+      });
+      register.children[0].addEventListener('click', function () {
+        register.style.display = '';
+      });
+      login.children[1].addEventListener('click', function () {
+        loginChange(login, register);
+      });
+      register.children[1].addEventListener('click', function () {
+        loginChange(register, login);
+      });
+
+      //注册,登录
+      (() => {
+        registerSure.addEventListener('click', function () {
+          const email = registerSure.previousElementSibling.previousElementSibling.value;
+          const password = registerSure.previousElementSibling.value;
+          if (!dataUsers.some(e => email === e.email)) {
+            const sData = {
+              userId: +new Date(),
+              email: email,
+              password: password,
+              isLogin: false,
+              carts: [],
+              orders: []
+            };
+            dataUsers.unshift(sData);
+            localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
+            loginChange(register, login);
+          }
+        });
+        loginSure.addEventListener('click', function () {
+          const email = loginSure.previousElementSibling.previousElementSibling.value;
+          const password = loginSure.previousElementSibling.value;
+          for (let e of dataUsers) {
+            if (e.email === email && e.password === password) {
+              login.style.display = 'none';
+              account.innerText = '退出';
+              e.isLogin = true;
+              dataNow = e;
+              //取登录用户数据
+              dataNowOriginSync = e;
+              isCart(dataNow.carts);
+              localStorage.setItem('dataNow', JSON.stringify(dataNow));
+              //避免dataNow指向原始数据
+              dataNow = JSON.parse(localStorage.getItem('dataNow'));
+              localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
+              break;
+            }
+          }
+        });
+      })();
+
+      //登录,退出
+      account.addEventListener('click', function () {
+        if (!dataNow.isLogin) {
+          login.style.display = 'block';
+        } else {
+          account.innerText = '登录';
+          dataNow.isLogin = false;
+          //同步更改原数据
+          dataNowOriginSync.isLogin = false;
+          dataNow = {};
+          isCart(dataNow.carts);
+          localStorage.removeItem('dataNow');
+          localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
+        }
+      });
+
+      //切换注册,登录
+      function loginChange(a, b) {
+        a.style.transform = "translateX(-50%) translateY(-50%) rotateY(90deg)";
+        b.style.display = 'block';
+        b.style.transform = "translateX(-50%) translateY(-50%) rotateY(-90deg)";
+        setTimeout(() => {
+          b.style.transform = "translateX(-50%) translateY(-50%) rotateY(0deg)";
+          a.style.display = 'none';
+        }, 1000);
+      }
+    })();
+
+    goodShow();
+
+    //生成产品列表
+    function goodShow() {
+      let str = '';
+      dataGoods.forEach(e => {
+        str += `
+          <li>
+          <dl>
+            <dt><img _src="${e.pic_min}" class="picGoods-min" /></dt>
+            <dd>
+              <em style="display: none">${e.goodsId}</em>
+              <span>${e.name}</span>
+              <b>RMB ${e.price}</b>
+              <a href="javascript:;" class="get-btn cartAdd">添加到购物袋</a>
+            </dd>
+          </dl>
+        </li>
+        `;
+      });
+      listsGoods.innerHTML = str;
+      goodEvents();
+    }
+    function goodEvents() {
+      const cartAdds = listsGoods.querySelectorAll('.cartAdd');
+      cartAdds.forEach(e => {
+        //登录后方可添加购物袋
+        e.addEventListener('click', function (ev) {
+          ev.preventDefault();
+          if (!dataNow.isLogin) {
+            login.style.display = 'block';
+          }
+        });
+
+        e.addEventListener('click', function () {
+          //每次须重新获取dataNow
+          dataNow = JSON.parse(localStorage.getItem('dataNow')) || {};
+          const goodsId = +e.parentNode.firstElementChild.innerText;
+          const path = `../`;
+          let sData = [];
+          let isInclude = false;
+          dataGoods.forEach(e => {
+            if (e.goodsId === goodsId) {
+              sData = JSON.parse(JSON.stringify(e));
+            }
+          });
+          //如果已有同种商品
+          dataNow.carts.forEach((e, i) => {
+            if (e.goodsId === sData.goodsId) {
+              e.num++;
+              //同步更改原数据
+              dataNowOriginSync.carts[i].num++;
+              isInclude = true;
+            }
+          });
+          //如果没有同种商品
+          if (!isInclude) {
+            sData.num = 1;
+            sData.pic_min = path + sData.pic_min;
+            dataNow.carts.unshift(sData);
+            //同步更改原数据
+            dataNowOriginSync.carts.unshift(sData);
+          }
+          isCart(dataNow.carts);
+          localStorage.setItem('dataNow', JSON.stringify(dataNow));
+          localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
+        });
+      });
+    }
+
+    //懒加载
+    (() => {
+      const picGoodsMin = listsGoods.querySelectorAll('.picGoods-min');
+      let Lazyloading = function () {
+        lazyLoading(picGoodsMin);
+      };
+      window.addEventListener('scroll', Lazyloading);
+      function lazyLoading(eles) {
+        eles.forEach(e => {
+          if (e.getBoundingClientRect().top < window.innerHeight) {
+            const _src = e.getAttribute('_src');
+            if (_src) {
+              e.src = _src;
+              e.removeAttribute('_src');
+            }
+          }
+        });
+      }
+    })();
+
+    //放大镜magnifier
+//    (() => {
+//      const picGoodsMin = listsGoods.querySelectorAll('.picGoods-min');
+//      const picGoods = listsGoods.querySelectorAll('.picGoods');
+//
+//      picGoodsMin.forEach((e, i) => {
+//        const target = e.nextElementSibling;
+//        e.addEventListener('mouseover', function () {
+//          target.style.display = 'block';
+//        });
+//        e.addEventListener('mouseout', function () {
+//          target.style.display = '';
+//        });
+//        e.addEventListener('mousemove', function (ev) {
+//          let l = ev.clientX - e.getBoundingClientRect().left - target.offsetWidth/2;
+//          let t = ev.clientY - e.getBoundingClientRect().top - target.offsetHeight/2;
+//          const maxL = e.clientWidth - target.offsetWidth;
+//          const maxT = e.clientHeight - target.offsetHeight;
+//          if (l <=0 ) {
+//            l = 0;
+//          }
+//          if (l >= maxL) {
+//            l = maxL;
+//          }
+//          if (t <=0 ) {
+//            t = 0;
+//          }
+//          if (t >= maxT) {
+//            t = maxT;
+//          }
+//          target.style.left = l + 'px';
+//          target.style.top = t + 'px';
+//
+//          let rateL = (ev.clientX - e.getBoundingClientRect().left) / e.clientWidth;
+//          let rateT = (ev.clientY - e.getBoundingClientRect().top) / e.clientHeight;
+//          let bL = picGoods[i].clientWidth*rateL - target.offsetWidth/2;
+//          let bT = picGoods[i].clientHeight*rateT - target.offsetHeight/2;
+////          if (bL <= target.offsetWidth/2) {
+////            bL = 0;
+////          }
+////          if (bL >= picGoodsBig[i].clientWidth - target.offsetWidth) {
+////            bL = picGoodsBig[i].clientWidth - target.offsetWidth
+////          }
+////          if (bT <= target.offsetHeight/2) {
+////            bT = 0;
+////          }
+////          if (bT >= picGoodsBig[i].clientHeight - target.offsetHeight) {
+////            bT = picGoodsBig[i].clientHeight - target.offsetHeight
+////          }
+//          picGoods[i].style.left = -bL + 'px';
+//          picGoods[i].style.top = -bT + 'px';
+//        });
+//      });
+//    })();
+
+    //进度条
+    (() => {
+      const timeLine = document.querySelector('#timeLine');
+      window.addEventListener('scroll', function () {
+        let rate = document.documentElement.scrollTop / (document.documentElement.scrollHeight - window.innerHeight) * 100 + '%';
+        timeLine.style.background = `linear-gradient(90deg, rgba(33,163,213,.6) ${rate}, transparent ${rate})`;
+      });
+    })();
+
+    //回到顶部
+    (() => {
+      const backTop = document.querySelector('#back-top');
+      window.addEventListener('scroll', function () {
+        if (document.documentElement.scrollTop > window.innerHeight * 1.4) {
+          backTop.style.display = 'block';
+        } else {
+          backTop.style.display = '';
+        }
+      });
+    })();
+
+    //效果banner
+    (() => {
+      const dataBanner = ['banner0', 'banner1', 'banner2', 'banner3'];
+      const banner = document.querySelector('.banner');
+      let n = 0;
+      banner.className = 'autoWidth banner banner0';
+      setInterval(() => {
+        banner.className = 'autoWidth banner';
+        banner.classList.add(dataBanner[++n % dataBanner.length]);
+      }, 6000)
+    })();
+
+  </script>
+</body>
+</html>
