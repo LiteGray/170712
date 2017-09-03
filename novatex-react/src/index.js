@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 // import './data/data';
 // import {Goods} from "./js/goods";
-// import {Cart} from "./js/cart";
-import {Order} from "./js/order";
+import {Cart} from "./js/cart";
+// import {Order} from "./js/order";
 
 class Header extends Component {
   render() {
@@ -41,7 +41,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <Order />
+        <Cart />
         <Footer />
       </div>
     )

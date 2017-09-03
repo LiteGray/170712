@@ -85,7 +85,6 @@ let dataUsers = [
       {goodsId: 1060501, name: 'CD-7814', price: '21', pic_min: '../img/CD-7814-min.jpg', num: 1, serial_num: '1708192022110241', date: [2017,8,19,19,50,49]},
       {goodsId: 1060601, name: 'CD-HD118', price: '18', pic_min: '../img/CD-HD118-min.jpg', num: 1, serial_num: '1708192022110241', date: [2017,8,19,19,50,49]},
       {goodsId: 1060701, name: 'CD-C3869', price: '9', pic_min: '../img/CD-C3869-min.jpg', num: 1, serial_num: '1708192022110241', date: [2017,8,19,19,50,49]},
-      {goodsId: 1060801, name: 'CD-CM601', price: '18', pic_min: '../img/CD-CM601-min.jpg', num: 1, serial_num: '1708192022110241', date: [2017,8,19,19,50,49]},
     ]
   }
 ];
