@@ -1,12 +1,6 @@
 import React, {Component} from 'react';
 import '../css/cart.css';
 
-// const dataCart = [
-//   {goodsId: 1010101, name: 'SFJ-3335', price: '200', pic_min: '../img/SFJ-3335-min.jpg', num: 1},
-//   {goodsId: 1010201, name: 'SFJ-4200', price: '114', pic_min: '../img/SFJ-4200-min.jpg', num: 2},
-//   {goodsId: 1070401, name: 'PD-XH007', price: '114', pic_min: '../img/PD-XH007-min.jpg', num: 2},
-// ];
-
 class CartList extends Component {
   cartNumChange = (ev) => {
     const newVal = ev.target.value > 0 ? ev.target.value : 1;
