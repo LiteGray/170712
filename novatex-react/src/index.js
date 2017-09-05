@@ -7,14 +7,21 @@ import {Goods} from "./js/goods";
 import {RegisterLogin} from "./js/register-login";
 
 class Header extends Component {
+  userLogToggle = () => {
+    let {dataUserLogined, userLogout} = this.props;
+    userLogout(dataUserLogined);
+  };
+
   render() {
+    let {dataUserLogined, userLogout} = this.props;
+
     return (
       <div id="header-wrap">
         <header className="autoWidth">
-          <ul className="moreNav" style={{display: ''}} >
+          <ul className="moreNav" style={{display: 'block'}} >
             <li><a href="#" id="cart-page">购物袋 <i className="cart-num"></i></a></li>
             <li><a href="#" id="order-page">订单</a></li>
-            <li><a href="#" id="account">登录</a></li>
+            <li><a href="#" id="account" onClick={this.userLogToggle}>{dataUserLogined.isLogin ? '退出' : '登录'}</a></li>
           </ul>
           <a href="#" id="logo">novatex</a>
           <b className="cart"><i></i></b>
@@ -102,7 +109,7 @@ class App extends Component {
         {goodsId: 1070301, name: 'PD-S024', price: '75', pic: 'img/PD-S024.jpg', pic_min: 'img/PD-S024-min.jpg'},
         {goodsId: 1070401, name: 'PD-XH007', price: '114', pic: 'img/PD-XH007.jpg', pic_min: 'img/PD-XH007-min.jpg'}
       ],
-      dataUsers: [
+      dataUser: [
         {
           userId: 1,
           email: 'momo0@gmail.com',
@@ -129,23 +136,55 @@ class App extends Component {
           ]
         }
       ],
+      // dataUserLogined: [],
     }
-  }
+  };
+
+  userRegister = (dataUserNew) => {
+    const {dataUser} = this.state;
+    dataUser.unshift(dataUserNew);
+    this.setState({
+      dataUser,
+    });
+  };
+
+  userLogin = (dataUserLogined) => {
+    const {dataUser} = this.state;
+    dataUserLogined.isLogin = true;
+    this.setState({
+      dataUser,
+    });
+  };
+
+  userLogToggle = (dataUserLogined) => {
+    const {dataUser} = this.state;
+    dataUserLogined.isLogin = !dataUserLogined.isLogin;
+    this.setState({
+      dataUser,
+    });
+  };
 
   render() {
-    const {dataGoods, dataUsers} = this.state;
+    const {dataGoods, dataUser} = this.state;
+    const dataUserLogined = dataUser.find(e => e.isLogin) || [];
+    const {userRegister, userLogin, userLogToggle} = this;
 
     return (
       <div>
-        <RegisterLogin />
+        <RegisterLogin
+          dataUser={dataUser}
+          userRegister={userRegister}
+          userLogin={userLogin}
+        />
         <Header
-          dataUsers={dataUsers}
+          dataUserLogined={dataUserLogined}
+          userLogToggle={userLogToggle}
         />
         <Goods
           dataGoods={dataGoods}
         />
         {/*<Cart*/}
-          {/*dataUsers={dataUsers}*/}
+          {/*dataUser={dataUser}*/}
         {/*/>*/}
         {/*<Order />*/}
         <Footer />
