@@ -66,7 +66,7 @@ import '../css/goods.css';
 
 class GoodsList extends Component {
   render() {
-    const {goodsId, name, price, pic_min} = this.props;
+    const {goodsId, name, price, pic_min, cartAdd} = this.props;
 
     return (
       <li>
@@ -76,7 +76,12 @@ class GoodsList extends Component {
             <em style={{display: 'none'}}>{goodsId}</em>
             <span>{name}</span>
             <b>RMB {price}</b>
-            <a href="#" className="get-btn cartAdd">添加到购物袋</a>
+            <a
+              className="get-btn cartAdd"
+              onClick={cartAdd}
+            >
+              添加到购物袋
+            </a>
           </dd>
         </dl>
       </li>
@@ -86,10 +91,10 @@ class GoodsList extends Component {
 
 class Goods extends Component {
   render() {
-    const {dataGoods} = this.props;
+    const {dataGoods, cartAdd} = this.props;
     // let dataGoodTmp = Object.assign([], {...dataGoods});
     const list = dataGoods.map(e => {
-      return <GoodsList key={e.goodsId} {...e} />;
+      return <GoodsList key={e.goodsId} {...e} cartAdd={cartAdd} />;
     });
 
     return (

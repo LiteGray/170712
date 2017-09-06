@@ -67,15 +67,19 @@ class RegisterLogin extends Component {
     }
   };
 
+  boxDisappear = (ev) => {
+    ev.target.parentNode.style.display = 'none';
+  };
+
   render() {
+    const {dataUserLogined, isLoginNeeded} = this.props;
     return (
       <div>
         <div
           ref={(ele) => this.Eregister = ele}
           className="register"
-          style={{display: 'block'}}
         >
-          <i>+</i>
+          <i onClick={this.boxDisappear}>+</i>
           <b onClick={this.registerToLogin}>or 登录</b>
           <input type="text" placeholder="邮箱" />
           <input type="password" placeholder="密码" />
@@ -87,8 +91,9 @@ class RegisterLogin extends Component {
         <div
           ref={(ele) => this.Elogin = ele}
           className="login register"
+          style={{display: dataUserLogined.isLogin || !isLoginNeeded ? '' : 'block'}}
         >
-          <i>+</i>
+          <i onClick={this.boxDisappear}>+</i>
           <b onClick={this.loginToRegister}>else 注册</b>
           <input type="text" placeholder="邮箱" />
           <input type="password" placeholder="密码" />

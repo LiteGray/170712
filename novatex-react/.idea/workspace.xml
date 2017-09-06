@@ -17,24 +17,23 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1182">
-              <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+            <state relative-caret-position="56">
+              <caret line="235" column="7" lean-forward="true" selection-start-line="235" selection-start-column="7" selection-end-line="235" selection-end-column="7" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-                <element signature="e#1340#8426#0" expanded="false" />
-                <element signature="e#8444#10819#0" expanded="false" />
+                <element signature="e#1775#8861#0" expanded="false" />
+                <element signature="e#8879#11254#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/novatex/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="345" column="53" lean-forward="true" selection-start-line="345" selection-start-column="53" selection-end-line="345" selection-end-column="53" />
+            <state relative-caret-position="304">
+              <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
               <folding>
-                <element signature="n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <marker date="1503933562000" expanded="true" signature="10764:11117" ph="..." />
                 <marker date="1503933562000" expanded="true" signature="10779:11103" ph="..." />
@@ -45,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register-login.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="register-login.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/register-login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1026">
-              <caret line="54" column="21" lean-forward="true" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
+            <state relative-caret-position="147">
+              <caret line="69" column="26" lean-forward="true" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -60,8 +59,8 @@
       <file leaf-file-name="goods.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/goods.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="82" column="5" lean-forward="true" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
+            <state relative-caret-position="491">
+              <caret line="98" column="0" lean-forward="true" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#68#90#0" expanded="false" />
@@ -77,23 +76,6 @@
               <caret line="48" column="30" lean-forward="true" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="order.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/order.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="772">
-              <caret line="98" column="32" lean-forward="true" selection-start-line="98" selection-start-column="32" selection-end-line="98" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-                <marker date="1504448622000" expanded="true" signature="3641:4334" ph="..." />
-                <marker date="1504448622000" expanded="true" signature="3685:4321" ph="..." />
-                <marker date="1504448622000" expanded="true" signature="3748:3783" ph="..." />
-                <marker date="1504448622000" expanded="true" signature="3816:4306" ph="..." />
-                <marker date="1504448622000" expanded="true" signature="4103:4147" ph="..." />
               </folding>
             </state>
           </provider>
@@ -122,8 +104,8 @@
       <file leaf-file-name="data.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data/data.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="64" column="3" lean-forward="true" selection-start-line="64" selection-start-column="3" selection-end-line="64" selection-end-column="3" />
+            <state relative-caret-position="414">
+              <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -161,10 +143,10 @@
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/data/data.js" />
         <option value="$PROJECT_DIR$/src/js/order.js" />
-        <option value="$PROJECT_DIR$/src/js/goods.js" />
         <option value="$PROJECT_DIR$/src/js/cart.js" />
         <option value="$PROJECT_DIR$/src/css/register-login.css" />
         <option value="$PROJECT_DIR$/novatex/index.html" />
+        <option value="$PROJECT_DIR$/src/js/goods.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/js/register-login.js" />
       </list>
@@ -305,12 +287,12 @@
       <option name="presentableId" value="Default" />
       <updated>1504422867145</updated>
       <workItem from="1504422868972" duration="69000" />
-      <workItem from="1504422955111" duration="37003000" />
+      <workItem from="1504422955111" duration="50928000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37072000" />
+    <option name="totallyTimeSpent" value="50997000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -391,35 +373,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/novatex/html/cart.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="259" column="45" lean-forward="false" selection-start-line="259" selection-start-column="42" selection-end-line="259" selection-end-column="45" />
-          <folding>
-            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <marker date="1503934147000" expanded="true" signature="4803:5314" ph="..." />
-            <marker date="1503934147000" expanded="true" signature="4832:5300" ph="..." />
-            <marker date="1503934147000" expanded="true" signature="4897:5284" ph="..." />
-            <marker date="1503934147000" expanded="true" signature="4917:5126" ph="..." />
-            <marker date="1503934147000" expanded="true" signature="5144:5266" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/novatex/html/order.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-121">
-          <caret line="136" column="24" lean-forward="false" selection-start-line="136" selection-start-column="24" selection-end-line="136" selection-end-column="24" />
-          <folding>
-            <marker date="1503851243000" expanded="true" signature="5323:6022" ph="..." />
-            <marker date="1503851243000" expanded="true" signature="5342:6004" ph="..." />
-            <marker date="1503851243000" expanded="true" signature="5431:5984" ph="..." />
-            <marker date="1503851243000" expanded="true" signature="5455:5733" ph="..." />
-            <marker date="1503851243000" expanded="true" signature="5755:5962" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
@@ -459,17 +412,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/goods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="82" column="5" lean-forward="true" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#68#90#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/cart.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="912">
@@ -496,47 +438,94 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/data.js">
+    <entry file="file://$PROJECT_DIR$/novatex/js/common.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="64" column="3" lean-forward="true" selection-start-line="64" selection-start-column="3" selection-end-line="64" selection-end-column="3" />
+        <state relative-caret-position="323">
+          <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/novatex/index.html">
+    <entry file="file://$PROJECT_DIR$/src/js/goods.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="345" column="53" lean-forward="true" selection-start-line="345" selection-start-column="53" selection-end-line="345" selection-end-column="53" />
+        <state relative-caret-position="491">
+          <caret line="98" column="0" lean-forward="true" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
           <folding>
-            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <marker date="1503933562000" expanded="true" signature="10764:11117" ph="..." />
-            <marker date="1503933562000" expanded="true" signature="10779:11103" ph="..." />
-            <marker date="1503933562000" expanded="true" signature="10866:11087" ph="..." />
-            <marker date="1503933562000" expanded="false" signature="10893:10906" ph="..." />
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#68#90#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/register-login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="69" column="26" lean-forward="true" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1182">
-          <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+        <state relative-caret-position="56">
+          <caret line="235" column="7" lean-forward="true" selection-start-line="235" selection-start-column="7" selection-end-line="235" selection-end-column="7" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#1340#8426#0" expanded="false" />
-            <element signature="e#8444#10819#0" expanded="false" />
+            <element signature="e#1775#8861#0" expanded="false" />
+            <element signature="e#8879#11254#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/register-login.js">
+    <entry file="file://$PROJECT_DIR$/novatex/html/order.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1026">
-          <caret line="54" column="21" lean-forward="true" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
+        <state relative-caret-position="2945">
+          <caret line="155" column="22" lean-forward="true" selection-start-line="155" selection-start-column="22" selection-end-line="155" selection-end-column="22" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <marker date="1503851243000" expanded="true" signature="5323:6022" ph="..." />
+            <marker date="1503851243000" expanded="true" signature="5342:6004" ph="..." />
+            <marker date="1503851243000" expanded="true" signature="5431:5984" ph="..." />
+            <marker date="1503851243000" expanded="true" signature="5455:5733" ph="..." />
+            <marker date="1503851243000" expanded="true" signature="5755:5962" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/novatex/html/cart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-740">
+          <caret line="268" column="0" lean-forward="true" selection-start-line="268" selection-start-column="0" selection-end-line="268" selection-end-column="0" />
+          <folding>
+            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <marker date="1503934147000" expanded="true" signature="4803:5314" ph="..." />
+            <marker date="1503934147000" expanded="true" signature="4832:5300" ph="..." />
+            <marker date="1503934147000" expanded="true" signature="4897:5284" ph="..." />
+            <marker date="1503934147000" expanded="true" signature="4917:5126" ph="..." />
+            <marker date="1503934147000" expanded="true" signature="5144:5266" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/novatex/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding>
+            <element signature="n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <marker date="1503933562000" expanded="true" signature="10764:11117" ph="..." />
+            <marker date="1503933562000" expanded="true" signature="10779:11103" ph="..." />
+            <marker date="1503933562000" expanded="true" signature="10866:11087" ph="..." />
+            <marker date="1503933562000" expanded="false" signature="10893:10906" ph="..." />
           </folding>
         </state>
       </provider>

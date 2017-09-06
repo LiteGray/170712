@@ -7,24 +7,37 @@ import {Goods} from "./js/goods";
 import {RegisterLogin} from "./js/register-login";
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+  }
   userLogToggle = () => {
-    let {dataUserLogined, userLogout} = this.props;
-    userLogout(dataUserLogined);
+    let {dataUserLogined, userLogToggle} = this.props;
+    userLogToggle(dataUserLogined);
   };
 
   render() {
-    let {dataUserLogined, userLogout} = this.props;
+    let {dataUserLogined, loginNeeded} = this.props;
 
     return (
       <div id="header-wrap">
         <header className="autoWidth">
           <ul className="moreNav" style={{display: 'block'}} >
-            <li><a href="#" id="cart-page">购物袋 <i className="cart-num"></i></a></li>
-            <li><a href="#" id="order-page">订单</a></li>
+            <li>
+              <a href="#" id="cart-page" onClick={loginNeeded}>
+                购物袋
+                <i className="cart-num">
+                  {dataUserLogined.carts && dataUserLogined.carts.length ? (' ( ' + dataUserLogined.carts.length + ' )') : ''}
+                </i>
+              </a>
+            </li>
+            <li><a href="#" id="order-page" onClick={loginNeeded}>订单</a></li>
             <li><a href="#" id="account" onClick={this.userLogToggle}>{dataUserLogined.isLogin ? '退出' : '登录'}</a></li>
           </ul>
           <a href="#" id="logo">novatex</a>
-          <b className="cart"><i></i></b>
+          <b className="cart">
+            <i className={dataUserLogined.carts && dataUserLogined.carts.length ? 'active' : ''}>
+            </i>
+          </b>
         </header>
       </div>
     )
@@ -136,7 +149,15 @@ class App extends Component {
           ]
         }
       ],
-      // dataUserLogined: [],
+      dataUserLogined: {
+        userId: null,
+        email: ' ',
+        password: ' ',
+        isLogin: false,
+        carts: [],
+        orders: [],
+      },
+      isLoginNeeded: false,
     }
   };
 
@@ -149,25 +170,88 @@ class App extends Component {
   };
 
   userLogin = (dataUserLogined) => {
-    const {dataUser} = this.state;
+    let {dataUser, isLoginNeeded} = this.state;
     dataUserLogined.isLogin = true;
+    isLoginNeeded = false;
     this.setState({
       dataUser,
+      dataUserLogined,
+      isLoginNeeded,
+    });
+  };
+
+  userLogout = () => {
+    this.setState({
+      dataUserLogined: {
+        userId: null,
+        email: ' ',
+        password: ' ',
+        isLogin: false,
+        carts: [],
+        orders: [],
+      },
     });
   };
 
   userLogToggle = (dataUserLogined) => {
-    const {dataUser} = this.state;
-    dataUserLogined.isLogin = !dataUserLogined.isLogin;
+    if (!dataUserLogined.isLogin) {
+      this.setState({
+        isLoginNeeded: true,
+      });
+    } else {
+      this.userLogout();
+    }
+  };
+
+  loginNeeded = () => {
+    const {dataUserLogined} = this.state;
+    if (!dataUserLogined.isLogin) {
+      this.setState({
+        isLoginNeeded: true,
+      });
+    }
+  };
+
+  cartAdd = (ev) => {
+    this.loginNeeded();
+    let {dataGoods, dataUserLogined} = this.state;
+
+    const goodsId = Number(ev.target.parentNode.childNodes[0].innerText);
+    // const path = `../`;
+    let sData = [];
+    let isInclude = false;
+    dataGoods.forEach(e => {
+      if (e.goodsId === goodsId) {
+        sData = JSON.parse(JSON.stringify(e));
+      }
+    });
+    //如果已有同种商品
+    dataUserLogined.carts.forEach(e => {
+      if (e.goodsId === sData.goodsId) {
+        e.num++;
+        //同步更改原数据
+        // dataNowOriginSync.carts[i].num++;
+        isInclude = true;
+      }
+    });
+    //如果没有同种商品
+    if (!isInclude) {
+      sData.num = 1;
+      // sData.pic_min = path + sData.pic_min;
+      dataUserLogined.carts.unshift(sData);
+      //同步更改原数据
+      // dataNowOriginSync.carts.unshift(sData);
+    }
+
     this.setState({
-      dataUser,
+      dataUserLogined,
     });
   };
 
   render() {
-    const {dataGoods, dataUser} = this.state;
-    const dataUserLogined = dataUser.find(e => e.isLogin) || [];
-    const {userRegister, userLogin, userLogToggle} = this;
+    const {dataGoods, dataUser, dataUserLogined, isLoginNeeded} = this.state;
+    // const dataUserLogined = dataUser.find(e => e.isLogin) || [];
+    const {userRegister, userLogin, userLogToggle, loginNeeded, cartAdd} = this;
 
     return (
       <div>
@@ -175,13 +259,17 @@ class App extends Component {
           dataUser={dataUser}
           userRegister={userRegister}
           userLogin={userLogin}
+          dataUserLogined={dataUserLogined}
+          isLoginNeeded={isLoginNeeded}
         />
         <Header
           dataUserLogined={dataUserLogined}
           userLogToggle={userLogToggle}
+          loginNeeded={loginNeeded}
         />
         <Goods
           dataGoods={dataGoods}
+          cartAdd={cartAdd}
         />
         {/*<Cart*/}
           {/*dataUser={dataUser}*/}
