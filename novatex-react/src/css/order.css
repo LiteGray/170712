@@ -13,7 +13,7 @@
   height: 4vw;
   font-size: 1.6vw;
 }
-.content ul {
+.content ul.listsOrders {
   overflow: auto;
   min-height: 62vh;
 }
@@ -90,13 +90,15 @@
   font-size: .8vw;
   color: #bbb;
 }
-.content ul li dl dd p i {
+.content ul li dl dd p i.order-date {
   cursor: pointer;
   font-size: .8vw;
-  /*color: #07c;*/
+  color: #bbb;
 }
 .content div.page {
   display: flex;
+  /**/
+  flex-direction: row;
   justify-content: flex-end;
   align-items: center;
 }

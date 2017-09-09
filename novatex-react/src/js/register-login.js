@@ -75,6 +75,7 @@ class RegisterLogin extends Component {
     const {dataUserLogined, isLoginNeeded} = this.props;
     return (
       <div>
+        <div id="fill-window"> </div>
         <div
           ref={(ele) => this.Eregister = ele}
           className="register"
@@ -91,7 +92,7 @@ class RegisterLogin extends Component {
         <div
           ref={(ele) => this.Elogin = ele}
           className="login register"
-          style={{display: dataUserLogined.isLogin || !isLoginNeeded ? '' : 'block'}}
+          style={{display: 'block'}}
         >
           <i onClick={this.boxDisappear}>+</i>
           <b onClick={this.loginToRegister}>else 注册</b>

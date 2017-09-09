@@ -1,18 +1,23 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import '../css/cart.css';
 
 class CartList extends Component {
   cartNumChange = (ev) => {
-    const newVal = ev.target.value > 0 ? ev.target.value : 1;
-    this.props.cartNumChange(newVal, this.props.goodsId);
+    const {goodsId, cartNumChange} = this.props;
+    let newVal = Number(ev.target.value);
+    newVal = newVal > 0 ? newVal : 1;
+    cartNumChange(newVal, goodsId);
   };
 
   cartLineDel = () => {
-    this.props.cartLineDel(this.props.goodsId);
+    const {goodsId, cartLineDel} = this.props;
+    cartLineDel(goodsId);
   };
 
   render() {
     const {goodsId, name, price, pic_min, num} = this.props;
+    const {cartNumChange, cartLineDel} = this;
 
     return (
       <li>
@@ -26,7 +31,7 @@ class CartList extends Component {
                 type="text"
                 value={num}
                 className="cartNum"
-                onChange={this.cartNumChange}
+                onChange={cartNumChange}
               />
               <b className="cart-ePrice">RMB {Number(price) * Number(num)}</b>
             </div>
@@ -34,7 +39,7 @@ class CartList extends Component {
               <span className="cartId">编号: {goodsId}</span>
               <i
                 className="cartDel"
-                onClick={this.cartLineDel}
+                onClick={cartLineDel}
               >
                 删除
               </i>
@@ -47,69 +52,37 @@ class CartList extends Component {
 }
 
 class Cart extends Component {
-  constructor() {
-    super();
-    this.state = {
-      dataCart : [
-        {goodsId: 1010101, name: 'SFJ-3335', price: '200', pic_min: '../img/SFJ-3335-min.jpg', num: 1},
-        {goodsId: 1010201, name: 'SFJ-4200', price: '114', pic_min: '../img/SFJ-4200-min.jpg', num: 2},
-        {goodsId: 1070401, name: 'PD-XH007', price: '114', pic_min: '../img/PD-XH007-min.jpg', num: 2},
-      ],
-    };
-  };
-
-  cartNumChange = (newVal, goodsId) => {
-    let {dataCart} = this.state;
-    for (let value of dataCart) {
-      if (value.goodsId === goodsId) {
-        value.num = newVal;
-        break;
-      }
-    }
-    this.setState({
-      dataCart,
-    });
-  };
-
-  cartLineDel = (goodsId) => {
-    let {dataCart} = this.state;
-    for (let [key, value] of dataCart.entries()) {
-      if (value.goodsId === goodsId) {
-        dataCart.splice(key, 1);
-        break;
-      }
-    }
-    this.setState({
-      dataCart,
-    });
-  };
-
   render() {
-    let {dataCart} = this.state;
+    const {
+      carts,
+      cartNumChange,
+      cartLineDel,
+      orderAdd
+    } = this.props;
+    const len = carts.length;
     let cartTotal = 0;
-    dataCart.forEach(e => {
+    carts.forEach(e => {
       cartTotal += Number(e.price) * Number(e.num);
     });
-
-    const list = dataCart.map(e => {
+    const list = carts.map(e => {
       return <CartList
         key={e.goodsId}
         {...e}
-        cartNumChange={this.cartNumChange}
-        cartLineDel={this.cartLineDel}
+        cartNumChange={cartNumChange}
+        cartLineDel={cartLineDel}
       />;
     });
 
     return (
       <div id="content-wrap">
         <div className="autoWidth content">
-          <h3>购物袋内的产品</h3>
+          <h3 style={ len ? {} : {textAlign: 'center'}}>{len ? '购物袋内的产品' : '购物袋内没有产品'}</h3>
           <ul className="listsCart">
             {list}
           </ul>
-          <div className="sumOther">
+          <div className="sumOther" style={{display: len ? '' :  'none'}} onClick={orderAdd}>
             <b>总计 RMB <i>{cartTotal}</i></b>
-            <a href="#" className="get-btn" id="cart-account">结算</a>
+            <Link to="/order" className="get-btn" id="cart-account">结算</Link>
           </div>
         </div>
       </div>

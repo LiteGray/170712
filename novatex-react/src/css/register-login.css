@@ -1,3 +1,6 @@
+#fill-window {
+  min-height: calc(100vh - 80px);
+}
 .register,
 .login {
   z-index: 1;
