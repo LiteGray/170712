@@ -44,7 +44,8 @@ class RegisterLogin extends Component {
   };
 
   login = (ev) => {
-    const {dataUser, userLogin} = this.props;
+    const {dataUserLogined, dataUser, userLogin} = this.props;
+    const {carts} = dataUserLogined;
     const {target} = ev;
     const email = target.previousElementSibling.previousElementSibling.value;
     const password = target.previousElementSibling.value;
@@ -52,6 +53,7 @@ class RegisterLogin extends Component {
       if (e.email === email && e.password === password) {
         target.parentNode.style.display = 'none';
         // account.innerText = '退出';
+        e.carts = carts;
         userLogin(e);
         // e.isLogin = true;
         // dataNow = e;
@@ -72,7 +74,7 @@ class RegisterLogin extends Component {
   };
 
   render() {
-    const {dataUserLogined, isLoginNeeded} = this.props;
+    // const {dataUserLogined, isLoginNeeded} = this.props;
     return (
       <div>
         <div id="fill-window"> </div>

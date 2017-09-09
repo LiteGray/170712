@@ -55,6 +55,7 @@ class Cart extends Component {
   render() {
     const {
       carts,
+      moreNavToggle,
       cartNumChange,
       cartLineDel,
       orderAdd
@@ -74,7 +75,7 @@ class Cart extends Component {
     });
 
     return (
-      <div id="content-wrap">
+      <div id="content-wrap" onClick={moreNavToggle}>
         <div className="autoWidth content">
           <h3 style={ len ? {} : {textAlign: 'center'}}>{len ? '购物袋内的产品' : '购物袋内没有产品'}</h3>
           <ul className="listsCart">

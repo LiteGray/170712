@@ -76,7 +76,7 @@ class Order extends Component {
   };
 
   render() {
-    const {orders} = this.props;
+    const {orders, moreNavToggle} = this.props;
     const {pageNum, page} = this.state;
     const len = orders.length;
     const OrderStart = 4 * (page - 1);
@@ -92,7 +92,7 @@ class Order extends Component {
     });
 
     return (
-      <div id="content-wrap">
+      <div id="content-wrap" onClick={moreNavToggle}>
         <div className="autoWidth content">
           <h3>历史订单</h3>
           <ul className="listsOrders">

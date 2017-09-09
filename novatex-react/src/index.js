@@ -14,7 +14,7 @@ class Header extends Component {
   };
 
   render() {
-    const {dataUserLogined, loginNeeded} = this.props;
+    const {isMoreNav, moreNavToggle, dataUserLogined} = this.props;
     const {carts} = dataUserLogined;
 
     let cartNumTotal = 0;
@@ -23,9 +23,12 @@ class Header extends Component {
     });
 
     return (
-      <div id="header-wrap">
+      <div id="header-wrap" onClick={moreNavToggle}>
         <header className="autoWidth">
-          <ul className="moreNav" style={{display: 'block'}} >
+          <ul
+            className="moreNav"
+            style={{display: isMoreNav ? 'block' : ''}}
+          >
             <li>
               {/*onClick={loginNeeded}*/}
               <Link to="/cart" id="cart-page" >
@@ -40,13 +43,13 @@ class Header extends Component {
               {/*<a href="#" id="order-page" onClick={loginNeeded}>订单</a>*/}
             </li>
             <li style={{display: /cart|order/.test(window.location.href) ? 'none' : ''}}>
-              <a href="#" id="account" onClick={this.userLogToggle}>{dataUserLogined.isLogin ? '退出' : '登录'}
-              </a>
+              <Link to="/login" id="account" onClick={this.userLogToggle}>{dataUserLogined.isLogin ? '退出' : '登录'}
+              </Link>
             </li>
           </ul>
           <Link to="/" id="logo">novatex</Link>
-          <b className="cart">
-            <i className={dataUserLogined.carts && dataUserLogined.carts.length ? 'active' : ''}>
+          <b className="cart" onClick={moreNavToggle}>
+            <i id="cart-dot" className={dataUserLogined.carts && dataUserLogined.carts.length ? 'active' : ''}>
             </i>
           </b>
         </header>
@@ -57,8 +60,9 @@ class Header extends Component {
 
 class Footer extends Component {
   render() {
+    const {moreNavToggle} = this.props;
     return (
-      <div id="footer-wrap">
+      <div id="footer-wrap" onClick={moreNavToggle}>
         <footer className="autoWidth">
           <p>© 诺华（杭州）纺织有限公司 - 2017 NOVATEX Inc.</p>
         </footer>
@@ -71,6 +75,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      isMoreNav: false,
       dataGoods: [
         {goodsId: 1010101, name: 'SFJ-3335', price: '200', pic: 'img/SFJ-3335.jpg', pic_min: 'img/SFJ-3335-min.jpg'},
         {goodsId: 1010201, name: 'SFJ-4200', price: '114', pic: 'img/SFJ-4200.jpg', pic_min: 'img/SFJ-4200-min.jpg'},
@@ -165,27 +170,23 @@ class App extends Component {
         email: ' ',
         password: ' ',
         isLogin: false,
-        carts: [
-          {goodsId: 1010101, name: 'SFJ-3335', price: '200', pic_min: '../img/SFJ-3335-min.jpg', num: 1},
-          {goodsId: 1010201, name: 'SFJ-4200', price: '114', pic_min: '../img/SFJ-4200-min.jpg', num: 2},
-          {goodsId: 1070401, name: 'PD-XH007', price: '114', pic_min: '../img/PD-XH007-min.jpg', num: 2},
-        ],
-        orders: [
-          {goodsId: 1040101, name: 'ZQ-L2024', price: '137', pic_min: '../img/ZQ-L2024-min.jpg', num: 1, serial_num: '1708192022115941', date: [2017,8,19,19,50,49]},
-          {goodsId: 1030401, name: 'ZB-C2868', price: '56', pic_min: '../img/ZB-C2868-min.jpg', num: 2, serial_num: '1708192022113704', date: [2017,8,19,19,50,49]},
-          {goodsId: 1021001, name: 'BZ-K049', price: '53', pic_min: '../img/BZ-K049-min.jpg', num: 2, serial_num: '1708192022112776', date: [2017,8,19,19,50,49]},
-          {goodsId: 1011101, name: 'SFJ-1201', price: '72', pic_min: '../img/SFJ-1201-min.jpg', num: 1, serial_num: '1708192022110241', date: [2017,8,19,19,50,49]},
-          {goodsId: 1060101, name: 'CD-L2024', price: '27', pic_min: '../img/CD-L2024-min.jpg', num: 1, serial_num: '1708192022110241', date: [2017,8,19,19,50,49]},
-          {goodsId: 1060201, name: 'CD-3335', price: '22', pic_min: '../img/CD-3335-min.jpg', num: 1, serial_num: '1708192022110241', date: [2017,8,19,19,50,49]},
-          {goodsId: 1060301, name: 'CD-HD078小绣花', price: '19', pic_min: '../img/CD-HD078xiuhua-min.jpg', num: 1, serial_num: '1708192022110241', date: [2017,8,19,19,50,49]},
-          {goodsId: 1060401, name: 'CD-52838', price: '27', pic_min: '../img/CD-52838-min.jpg', num: 1, serial_num: '1708192022110241', date: [2017,8,19,19,50,49]},
-          {goodsId: 1060501, name: 'CD-7814', price: '21', pic_min: '../img/CD-7814-min.jpg', num: 1, serial_num: '1708192022110241', date: [2017,8,19,19,50,49]},
-          {goodsId: 1060601, name: 'CD-HD118', price: '18', pic_min: '../img/CD-HD118-min.jpg', num: 1, serial_num: '1708192022110241', date: [2017,8,19,19,50,49]},
-          {goodsId: 1060701, name: 'CD-C3869', price: '9', pic_min: '../img/CD-C3869-min.jpg', num: 1, serial_num: '1708192022110241', date: [2017,8,19,19,50,49]},
-        ],
+        carts: [],
+        orders: [],
       },
       isLoginNeeded: false,
     }
+  };
+
+  moreNavToggle = (ev) => {
+    let {isMoreNav} = this.state;
+    if (ev.target.className === 'cart' || ev.target.id === 'cart-dot') {
+      isMoreNav = !isMoreNav;
+    } else {
+      isMoreNav = false;
+    }
+    this.setState({
+      isMoreNav,
+    });
   };
 
   userRegister = (dataUserNew) => {
@@ -207,44 +208,60 @@ class App extends Component {
     });
   };
 
-  userLogout = () => {
-    this.setState({
-      dataUserLogined: {
-        userId: null,
-        email: ' ',
-        password: ' ',
-        isLogin: false,
-        carts: [],
-        orders: [],
-      },
-    });
-  };
+  // userLogout = () => {
+  //   this.setState({
+  //     dataUserLogined: {
+  //       userId: null,
+  //       email: ' ',
+  //       password: ' ',
+  //       isLogin: false,
+  //       carts: [],
+  //       orders: [],
+  //     },
+  //   });
+  // };
 
   userLogToggle = (dataUserLogined) => {
-    if (!dataUserLogined.isLogin) {
-      this.setState({
-        isLoginNeeded: true,
-      });
-    } else {
-      this.userLogout();
+    if (dataUserLogined.isLogin) {
+      setTimeout(() => {
+        this.setState({
+          dataUserLogined: {
+            userId: null,
+            email: ' ',
+            password: ' ',
+            isLogin: false,
+            carts: [],
+            orders: [],
+          },
+        });
+      } ,10);
     }
+    // if (!dataUserLogined.isLogin) {
+    //   this.setState({
+    //     isLoginNeeded: true,
+    //   });
+    // } else {
+    //   setTimeout(() => {
+    //     this.userLogout();
+    //   } ,10);
+    // }
   };
 
-  loginNeeded = (ev) => {
-    ev.preventDefault();
-    const {dataUserLogined} = this.state;
-    if (!dataUserLogined.isLogin) {
-      this.setState({
-        isLoginNeeded: true,
-      });
-    } else {
-      window.location.href = '/cart';
-    }
-  };
+  // loginNeeded = (ev) => {
+  //   ev.preventDefault();
+  //   const {dataUserLogined} = this.state;
+  //   if (!dataUserLogined.isLogin) {
+  //     this.setState({
+  //       isLoginNeeded: true,
+  //     });
+  //   } else {
+  //     window.location.href = '/cart';
+  //   }
+  // };
 
   cartAdd = (ev) => {
-    this.loginNeeded(ev);
-    let {dataGoods, dataUserLogined} = this.state;
+    // this.loginNeeded(ev);
+    let {dataGoods, dataUser, dataUserLogined} = this.state;
 
     const goodsId = Number(ev.target.parentNode.childNodes[0].innerText);
     // const path = `../`;
@@ -274,6 +291,7 @@ class App extends Component {
     }
 
     this.setState({
+      dataUser,
       dataUserLogined,
     });
   };
@@ -376,16 +394,19 @@ class App extends Component {
 
   render() {
     const {
+      isMoreNav,
       dataGoods,
       dataUser,
       dataUserLogined,
-      isLoginNeeded
+      // isLoginNeeded
     } = this.state;
     const {
+      moreNavToggle,
       userRegister,
       userLogin,
       userLogToggle,
-      loginNeeded, cartAdd,
+      // loginNeeded,
+      cartAdd,
       cartNumChange,
       cartLineDel,
       orderAdd,
@@ -394,46 +415,60 @@ class App extends Component {
     return (
       <div>
         <Header
+          isMoreNav={isMoreNav}
           dataUserLogined={dataUserLogined}
+          moreNavToggle={moreNavToggle}
           userLogToggle={userLogToggle}
-          loginNeeded={loginNeeded}
+          // loginNeeded={loginNeeded}
         />
-        <Route path="/login" render={() => {
+        <Route path="/login" render={({history}) => {
+          if (dataUserLogined.isLogin) {
+            history.push('/');
+          }
           return (
             <RegisterLogin
               dataUser={dataUser}
               userRegister={userRegister}
               userLogin={userLogin}
               dataUserLogined={dataUserLogined}
-              isLoginNeeded={isLoginNeeded}
+              // isLoginNeeded={isLoginNeeded}
             />);
         }} />
         <Route exact path="/" render={() => {
           return (
             <Goods
               dataGoods={dataGoods}
+              moreNavToggle={moreNavToggle}
               cartAdd={cartAdd}
             />);
         }}
         />
-        <Route path="/cart" render={() => {
+        <Route path="/cart" render={({history}) => {
+          if (!dataUserLogined.isLogin) {
+            history.push('/login');
+          }
           return (
             <Cart
               carts={dataUserLogined.carts}
+              moreNavToggle={moreNavToggle}
               cartNumChange={cartNumChange}
               cartLineDel={cartLineDel}
               orderAdd={orderAdd}
             />);
         }}
         />
-        <Route path="/order" render={() => {
+        <Route path="/order" render={({history}) => {
+          if (!dataUserLogined.isLogin) {
+            history.push('/login');
+          }
           return (
             <Order
               orders={dataUserLogined.orders}
+              moreNavToggle={moreNavToggle}
             />);
         }}
         />
-        <Footer />
+        <Footer moreNavToggle={moreNavToggle} />
       </div>
     )
   }
@@ -445,29 +480,3 @@ ReactDOM.render(
   </Router>,
   document.getElementById('root'),
 );
-
-// if (module.hot) {
-//   module.hot.accept();
-// }
-
-// {/*<RegisterLogin*/}
-// {/*dataUser={dataUser}*/}
-// {/*userRegister={userRegister}*/}
-// {/*userLogin={userLogin}*/}
-// {/*dataUserLogined={dataUserLogined}*/}
-// {/*isLoginNeeded={isLoginNeeded}*/}
-// {/*/>*/}
-// {/*<Header*/}
-// {/*dataUserLogined={dataUserLogined}*/}
-// {/*userLogToggle={userLogToggle}*/}
-// {/*loginNeeded={loginNeeded}*/}
-// {/*/>*/}
-// {/*<Goods*/}
-// {/*dataGoods={dataGoods}*/}
-// {/*cartAdd={cartAdd}*/}
-// {/*/>*/}
-// {/*/!*<Cart*!/*/}
-// {/*/!*dataUser={dataUser}*!/*/}
-// {/*/!*/>*!/*/}
-//         {/*/!*<Order />*!/*/}
-//         {/*<Footer />*/}

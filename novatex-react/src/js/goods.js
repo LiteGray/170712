@@ -91,15 +91,15 @@ class GoodsList extends Component {
 
 class Goods extends Component {
   render() {
-    const {dataGoods, cartAdd} = this.props;
+    const {dataGoods, moreNavToggle, cartAdd} = this.props;
     // let dataGoodTmp = Object.assign([], {...dataGoods});
     const list = dataGoods.map(e => {
       return <GoodsList key={e.goodsId} {...e} cartAdd={cartAdd} />;
     });
 
     return (
-      <section>
-        <div className="autoWidth banner"></div>
+      <section onClick={moreNavToggle}>
+        <div className="autoWidth banner"> </div>
         <ul className="autoWidth lists">
           {list}
         </ul>
