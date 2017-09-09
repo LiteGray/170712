@@ -3,7 +3,8 @@ section {
 }
 section .banner {
   margin: auto;
-  height: calc(100vh - 40px);
+  /**/
+  height: calc(100vh - 44px);
   transition: 2s;
   box-shadow: 2px 1px 2px 2px #ddd;
   /*background: lightsalmon;*/

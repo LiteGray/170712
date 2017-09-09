@@ -22,7 +22,7 @@ class CartList extends Component {
     return (
       <li>
         <dl className="carts">
-          <dt><img src={pic_min} alt="" /></dt>
+          <dt><img src={require(`../img/${pic_min}`)} alt="" /></dt>
           <dd>
             <div>
               <h5>{name}</h5>
@@ -77,7 +77,7 @@ class Cart extends Component {
     return (
       <div id="content-wrap" onClick={moreNavToggle}>
         <div className="autoWidth content">
-          <h3 style={ len ? {} : {textAlign: 'center'}}>{len ? '购物袋内的产品' : '购物袋内没有产品'}</h3>
+          <h3 style={ len ? {} : {textAlign: 'center', color: 'rgba(33,163,213,.4)'}}>{len ? '购物袋内的产品' : '购物袋很懒～'}</h3>
           <ul className="listsCart">
             {list}
           </ul>
