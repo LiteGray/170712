@@ -1,82 +1,22 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+
 import './index.css';
+
+import {TimeLime} from "./js/time-lime";
+import {BackTop} from "./js/back-top";
+import {RegisterLogin} from "./js/register-login";
+import {Header} from "./js/header";
+import {Footer} from "./js/footer";
 import {Goods} from "./js/goods";
 import {Cart} from "./js/cart";
 import {Order} from "./js/order";
-import {RegisterLogin} from "./js/register-login";
-
-class Header extends Component {
-  userLogToggle = () => {
-    let {dataUserLogined, userLogToggle} = this.props;
-    userLogToggle(dataUserLogined);
-  };
-
-  render() {
-    const {isMoreNav, moreNavToggle, dataUserLogined} = this.props;
-    const {carts} = dataUserLogined;
-
-    let cartNumTotal = 0;
-    carts.forEach(e => {
-      cartNumTotal += e.num;
-    });
-
-    return (
-      <div id="header-wrap" onClick={moreNavToggle}>
-        <header className="autoWidth">
-          <ul
-            className="moreNav"
-            style={{display: isMoreNav ? 'block' : ''}}
-          >
-            <li>
-              {/*onClick={loginNeeded}*/}
-              <Link to="/cart" id="cart-page" >
-                购物袋
-                <i className="cart-num">
-                  {cartNumTotal ? (' (' + cartNumTotal + ')') : ''}
-                </i>
-              </Link>
-            </li>
-            <li>
-              <Link to="/order" id="order-page">订单</Link>
-              {/*<a href="#" id="order-page" onClick={loginNeeded}>订单</a>*/}
-            </li>
-            <li style={{display: /cart|order/.test(window.location.href) ? 'none' : ''}}>
-              <Link to="/login" id="account" onClick={this.userLogToggle}>{dataUserLogined.isLogin ? '退出' : '登录'}
-              </Link>
-            </li>
-          </ul>
-          <Link to="/" id="logo">novatex</Link>
-          <b className="cart" onClick={moreNavToggle}>
-            <i id="cart-dot" className={dataUserLogined.carts && dataUserLogined.carts.length ? 'active' : ''}>
-            </i>
-          </b>
-        </header>
-      </div>
-    )
-  }
-}
-
-class Footer extends Component {
-  render() {
-    const {moreNavToggle} = this.props;
-    return (
-      <div id="footer-wrap" onClick={moreNavToggle}>
-        <footer className="autoWidth">
-          <p>© 诺华（杭州）纺织有限公司 - 2017 NOVATEX Inc.</p>
-        </footer>
-      </div>
-    )
-  }
-}
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      timeLineRate: 0,
-      isShowBackTop: false,
       isMoreNav: false,
       dataGoods: [
         {goodsId: 1010101, name: 'SFJ-3335', price: '200', pic: 'SFJ-3335.jpg', pic_min: 'SFJ-3335-min.jpg'},
@@ -175,31 +115,7 @@ class App extends Component {
         carts: [],
         orders: [],
       },
-      // isLoginNeeded: false,
     };
-    this.backTopToggle();
-    this.timeLine();
-  };
-
-  timeLine = () => {
-    let {timeLineRate} = this.state;
-    window.addEventListener('scroll', () => {
-      timeLineRate = document.documentElement.scrollTop / (document.documentElement.scrollHeight - window.innerHeight) * 100 + '%';
-      this.setState({
-        timeLineRate,
-      });
-      // timeLine.style.background = `linear-gradient(90deg, rgba(33,163,213,.6) ${rate}, transparent ${rate})`;
-    });
-  };
-
-  backTopToggle = () => {
-    let {isShowBackTop} = this.state;
-    window.addEventListener('scroll', () => {
-      isShowBackTop = document.documentElement.scrollTop > window.innerHeight * 1.4 ? true : false;
-      this.setState({
-        isShowBackTop,
-      });
-    });
   };
 
   moreNavToggle = (ev) => {
@@ -233,19 +149,6 @@ class App extends Component {
     });
   };
 
-  // userLogout = () => {
-  //   this.setState({
-  //     dataUserLogined: {
-  //       userId: null,
-  //       email: ' ',
-  //       password: ' ',
-  //       isLogin: false,
-  //       carts: [],
-  //       orders: [],
-  //     },
-  //   });
-  // };
-
   userLogToggle = (dataUserLogined) => {
     if (dataUserLogined.isLogin) {
       setTimeout(() => {
@@ -261,31 +164,9 @@ class App extends Component {
         });
       } ,10);
     }
-    // if (!dataUserLogined.isLogin) {
-    //   this.setState({
-    //     isLoginNeeded: true,
-    //   });
-    // } else {
-    //   setTimeout(() => {
-    //     this.userLogout();
-    //   } ,10);
-    // }
   };
 
-  // loginNeeded = (ev) => {
-  //   ev.preventDefault();
-  //   const {dataUserLogined} = this.state;
-  //   if (!dataUserLogined.isLogin) {
-  //     this.setState({
-  //       isLoginNeeded: true,
-  //     });
-  //   } else {
-  //     window.location.href = '/cart';
-  //   }
-  // };
-
   cartAdd = (ev) => {
-    // this.loginNeeded(ev);
     let {dataGoods, dataUser, dataUserLogined} = this.state;
 
     const goodsId = Number(ev.target.parentNode.childNodes[0].innerText);
@@ -301,20 +182,14 @@ class App extends Component {
     dataUserLogined.carts.forEach(e => {
       if (e.goodsId === sData.goodsId) {
         e.num++;
-        //同步更改原数据
-        // dataNowOriginSync.carts[i].num++;
         isInclude = true;
       }
     });
     //如果没有同种商品
     if (!isInclude) {
       sData.num = 1;
-      // sData.pic_min = path + sData.pic_min;
       dataUserLogined.carts.unshift(sData);
-      //同步更改原数据
-      // dataNowOriginSync.carts.unshift(sData);
     }
-
     this.setState({
       dataUser,
       dataUserLogined,
@@ -356,16 +231,10 @@ class App extends Component {
     const {carts, orders} = dataUserLogined;
     const {getDate, getSerialNum} = this;
     carts.reverse();
-    //同步更改原数据
-    // dataNowOriginSync.carts.reverse();
     carts.forEach((e,i) => {
       e.date = getDate();
       e.serial_num = getSerialNum(e.date);
       orders.unshift(e);
-      //同步更改原数据
-      // dataNowOriginSync.carts[i].date = getDate();
-      // dataNowOriginSync.carts[i].serial_num = getSerialNum(e.date);
-      // dataNowOriginSync.orders.unshift(e);
     });
     //clear
     carts.splice(0,carts.length);
@@ -373,11 +242,6 @@ class App extends Component {
       dataUser,
       dataUserLogined,
     });
-    //同步更改原数据
-    // dataNowOriginSync.carts = [];
-    // isCart(dataNow.carts);
-    // localStorage.setItem('dataNow', JSON.stringify(dataNow));
-    // localStorage.setItem('dataUsers', JSON.stringify(dataUsers));
   };
 
   //获取时间
@@ -419,20 +283,16 @@ class App extends Component {
 
   render() {
     const {
-      timeLineRate,
-      isShowBackTop,
       isMoreNav,
       dataGoods,
       dataUser,
       dataUserLogined,
-      // isLoginNeeded
     } = this.state;
     const {
       moreNavToggle,
       userRegister,
       userLogin,
       userLogToggle,
-      // loginNeeded,
       cartAdd,
       cartNumChange,
       cartLineDel,
@@ -441,14 +301,13 @@ class App extends Component {
 
     return (
       <div>
-        <div id="timeLine" style={{background: `linear-gradient(90deg, rgba(33,163,213,.6) ${timeLineRate}, transparent ${timeLineRate})`}}>{''}</div>
-        <a href="" id="back-top" style={{display: isShowBackTop ? 'block' : ''}}>{''}</a>
+        <TimeLime />
+        <BackTop />
         <Header
           isMoreNav={isMoreNav}
           dataUserLogined={dataUserLogined}
           moreNavToggle={moreNavToggle}
           userLogToggle={userLogToggle}
-          // loginNeeded={loginNeeded}
         />
         <Route path="/login" render={({history}) => {
           if (dataUserLogined.isLogin) {
@@ -460,7 +319,6 @@ class App extends Component {
               userRegister={userRegister}
               userLogin={userLogin}
               dataUserLogined={dataUserLogined}
-              // isLoginNeeded={isLoginNeeded}
             />);
         }} />
         <Route exact path="/" render={() => {

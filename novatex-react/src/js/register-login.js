@@ -37,8 +37,6 @@ class RegisterLogin extends Component {
         orders: []
       };
       userRegister(dataUserNew);
-      // dataUser.unshift(sData);
-      // localStorage.setItem('dataUser', JSON.stringify(dataUser));
       this.uiToggle(target.parentNode, target.parentNode.nextElementSibling);
     }
   };
@@ -52,18 +50,8 @@ class RegisterLogin extends Component {
     for (let e of dataUser) {
       if (e.email === email && e.password === password) {
         target.parentNode.style.display = 'none';
-        // account.innerText = '退出';
         e.carts = carts;
         userLogin(e);
-        // e.isLogin = true;
-        // dataNow = e;
-        // //取登录用户数据
-        // dataNowOriginSync = e;
-        // isCart(dataNow.carts);
-        // localStorage.setItem('dataNow', JSON.stringify(dataNow));
-        // //避免dataNow指向原始数据
-        // dataNow = JSON.parse(localStorage.getItem('dataNow'));
-        // localStorage.setItem('dataUser', JSON.stringify(dataUser));
         break;
       }
     }
@@ -74,7 +62,6 @@ class RegisterLogin extends Component {
   };
 
   render() {
-    // const {dataUserLogined, isLoginNeeded} = this.props;
     return (
       <div>
         <div id="fill-window"> </div>
