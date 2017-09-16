@@ -1,5 +1,6 @@
 #detail {
-  margin: 1vw auto;
+  margin: 3vw auto;
+  /*margin-top: calc(40px + 1vw);*/
   padding: 1vw;
   box-shadow: 1px 1px 2px 1px #eee;
   background: rgba(255,255,255,1);
@@ -27,7 +28,7 @@ dl.goods-property dd {
   padding: 1.4vw 0 3vw;
 }
 dl.goods-property dd span:before,
-dl.goods-property dd b:before,
+dl.goods-property dd b.numSale:before,
 dl.goods-property dd div.goods-property-num:before {
   position: absolute;
   left: -4vw;
@@ -37,14 +38,14 @@ dl.goods-property dd div.goods-property-num:before {
 dl.goods-property dd span:before {
   content: '价格';
 }
-dl.goods-property dd b:before {
+dl.goods-property dd b.numSale:before {
   content: '销量';
 }
 dl.goods-property dd div.goods-property-num:before {
   content: '数量';
 }
 dl.goods-property dd span,
-dl.goods-property dd b,
+dl.goods-property dd b.numSale,
 dl.goods-property dd div.goods-property-num{
   position: relative;
   text-indent: 6vw;
@@ -54,7 +55,7 @@ dl.goods-property dd span {
   font-size: 1.4vw;
   color: #f00;
 }
-dl.goods-property dd b {
+dl.goods-property dd b.numSale {
   color: #f00;
 }
 dl.goods-property dd div.goods-property-num i {
@@ -134,20 +135,7 @@ div.goods-detail ul.goods-detail-img li img {
   text-align: right;
 }
 
-.cart-add-icon {
-  display: none;
-  right: 3.2vw;
-  bottom: 4vw;
-  transition: 2s;
-  /*transform: rotate(-45deg);*/
-  opacity: 0;
-  line-height: 14px;
-  text-align: center;
-  font-size: 12px;
-  border-color: rgba(33,163,213,.6) !important;
-  color: rgba(145,181,77,.8);
-}
-.cart-add-icon-active {
-  display: block;
-  transform: rotateX(-360deg);
+#cart-add-icon {
+  right: 10.2vw;
+  bottom: 5.8vw;
 }

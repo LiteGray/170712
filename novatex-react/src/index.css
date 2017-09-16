@@ -12,10 +12,17 @@ font-family: "goo-ado";
 }
 html,
 body {
+  /*overflow: auto;*/
   width: 100vw;
   height: 100vh;
   background: linear-gradient(rgba(200,200,200,.4) 5%, rgba(200,200,200,.2) 5%);
   background-size: 20px 20px;
+}
+html {
+  /*overflow: hidden;*/
+}
+body {
+  overflow: auto;
 }
 li {
   list-style: none;
@@ -51,6 +58,11 @@ i {
 }
 
 #header-wrap {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  /*margin-bottom: 40px;*/
+  width: 100vw;
   display: flex;
   justify-content: center;
   height: 40px;
@@ -58,10 +70,10 @@ i {
   box-shadow: 0 1px 2px 1px #ccc;
 }
 header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
   /*padding: 0 20px;*/
 }
 header #logo {
@@ -153,4 +165,18 @@ footer {
 footer p {
   font-size: 12px;
   color: #aaa;
+}
+
+.cart-add-icon {
+  display: none;
+  right: 3.2vw;
+  bottom: 4vw;
+  transition: 2s;
+  /*transform: rotate(-45deg);*/
+  opacity: 0;
+  line-height: 14px;
+  text-align: center;
+  font-size: 12px;
+  border-color: rgba(33,163,213,.6) !important;
+  color: rgba(145,181,77,.4);
 }

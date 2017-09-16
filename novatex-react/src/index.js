@@ -779,6 +779,7 @@ class App extends Component {
           return (
             <Detail
               dataGoodsDetail={dataGoodsDetail}
+              carts={dataUserLogined.carts}
               cartAdd={cartAdd}
             />);
         }}

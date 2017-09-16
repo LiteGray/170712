@@ -1,8 +1,10 @@
 #content-wrap {
-  min-height: calc(100vh - 100px);
+  overflow: hidden;
+  margin-top: 40px;
+  min-height: calc(100vh - 80px);
 }
 .content {
-  /*max-height: calc(100vh - 100px);*/
+  max-height: calc(100vh - 100px);
   margin: 20px auto 0;
   padding: 0 20px;
   box-shadow: 1px 1px 1px 1px #ccc;

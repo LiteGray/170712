@@ -41,26 +41,31 @@ class GoodsProperty extends Component {
     });
   };
 
-  cartAdd = () => {
+  cartAdd = (ev) => {
     const {goodsId, cartAdd} = this.props;
     const {num} = this.state;
-    cartAdd(goodsId, num);
+    cartAdd(ev, goodsId, num);
   };
 
   render() {
-    const {title, price, pic, numSale} = this.props;
+    const {title, price, pic, numSale, carts} = this.props;
     const {num} = this.state;
     const {numIncrease, numDecrease, numChange, cartAdd} = this;
+
+    let cartNumTotal = 0;
+    carts.forEach(e => {
+      cartNumTotal += e.num;
+    });
 
     return(
       <dl className="goods-property">
         <dt>
           <img src={require(`../../img/${pic}`)} alt="" />
         </dt>
-        <dd>
+        <dd style={{position: 'relative'}}>
           <h3>{title}</h3>
           <span>¥ {price}</span>
-          <b>{numSale}</b>
+          <b className="numSale">{numSale}</b>
           <div className="goods-property-num">
             <i onClick={numDecrease}>-</i>
             <input type="text" value={num} onChange={numChange}/>
@@ -72,6 +77,7 @@ class GoodsProperty extends Component {
           >
             添加到购物袋
           </a>
+          <b id="cart-add-icon" className="cart cart-add-icon" style={{position: 'absolute'}}>{cartNumTotal}</b>
         </dd>
       </dl>
     )
@@ -103,7 +109,7 @@ class Detail extends Component {
   render() {
     const {viewToggle} = this;
     const {view} = this.state;
-    const {dataGoodsDetail, cartAdd} = this.props;
+    const {dataGoodsDetail, carts, cartAdd} = this.props;
     const {goodsId, title, price, pic, num_sale, detail} = dataGoodsDetail;
     return (
       <div id="detail" className="autoWidth">
@@ -114,6 +120,7 @@ class Detail extends Component {
           pic={pic}
           numSale={num_sale}
           cartAdd={cartAdd}
+          carts={carts}
         />
         <div className="goods-detail">
           <div className="goods-detail-link" onClick={viewToggle}>
