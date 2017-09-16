@@ -12,6 +12,7 @@ import {Footer} from "./js/footer";
 import {Goods} from "./js/goods";
 import {Cart} from "./js/cart";
 import {Order} from "./js/order";
+import {Detail} from "./js/detail/detail";
 
 class App extends Component {
   constructor() {
@@ -355,6 +356,16 @@ class App extends Component {
             />);
         }}
         />
+
+        <Route path="/detail" render={({history}) => {
+          return (
+            <Detail
+              // orders={dataUserLogined.orders}
+              // moreNavToggle={moreNavToggle}
+            />);
+        }}
+        />
+
         <Footer moreNavToggle={moreNavToggle} />
       </div>
     )

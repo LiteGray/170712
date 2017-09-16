@@ -1,0 +1,97 @@
+#detail {
+  margin: 1vw auto;
+  padding: 1vw;
+  box-shadow: 1px 1px 2px 1px #eee;
+  background: rgba(255,255,255,1);
+}
+dl.goods-property {
+  display: flex;
+  padding: 1vw;
+  box-shadow: 1px 1px 1px 1px #eee;
+}
+dl.goods-property dt img {
+  width: 40vw;
+  height: 40vw;
+  box-shadow: 0 0 4px 2px #ddd;
+}
+dl.goods-property dt img:hover {
+  box-shadow: 0 2px 4px 2px #ddd;
+}
+dl.goods-property dd {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 4vw;
+  padding: 1.4vw 0 3vw;
+}
+dl.goods-property dd span:before,
+dl.goods-property dd b:before,
+dl.goods-property dd div.goods-property-num:before {
+  position: absolute;
+  left: -4vw;
+  color: #aaa;
+  font-size: .9vw;
+}
+dl.goods-property dd span:before {
+  content: '价格';
+}
+dl.goods-property dd b:before {
+  content: '销量';
+}
+dl.goods-property dd div.goods-property-num:before {
+  content: '数量';
+}
+dl.goods-property dd span,
+dl.goods-property dd b,
+dl.goods-property dd div.goods-property-num{
+  position: relative;
+  text-indent: 6vw;
+}
+dl.goods-property dd span {
+  margin: -5vw 0;
+  font-size: 1.4vw;
+  color: #f00;
+}
+dl.goods-property dd b {
+  color: #f00;
+}
+dl.goods-property dd div.goods-property-num i {
+  cursor: default;
+  padding: 0 .4vw;
+  box-shadow: 0 0 1px 1px #ddd;
+}
+dl.goods-property dd div.goods-property-num i:first-of-type:hover {
+  box-shadow: 0 -1px 1px 2px #ddd;
+}
+dl.goods-property dd div.goods-property-num i:last-of-type:hover {
+  box-shadow: 0 1px 1px 2px #ddd;
+}
+dl.goods-property dd div.goods-property-num input {
+  margin: 0 1vw;
+  padding: 0 .2vw;
+  width: 2vw;
+  /*text-align: right;*/
+}
+dl.goods-property dd a.get-btn {
+  width: 20vw;
+  margin-left: 6vw;
+  padding: .6vw 0;
+}
+
+div.goods-detail {
+  margin-top: 2vw;
+  /*padding-left: 1vw;*/
+  box-shadow: 0 1px 1px 1px #eee;
+}
+div.goods-detail >a {
+  display: inline-block;
+  padding: 1vw 1vw;
+}
+div.goods-detail div.goods-detail-info-list span {
+  display: inline-block;
+  width: 33.3%;
+}
+div.goods-detail ul.goods-detail-img li img {
+  width: 100%;
+}

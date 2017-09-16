@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import '../css/goods.css';
 import {Banner} from './banner';
 
@@ -9,7 +10,11 @@ class GoodsList extends Component {
     return (
       <li>
         <dl>
-          <dt><img src={require(`../img/${pic_min}`)} alt="" className="picGoods-min" /></dt>
+          <dt>
+            <Link to="./detail" >
+              <img src={require(`../img/${pic_min}`)} alt="" className="picGoods-min" />
+            </Link>
+          </dt>
           <dd>
             <em style={{display: 'none'}}>{goodsId}</em>
             <span>{name}</span>
