@@ -4,10 +4,10 @@ import '../css/goods.css';
 import {Banner} from './banner';
 
 class GoodsList extends Component {
-  cartAdd = () => {
+  cartAdd = (ev) => {
     const {cartAdd} = this.props;
     const {goodsId} = this.props;
-    cartAdd(goodsId, 1);
+    cartAdd(ev, goodsId, 1);
   };
 
   goodsDetailSelect = () => {
@@ -17,7 +17,12 @@ class GoodsList extends Component {
 
   render() {
     const {cartAdd, goodsDetailSelect} = this;
-    const {goodsId, name, price, pic_min} = this.props;
+    const {goodsId, name, price, pic_min, carts} = this.props;
+
+    let cartNumTotal = 0;
+    carts.forEach(e => {
+      cartNumTotal += e.num;
+    });
 
     return (
       <li>
@@ -27,7 +32,7 @@ class GoodsList extends Component {
               <img src={require(`../img/${pic_min}`)} alt="" className="picGoods-min" />
             </Link>
           </dt>
-          <dd>
+          <dd style={{position: 'relative'}}>
             <em style={{display: 'none'}}>{goodsId}</em>
             <span>{name}</span>
             <b>RMB {price}</b>
@@ -37,6 +42,7 @@ class GoodsList extends Component {
             >
               添加到购物袋
             </a>
+            <b className="cart cart-add-icon" style={{position: 'absolute'}}>{cartNumTotal}</b>
           </dd>
         </dl>
       </li>
@@ -46,9 +52,9 @@ class GoodsList extends Component {
 
 class Goods extends Component {
   render() {
-    const {dataGoods, moreNavToggle, cartAdd, goodsDetailSelect} = this.props;
+    const {dataGoods, carts, moreNavToggle, cartAdd, goodsDetailSelect} = this.props;
     const list = dataGoods.map(e => {
-      return <GoodsList key={e.goodsId} {...e} cartAdd={cartAdd} goodsDetailSelect={goodsDetailSelect} />;
+      return <GoodsList key={e.goodsId} {...e} carts={carts} cartAdd={cartAdd} goodsDetailSelect={goodsDetailSelect} />;
     });
 
     return (

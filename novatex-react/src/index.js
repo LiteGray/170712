@@ -528,7 +528,7 @@ class App extends Component {
     }
   };
 
-  cartAdd = (goodsId, num) => {
+  cartAdd = (ev, goodsId, num) => {
     let {dataGoods, dataUser, dataUserLogined} = this.state;
 
     // const goodsId = Number(ev.target.parentNode.childNodes[0].innerText);
@@ -551,6 +551,38 @@ class App extends Component {
       sData.num = num;
       dataUserLogined.carts.unshift(sData);
     }
+
+    //动画添加购物袋
+    {
+      const {target} = ev;
+      const targetNext = target.nextElementSibling;
+      targetNext.onOff = true;
+      clearTimeout(targetNext.timer0);
+      clearTimeout(targetNext.timer1);
+      clearTimeout(targetNext.timer2);
+
+      targetNext.style.display = 'block';
+      setTimeout(() => {
+        targetNext.style.opacity = 1;
+        targetNext.style.transform = `rotateY(360deg)`;
+      }, 0);
+
+      targetNext.timer0 = setTimeout(function () {
+        targetNext.onOff = false;
+      }, 5990);
+      targetNext.timer1 = setTimeout(() => {
+        if (!targetNext.onOff) {
+          targetNext.style.opacity = 0;
+          targetNext.style.transform = '';
+        }
+      }, 6000);
+      targetNext.timer2 = setTimeout(() => {
+        if (!targetNext.onOff) {
+          targetNext.style.display = '';
+        }
+      }, 8000);
+    }
+
     this.setState({
       dataUser,
       dataUserLogined,
@@ -710,6 +742,7 @@ class App extends Component {
           return (
             <Goods
               dataGoods={dataGoods}
+              carts={dataUserLogined.carts}
               moreNavToggle={moreNavToggle}
               cartAdd={cartAdd}
               goodsDetailSelect={goodsDetailSelect}

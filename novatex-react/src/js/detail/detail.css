@@ -133,3 +133,21 @@ div.goods-detail ul.goods-detail-img li img {
   flex: 2;
   text-align: right;
 }
+
+.cart-add-icon {
+  display: none;
+  right: 3.2vw;
+  bottom: 4vw;
+  transition: 2s;
+  /*transform: rotate(-45deg);*/
+  opacity: 0;
+  line-height: 14px;
+  text-align: center;
+  font-size: 12px;
+  border-color: rgba(33,163,213,.6) !important;
+  color: rgba(145,181,77,.8);
+}
+.cart-add-icon-active {
+  display: block;
+  transform: rotateX(-360deg);
+}

@@ -71,14 +71,14 @@ header #logo {
 header #logo:hover {
   color: rgba(33,163,213,.8);
 }
-header b.cart {
+b.cart {
   position: relative;
   width: 16px;
   height: 16px;
   border: 1px solid #999;
   border-radius: 2px;
 }
-header b.cart:before {
+b.cart:before {
   position: absolute;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
