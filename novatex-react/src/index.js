@@ -20,9 +20,339 @@ class App extends Component {
     this.state = {
       isMoreNav: false,
       dataGoods: [
-        {goodsId: 1010101, name: 'SFJ-3335', price: '200', pic: 'SFJ-3335.jpg', pic_min: 'SFJ-3335-min.jpg'},
-        {goodsId: 1010201, name: 'SFJ-4200', price: '114', pic: 'SFJ-4200.jpg', pic_min: 'SFJ-4200-min.jpg'},
-        {goodsId: 1010301, name: 'SFJ-3275', price: '129', pic: 'SFJ-3275.jpg', pic_min: 'SFJ-3275-min.jpg'},
+        {
+          goodsId: 1010101,
+          name: 'SFJ-3335',
+          title: '亚麻沙发垫棉麻布艺夏季简约现代四季通用灰纯色实木沙发巾套定制',
+          price: '166',
+          pic: 'SFJ-3335.jpg',
+          pic_min: 'SFJ-3335-min.jpg',
+          num_sale: 0,
+          detail: {
+            goods: {
+              property: {
+                color: ['灰色'],
+                suit: '组合沙发',
+                material: '棉',
+                size: ['70*70'],
+                band: 'novatex',
+                name: 'SFJ-3335',
+                cat: '纯色',
+                style: '现代中式'
+              },
+              pic: ['SFJ-3335-detail-0.jpg', 'SFJ-3335-detail-1.jpg', 'SFJ-3335-detail-2.jpg'],
+            },
+            comment: [
+              {
+                name: 'k董小妹',
+                content: '撒都不想说了，自己看图吧，怎么可以这么好看，么么哒',
+                date: '09.12',
+              },
+              {
+                name: 'rmb6',
+                content: '质量很好给5分，准备再买4块',
+                date: '09.08',
+              },
+              {
+                name: '伊***1',
+                content: '宝贝收到了，质地好，做工精细，已经第二次购买了，颜色面料显高档，其中有一个买小了店家很快就答应给我换了一块大的，服务态度很棒！',
+                date: '08.23',
+              },
+              {
+                name: '芷***8',
+                content: '一如既往的好',
+                date: '08.20',
+              },
+              {
+                name: 'i***p',
+                content: '对比了很多家，刚开始买了一小片背巾来看效果，的确不错，最后订做了一整套，漂亮！',
+                date: '08.17',
+              },
+              {
+                name: '燕***5',
+                content: '质感很好！',
+                date: '08.07',
+              },
+              {
+                name: '伊***1',
+                content: '宝贝收到了，铺在沙发上非常上档次，亚麻面料质地好，颜色也很漂亮，非常喜欢哦！',
+                date: '08.04',
+              },
+              {
+                name: '7***y',
+                content: '很好。多次买了。',
+                date: '07.15',
+              },
+              {
+                name: 'j***d',
+                content: '第一次买这类东西，感觉不错。客服“纯”和前面的“多”都很好。我是老沙发翻新，上几张图。',
+                date: '07.06',
+              },
+              {
+                name: '阳***2',
+                content: '挺满意的，物有所值，',
+                date: '07.05',
+              },
+              {
+                name: 'm***乐',
+                content: '买垫子有点味道～～质感什么的还不错',
+                date: '07.04',
+              },
+              {
+                name: 'f***贝',
+                content: '很好的宝贝已经是第二次购买了,感谢比尔的耐心很感动，尺寸非常合适已经铺上了',
+                date: '07.04',
+              },
+              {
+                name: '给***8',
+                content: '好评，做工精细。',
+                date: '06.24',
+              },
+              {
+                name: 'h***j',
+                content: '和我家颜色差不多。',
+                date: '06.21',
+              },
+              {
+                name: 'l***惠',
+                content: '两次买的质量不一样 一个偏厚一个偏薄 刚买完没多久就便宜了 客服还是挺耐心挺好的',
+                date: '06.20',
+              },
+              {
+                name: 'l***8',
+                content: '沙发垫确实还可以，防滑，柔软的。就是感觉放小了，洗后再缩水，就够呛。有点小贵！',
+                date: '06.19',
+              },
+              {
+                name: 'i***p',
+                content: '买了几张，家人都说好',
+                date: '06.14',
+              },
+            ],
+          }
+        },
+        {
+          goodsId: 1010201,
+          name: 'SFJ-4200',
+          title: '沙发垫田园生活布艺夏纯色绿色客厅简约现代组合套装四季沙发巾套',
+          price: '114',
+          pic: 'SFJ-4200.jpg',
+          pic_min: 'SFJ-4200-min.jpg',
+          num_sale: 0,
+          detail: {
+            goods: {
+              property: {
+                color: ['灰色'],
+                suit: '组合沙发',
+                material: '棉',
+                size: ['70*70'],
+                band: 'novatex',
+                name: 'SFJ-4200',
+                cat: '纯色',
+                style: '现代中式'
+              },
+              pic: ['SFJ-4200-detail-0.jpg', 'SFJ-4200-detail-1.jpg', 'SFJ-4200-detail-2.jpg'],
+            },
+            comment: [
+              {
+                name: 'k董小妹',
+                content: '撒都不想说了，自己看图吧，怎么可以这么好看，么么哒',
+                date: '09.12',
+              },
+              {
+                name: 'rmb6',
+                content: '质量很好给5分，准备再买4块',
+                date: '09.08',
+              },
+              {
+                name: '伊***1',
+                content: '宝贝收到了，质地好，做工精细，已经第二次购买了，颜色面料显高档，其中有一个买小了店家很快就答应给我换了一块大的，服务态度很棒！',
+                date: '08.23',
+              },
+              {
+                name: '芷***8',
+                content: '一如既往的好',
+                date: '08.20',
+              },
+              {
+                name: 'i***p',
+                content: '对比了很多家，刚开始买了一小片背巾来看效果，的确不错，最后订做了一整套，漂亮！',
+                date: '08.17',
+              },
+              {
+                name: '燕***5',
+                content: '质感很好！',
+                date: '08.07',
+              },
+              {
+                name: '伊***1',
+                content: '宝贝收到了，铺在沙发上非常上档次，亚麻面料质地好，颜色也很漂亮，非常喜欢哦！',
+                date: '08.04',
+              },
+              {
+                name: '7***y',
+                content: '很好。多次买了。',
+                date: '07.15',
+              },
+              {
+                name: 'j***d',
+                content: '第一次买这类东西，感觉不错。客服“纯”和前面的“多”都很好。我是老沙发翻新，上几张图。',
+                date: '07.06',
+              },
+              {
+                name: '阳***2',
+                content: '挺满意的，物有所值，',
+                date: '07.05',
+              },
+              {
+                name: 'm***乐',
+                content: '买垫子有点味道～～质感什么的还不错',
+                date: '07.04',
+              },
+              {
+                name: 'f***贝',
+                content: '很好的宝贝已经是第二次购买了,感谢比尔的耐心很感动，尺寸非常合适已经铺上了',
+                date: '07.04',
+              },
+              {
+                name: '给***8',
+                content: '好评，做工精细。',
+                date: '06.24',
+              },
+              {
+                name: 'h***j',
+                content: '和我家颜色差不多。',
+                date: '06.21',
+              },
+              {
+                name: 'l***惠',
+                content: '两次买的质量不一样 一个偏厚一个偏薄 刚买完没多久就便宜了 客服还是挺耐心挺好的',
+                date: '06.20',
+              },
+              {
+                name: 'l***8',
+                content: '沙发垫确实还可以，防滑，柔软的。就是感觉放小了，洗后再缩水，就够呛。有点小贵！',
+                date: '06.19',
+              },
+              {
+                name: 'i***p',
+                content: '买了几张，家人都说好',
+                date: '06.14',
+              },
+            ],
+          }
+        },
+        {
+          goodsId: 1010301,
+          name: 'SFJ-3275',
+          title: '2017春夏款仿亚麻沙发垫紫沙发巾纯色简约沙发垫布艺防滑',
+          price: '129',
+          pic: 'SFJ-3275.jpg',
+          pic_min: 'SFJ-3275-min.jpg',
+          num_sale: 0,
+          detail: {
+            goods: {
+              property: {
+                color: ['灰色'],
+                suit: '组合沙发',
+                material: '棉',
+                size: ['70*70'],
+                band: 'novatex',
+                name: 'SFJ-3275',
+                cat: '纯色',
+                style: '现代中式'
+              },
+              pic: ['SFJ-3275-detail-0.jpg', 'SFJ-3275-detail-1.jpg', 'SFJ-3275-detail-2.jpg'],
+            },
+            comment: [
+              {
+                name: 'k董小妹',
+                content: '撒都不想说了，自己看图吧，怎么可以这么好看，么么哒',
+                date: '09.12',
+              },
+              {
+                name: 'rmb6',
+                content: '质量很好给5分，准备再买4块',
+                date: '09.08',
+              },
+              {
+                name: '伊***1',
+                content: '宝贝收到了，质地好，做工精细，已经第二次购买了，颜色面料显高档，其中有一个买小了店家很快就答应给我换了一块大的，服务态度很棒！',
+                date: '08.23',
+              },
+              {
+                name: '芷***8',
+                content: '一如既往的好',
+                date: '08.20',
+              },
+              {
+                name: 'i***p',
+                content: '对比了很多家，刚开始买了一小片背巾来看效果，的确不错，最后订做了一整套，漂亮！',
+                date: '08.17',
+              },
+              {
+                name: '燕***5',
+                content: '质感很好！',
+                date: '08.07',
+              },
+              {
+                name: '伊***1',
+                content: '宝贝收到了，铺在沙发上非常上档次，亚麻面料质地好，颜色也很漂亮，非常喜欢哦！',
+                date: '08.04',
+              },
+              {
+                name: '7***y',
+                content: '很好。多次买了。',
+                date: '07.15',
+              },
+              {
+                name: 'j***d',
+                content: '第一次买这类东西，感觉不错。客服“纯”和前面的“多”都很好。我是老沙发翻新，上几张图。',
+                date: '07.06',
+              },
+              {
+                name: '阳***2',
+                content: '挺满意的，物有所值，',
+                date: '07.05',
+              },
+              {
+                name: 'm***乐',
+                content: '买垫子有点味道～～质感什么的还不错',
+                date: '07.04',
+              },
+              {
+                name: 'f***贝',
+                content: '很好的宝贝已经是第二次购买了,感谢比尔的耐心很感动，尺寸非常合适已经铺上了',
+                date: '07.04',
+              },
+              {
+                name: '给***8',
+                content: '好评，做工精细。',
+                date: '06.24',
+              },
+              {
+                name: 'h***j',
+                content: '和我家颜色差不多。',
+                date: '06.21',
+              },
+              {
+                name: 'l***惠',
+                content: '两次买的质量不一样 一个偏厚一个偏薄 刚买完没多久就便宜了 客服还是挺耐心挺好的',
+                date: '06.20',
+              },
+              {
+                name: 'l***8',
+                content: '沙发垫确实还可以，防滑，柔软的。就是感觉放小了，洗后再缩水，就够呛。有点小贵！',
+                date: '06.19',
+              },
+              {
+                name: 'i***p',
+                content: '买了几张，家人都说好',
+                date: '06.14',
+              },
+            ],
+          }
+        },
         {goodsId: 1010401, name: 'SFJ-62779', price: '128', pic: 'SFJ-62779.jpg', pic_min: 'SFJ-62779-min.jpg'},
         {goodsId: 1010501, name: 'SFJ-HD078小绣花', price: '134', pic: 'SFJ-HD078xiuhua.jpg', pic_min: 'SFJ-HD078xiuhua-min.jpg'},
         {goodsId: 1010601, name: 'SFJ-4187', price: '61', pic: 'SFJ-4187.jpg', pic_min: 'SFJ-4187-min.jpg'},
@@ -88,7 +418,7 @@ class App extends Component {
           password: '15280807171',
           isLogin: false,
           carts: [
-            {goodsId: 1010101, name: 'SFJ-3335', price: '200', pic_min: '../SFJ-3335-min.jpg', num: 1},
+            {goodsId: 1010101, name: 'SFJ-3335', price: '166', pic_min: '../SFJ-3335-min.jpg', num: 1},
             {goodsId: 1010201, name: 'SFJ-4200', price: '114', pic_min: '../SFJ-4200-min.jpg', num: 2},
             {goodsId: 1070401, name: 'PD-XH007', price: '114', pic_min: '../PD-XH007-min.jpg', num: 2}
 
@@ -116,6 +446,37 @@ class App extends Component {
         carts: [],
         orders: [],
       },
+      dataGoodsDetail: {
+        goodsId: 1010101,
+        name: 'SFJ-3335',
+        title: '沙发垫田园生活布艺夏纯色绿色客厅简约现代组合套装四季沙发巾套',
+        price: '166',
+        pic: 'SFJ-3335.jpg',
+        pic_min: 'SFJ-3335-min.jpg',
+        num_sale: 0,
+        detail: {
+          goods: {
+            property: {
+              color: ['灰色'],
+              suit: '组合沙发',
+              material: '其他',
+              size: ['70*70'],
+              band: 'novatex',
+              name: 'SFJ-3335',
+              cat: '纯色',
+              style: '简约现代'
+            },
+            pic: ['SFJ-4200-detail-0.jpg', 'SFJ-4200-detail-1.jpg', 'SFJ-4200-detail-2.jpg'],
+          },
+          comment: [
+            {
+              name: 'c灰姑凉',
+              content: '真的很不错，即将搬新房子还是会来买的！',
+              date: '09.16',
+            }
+          ],
+        }
+      }
     };
   };
 
@@ -167,11 +528,10 @@ class App extends Component {
     }
   };
 
-  cartAdd = (ev) => {
+  cartAdd = (goodsId, num) => {
     let {dataGoods, dataUser, dataUserLogined} = this.state;
 
-    const goodsId = Number(ev.target.parentNode.childNodes[0].innerText);
-    // const path = `../`;
+    // const goodsId = Number(ev.target.parentNode.childNodes[0].innerText);
     let sData = [];
     let isInclude = false;
     dataGoods.forEach(e => {
@@ -182,13 +542,13 @@ class App extends Component {
     //如果已有同种商品
     dataUserLogined.carts.forEach(e => {
       if (e.goodsId === sData.goodsId) {
-        e.num++;
+        e.num += num;
         isInclude = true;
       }
     });
     //如果没有同种商品
     if (!isInclude) {
-      sData.num = 1;
+      sData.num = num;
       dataUserLogined.carts.unshift(sData);
     }
     this.setState({
@@ -197,7 +557,7 @@ class App extends Component {
     });
   };
 
-  cartNumChange = (newVal, goodsId) => {
+  cartNumChange = (goodsId, newVal) => {
     let {dataUser , dataUserLogined} = this.state;
     let {carts} = dataUserLogined;
     for (let value of carts) {
@@ -228,18 +588,27 @@ class App extends Component {
   };
 
   orderAdd = () => {
-    const {dataUser ,dataUserLogined} = this.state;
+    const {dataGoods, dataUser ,dataUserLogined} = this.state;
     const {carts, orders} = dataUserLogined;
     const {getDate, getSerialNum} = this;
     carts.reverse();
-    carts.forEach((e,i) => {
-      e.date = getDate();
-      e.serial_num = getSerialNum(e.date);
-      orders.unshift(e);
+    carts.forEach((cart) => {
+      const {goodsId, num} = cart;
+      for (let goods of dataGoods) {
+        if (goods.goodsId === goodsId) {
+          goods.num_sale += num;
+          break;
+        }
+      }
+
+      cart.date = getDate();
+      cart.serial_num = getSerialNum(cart.date);
+      orders.unshift(cart);
     });
     //clear
     carts.splice(0,carts.length);
     this.setState({
+      dataGoods,
       dataUser,
       dataUserLogined,
     });
@@ -282,12 +651,26 @@ class App extends Component {
     return str + str0;
   };
 
+  goodsDetailSelect = (goodsId) => {
+    let {dataGoods, dataGoodsDetail} = this.state;
+    for (let e of dataGoods) {
+      if (e.goodsId === goodsId) {
+        dataGoodsDetail = e;
+        break;
+      }
+    }
+    this.setState({
+      dataGoodsDetail
+    });
+  };
+
   render() {
     const {
       isMoreNav,
       dataGoods,
       dataUser,
       dataUserLogined,
+      dataGoodsDetail,
     } = this.state;
     const {
       moreNavToggle,
@@ -298,6 +681,7 @@ class App extends Component {
       cartNumChange,
       cartLineDel,
       orderAdd,
+      goodsDetailSelect,
     } = this;
 
     return (
@@ -328,6 +712,7 @@ class App extends Component {
               dataGoods={dataGoods}
               moreNavToggle={moreNavToggle}
               cartAdd={cartAdd}
+              goodsDetailSelect={goodsDetailSelect}
             />);
         }}
         />
@@ -360,8 +745,8 @@ class App extends Component {
         <Route path="/detail" render={({history}) => {
           return (
             <Detail
-              // orders={dataUserLogined.orders}
-              // moreNavToggle={moreNavToggle}
+              dataGoodsDetail={dataGoodsDetail}
+              cartAdd={cartAdd}
             />);
         }}
         />

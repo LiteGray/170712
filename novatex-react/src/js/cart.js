@@ -3,11 +3,43 @@ import {Link} from 'react-router-dom';
 import '../css/cart.css';
 
 class CartList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      num: props.num,
+    };
+  }
+
+  cartNumDecrement = () => {
+    const {goodsId, cartNumChange} = this.props;
+    let {num} = this.state;
+    if (--num <= 1)  num = 1;
+    cartNumChange(goodsId, num);
+    this.setState({
+      num,
+    });
+  };
+
+  cartNumIncrement = () => {
+    const {goodsId, cartNumChange} = this.props;
+    let {num} = this.state;
+    // num--;
+    if (++num >= 99)  num = 99;
+    cartNumChange(goodsId, num);
+    this.setState({
+      num,
+    });
+  };
+
   cartNumChange = (ev) => {
     const {goodsId, cartNumChange} = this.props;
+    let {num} = this.state;
     let newVal = Number(ev.target.value);
-    newVal = newVal > 0 ? newVal : 1;
-    cartNumChange(newVal, goodsId);
+    num = newVal > 0 ? newVal : 1;
+    cartNumChange(goodsId, num);
+    this.setState({
+      num,
+    });
   };
 
   cartLineDel = () => {
@@ -16,8 +48,9 @@ class CartList extends Component {
   };
 
   render() {
-    const {goodsId, name, price, pic_min, num} = this.props;
-    const {cartNumChange, cartLineDel} = this;
+    const {num} = this.state;
+    const {goodsId, name, price, pic_min} = this.props;
+    const {cartNumDecrement, cartNumIncrement, cartNumChange, cartLineDel} = this;
 
     return (
       <li>
@@ -27,12 +60,16 @@ class CartList extends Component {
             <div>
               <h5>{name}</h5>
               <i>RMB {price}</i>
-              <input
-                type="text"
-                value={num}
-                className="cartNum"
-                onChange={cartNumChange}
-              />
+              <div>
+                <span onClick={cartNumDecrement}>-</span>
+                <input
+                  type="text"
+                  value={num}
+                  className="cartNum"
+                  onChange={cartNumChange}
+                />
+                <span onClick={cartNumIncrement}>+</span>
+              </div>
               <b className="cart-ePrice">RMB {Number(price) * Number(num)}</b>
             </div>
             <p>
@@ -81,9 +118,16 @@ class Cart extends Component {
           <ul className="listsCart">
             {list}
           </ul>
-          <div className="sumOther" style={{display: len ? '' :  'none'}} onClick={orderAdd}>
-            <b>总计 RMB <i>{cartTotal}</i></b>
-            <Link to="/order" className="get-btn" id="cart-account">结算</Link>
+          <div className="sumOther">
+          {/*<div className="sumOther" style={{display: len ? '' :  'none'}}>*/}
+            <b style={{display: len ? '' :  'none'}}>总计 RMB <i>{cartTotal}</i></b>
+            <Link
+              to={len? './cart' : './order'}
+              className="get-btn" id="cart-account"
+              onClick={orderAdd}
+            >
+              {len ? '结算' :  'or 查看订单'}
+            </Link>
           </div>
         </div>
       </div>

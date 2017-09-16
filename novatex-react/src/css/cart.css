@@ -76,13 +76,27 @@
   font-size: .8vw;
   color: #888;
 }
-.content ul li dl dd div input {
+.content ul li dl dd div div span {
+  cursor: default;
+  padding: 0 .4vw;
+  box-shadow: 0 0 1px 1px #ddd;
+  background: #fff;
+}
+.content ul li dl dd div div span:nth-of-type(1):hover {
+  box-shadow: 0 1px 1px 2px #ccc;
+}
+.content ul li dl dd div div span:nth-of-type(2):hover {
+  box-shadow: 0 -1px 1px 2px #ccc;
+}
+.content ul li dl dd div div input {
   /*flex: 1;*/
-  padding-right: .4vw;
+  /*padding-right: .4vw;*/
+  margin: 0 .8vw;
   width: 2.2vw;
   height: 1.8vw;
-  border-radius: .4vw;
-  text-align: right;
+  border: 0;
+  /*border-radius: .4vw;*/
+  text-align: center;
 }
 .content ul li dl dd div b {
   flex: 1;

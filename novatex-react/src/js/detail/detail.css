@@ -10,9 +10,10 @@ dl.goods-property {
   box-shadow: 1px 1px 1px 1px #eee;
 }
 dl.goods-property dt img {
+  padding: .6vw;
   width: 40vw;
   height: 40vw;
-  box-shadow: 0 0 4px 2px #ddd;
+  box-shadow: 0 0 4px 2px #eee;
 }
 dl.goods-property dt img:hover {
   box-shadow: 0 2px 4px 2px #ddd;
@@ -62,18 +63,20 @@ dl.goods-property dd div.goods-property-num i {
   box-shadow: 0 0 1px 1px #ddd;
 }
 dl.goods-property dd div.goods-property-num i:first-of-type:hover {
-  box-shadow: 0 -1px 1px 2px #ddd;
+  box-shadow: 0 1px 1px 2px #ddd;
 }
 dl.goods-property dd div.goods-property-num i:last-of-type:hover {
-  box-shadow: 0 1px 1px 2px #ddd;
+  box-shadow: 0 -1px 1px 2px #ddd;
 }
 dl.goods-property dd div.goods-property-num input {
   margin: 0 1vw;
   padding: 0 .2vw;
   width: 2vw;
-  /*text-align: right;*/
+  /*border: 0;*/
+  text-align: center;
 }
 dl.goods-property dd a.get-btn {
+  cursor: pointer;
   width: 20vw;
   margin-left: 6vw;
   padding: .6vw 0;
@@ -84,9 +87,23 @@ div.goods-detail {
   /*padding-left: 1vw;*/
   box-shadow: 0 1px 1px 1px #eee;
 }
-div.goods-detail >a {
+div.goods-detail div.goods-detail-link {
+  border-bottom: 2px solid #ddd;
+}
+div.goods-detail div.goods-detail-link a {
   display: inline-block;
   padding: 1vw 1vw;
+  font-size: 1.2vw;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  border-top: 4px solid transparent;
+}
+div.goods-detail div.goods-detail-link a.active {
+  border: 1px solid rgba(33,163,213,.8);
+  border-bottom: 0;
+  border-top: 4px solid #f00;
+  color: #f00;
+  font-weight: 600;
 }
 div.goods-detail div.goods-detail-info-list span {
   display: inline-block;
@@ -94,4 +111,25 @@ div.goods-detail div.goods-detail-info-list span {
 }
 div.goods-detail ul.goods-detail-img li img {
   width: 100%;
+}
+
+#comment ul.comment-list {
+  padding: 1vw;
+}
+#comment ul.comment-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vw 0;
+  border-top: 1px solid #ccc;
+}
+#comment ul.comment-list li:first-of-type {
+  border: 0;
+}
+#comment ul.comment-list li div:nth-of-type(1) {
+  flex: 6;
+}
+#comment ul.comment-list li div:nth-of-type(2) {
+  flex: 2;
+  text-align: right;
 }

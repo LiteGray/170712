@@ -70,7 +70,7 @@ class Order extends Component {
     const dataOrderShow = orders.slice(OrderStart, OrderEnd);
 
     const list = dataOrderShow.map(e => {
-      return <OrderList key={Number(e.goodsId) + Number(new Date())} {...e} />
+      return <OrderList key={Number(e.goodsId) + Number(new Date()) + Math.round(Math.random() * 1000)} {...e} />
     });
 
     const pList = new Array(pageNum).fill(null).map((e, i) => {

@@ -55,6 +55,7 @@ i {
   justify-content: center;
   height: 40px;
   background: #ddd;
+  box-shadow: 0 1px 2px 1px #ccc;
 }
 header {
   display: flex;
@@ -140,13 +141,14 @@ header ul li a i {
   justify-content: center;
   height: 40px;
   /*background: #eee;*/
+  box-shadow: 0 -1px 2px 2px #eee;
 }
 footer {
   display: flex;
   justify-content: center;
   align-items: center;
   /*width: 1080px;*/
-  border-top: 1px solid #ddd;
+  border-top: 2px solid #ddd;
 }
 footer p {
   font-size: 12px;

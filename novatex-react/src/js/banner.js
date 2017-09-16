@@ -7,13 +7,20 @@ class Banner extends Component {
       dataBanner: ['banner0', 'banner1', 'banner2', 'banner3'],
       cName: 'autoWidth banner banner0',
     };
-    this.bannerAutoPlay();
   }
+
+  componentDidMount = () => {
+    this.bannerAutoPlay();
+  };
+
+  componentWillUnmount = () => {
+    clearInterval(this.timer);
+  };
 
   bannerAutoPlay = () => {
     let {dataBanner, cName} = this.state;
     let n = 0;
-    setInterval(() => {
+    this.timer = setInterval(() => {
       cName = 'autoWidth banner';
       cName += ` ${dataBanner[++n % dataBanner.length]}`;
       this.setState({

@@ -76,11 +76,11 @@
   color: #888;
 }
 .content ul li dl dd div input {
-  padding-right: .4vw;
+  /*padding-right: .4vw;*/
   width: 2.2vw;
   height: 1.8vw;
-  border-radius: .4vw;
-  text-align: right;
+  /*border-radius: .4vw;*/
+  text-align: center;
 }
 .content ul li dl dd div b {
   flex: 1;
