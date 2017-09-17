@@ -27,7 +27,7 @@ class App extends Component {
           price: '166',
           pic: 'SFJ-3335.jpg',
           pic_min: 'SFJ-3335-min.jpg',
-          num_sale: 0,
+          num_sale: 3335,
           detail: {
             goods: {
               property: {
@@ -138,7 +138,7 @@ class App extends Component {
           price: '114',
           pic: 'SFJ-4200.jpg',
           pic_min: 'SFJ-4200-min.jpg',
-          num_sale: 0,
+          num_sale: 4200,
           detail: {
             goods: {
               property: {
@@ -249,7 +249,7 @@ class App extends Component {
           price: '129',
           pic: 'SFJ-3275.jpg',
           pic_min: 'SFJ-3275-min.jpg',
-          num_sale: 0,
+          num_sale: 3275,
           detail: {
             goods: {
               property: {
@@ -501,13 +501,11 @@ class App extends Component {
   };
 
   userLogin = (dataUserLogined) => {
-    let {dataUser, isLoginNeeded} = this.state;
+    let {dataUser} = this.state;
     dataUserLogined.isLogin = true;
-    isLoginNeeded = false;
     this.setState({
       dataUser,
       dataUserLogined,
-      isLoginNeeded,
     });
   };
 
@@ -569,18 +567,18 @@ class App extends Component {
 
       targetNext.timer0 = setTimeout(function () {
         targetNext.onOff = false;
-      }, 5990);
+      }, 1990);
       targetNext.timer1 = setTimeout(() => {
         if (!targetNext.onOff) {
           targetNext.style.opacity = 0;
           targetNext.style.transform = '';
         }
-      }, 6000);
+      }, 2000);
       targetNext.timer2 = setTimeout(() => {
         if (!targetNext.onOff) {
           targetNext.style.display = '';
         }
-      }, 8000);
+      }, 4000);
     }
 
     this.setState({

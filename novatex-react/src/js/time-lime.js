@@ -24,7 +24,12 @@ class TimeLime extends Component{
     return (
       <div
         id="timeLine"
-        style={{background: `linear-gradient(90deg, rgba(33,163,213,.6) ${timeLineRate}, transparent ${timeLineRate})`}}
+        style={
+          {
+            background: `linear-gradient(90deg, rgba(33,163,213,.6) ${timeLineRate}, transparent ${timeLineRate})`,
+            display: document.documentElement.scrollHeight > window.innerHeight * 1.4 ? 'block' : 'none',
+          }
+        }
       >
       {''}
       </div>

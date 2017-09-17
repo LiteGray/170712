@@ -17,43 +17,46 @@ class Header extends Component {
     });
 
     return (
-      <div id="header-wrap" onClick={moreNavToggle}>
-        <header className="autoWidth">
-          <ul
-            className="moreNav"
-            style={{display: isMoreNav ? 'block' : ''}}
-          >
-            <li>
-              <Link to="/cart" id="cart-page" >
-                购物袋
-                <i className="cart-num">
-                  {cartNumTotal ? (' (' + cartNumTotal + ')') : ''}
-                </i>
-              </Link>
-            </li>
-            <li>
-              <Link to="/order" id="order-page">订单</Link>
-              {/*<a href="#" id="order-page" onClick={loginNeeded}>订单</a>*/}
-            </li>
-            <li style={{display: /cart|order/.test(window.location.href) ? 'none' : ''}}>
-              <Link
-                to="/login"
-                id="account"
-                onClick={this.userLogToggle}
-              >
-                {dataUserLogined.isLogin ? '退出' : '登录'}
-              </Link>
-            </li>
-          </ul>
-          <Link to="/" id="logo">novatex</Link>
-          <b className="cart" onClick={moreNavToggle}>
-            <i
-              id="cart-dot"
-              className={dataUserLogined.carts && dataUserLogined.carts.length ? 'active' : ''}
+      <div>
+        <div id="fixed-fill">{''}</div>
+        <div id="header-wrap" onClick={moreNavToggle}>
+          <header className="autoWidth">
+            <ul
+              className="moreNav"
+              style={{display: isMoreNav ? 'block' : ''}}
             >
-            </i>
-          </b>
-        </header>
+              <li>
+                <Link to="/cart" id="cart-page" >
+                  购物袋
+                  <i className="cart-num">
+                    {cartNumTotal ? (' (' + cartNumTotal + ')') : ''}
+                  </i>
+                </Link>
+              </li>
+              <li>
+                <Link to="/order" id="order-page">订单</Link>
+                {/*<a href="#" id="order-page" onClick={loginNeeded}>订单</a>*/}
+              </li>
+              <li style={{display: /cart|order/.test(window.location.href) ? 'none' : ''}}>
+                <Link
+                  to="/login"
+                  id="account"
+                  onClick={this.userLogToggle}
+                >
+                  {dataUserLogined.isLogin ? '退出' : '登录'}
+                </Link>
+              </li>
+            </ul>
+            <Link to="/" id="logo">novatex</Link>
+            <b className="cart" onClick={moreNavToggle}>
+              <i
+                id="cart-dot"
+                className={dataUserLogined.carts && dataUserLogined.carts.length ? 'active' : ''}
+              >
+              </i>
+            </b>
+          </header>
+        </div>
       </div>
     )
   }
