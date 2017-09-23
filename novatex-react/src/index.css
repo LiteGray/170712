@@ -1,12 +1,12 @@
-@font-face {
-src: url(./font/SourceHanSerifCN-Light.otf);
-font-family: "goo-ado";
-}
+/*@font-face {*/
+/*src: url(./font/SourceHanSerifCN-Light.otf);*/
+/*font-family: "goo-ado";*/
+/*}*/
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "goo-ado";
+  /*font-family: "goo-ado";*/
   font-size: 1vw;
   color: #444;
 }
