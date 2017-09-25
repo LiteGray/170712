@@ -7,8 +7,8 @@
   max-height: calc(100vh - 100px);
   margin: 20px auto 0;
   padding: 0 20px;
-  box-shadow: 1px 1px 1px 1px #ccc;
-  background: rgba(230,230,230,1);
+  box-shadow: 0 0 14px 0 rgba(230,230,230,.8);
+  background: rgba(236,236,236,.8);
 }
 .content h3 {
   padding: 1vw 0;

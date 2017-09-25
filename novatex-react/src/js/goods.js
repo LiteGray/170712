@@ -52,8 +52,9 @@ class GoodsList extends Component {
 
 class Goods extends Component {
   componentDidMount = () => {
-    const {lazyLoading} = this.props;
+    const {lazyLoading, initBackTop} = this.props;
     lazyLoading();
+    initBackTop();
   };
 
   render() {

@@ -92,6 +92,11 @@ class Detail extends Component {
     };
   }
 
+  componentDidMount = () => {
+    const {initBackTop} = this.props;
+    initBackTop();
+  };
+
   viewToggle = (ev) => {
     let {view} = this.state;
     const {target} = ev;

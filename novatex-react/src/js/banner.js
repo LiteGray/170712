@@ -20,13 +20,14 @@ class Banner extends Component {
 
   componentDidMount = () => {
     const {bannerAutoPlay} = this;
-    setTimeout(() => {
+    this.timeOut = setTimeout(() => {
       bannerAutoPlay();
-    }, 2000);
+    }, 4000);
   };
 
   componentWillUnmount = () => {
     // clearInterval(this.timer0);
+    clearInterval(this.timeOut);
     clearInterval(this.timer);
   };
 

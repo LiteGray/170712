@@ -7,11 +7,11 @@ class RegisterLogin extends Component {
     this.state = {
       email: {
         isLegal: true,
-        value: '',
+        value: 'momo@gmail.com',
       },
       password: {
         isLegal: true,
-        value: '',
+        value: '@15280807171',
       }
     };
   }
@@ -105,6 +105,10 @@ class RegisterLogin extends Component {
     for (let e of dataUser) {
       if (e.email === email.value && e.password === password.value) {
         target.parentNode.style.display = 'none';
+        // if (carts.length) {
+        //   console.log(carts);
+        //   e.carts.push(carts);
+        // }
         e.carts = carts;
         userLogin(e);
         break;
@@ -166,11 +170,13 @@ class RegisterLogin extends Component {
           <input
             type="text"
             placeholder="momo@gmail.com"
+            value="momo@gmail.com"
             onChange={emailChange}
           />
           <input
             type="password"
             placeholder="@15280807171"
+            value="@15280807171"
             onChange={passwordChange}
           />
           <a

@@ -15,7 +15,7 @@ body {
   /*overflow: auto;*/
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(45deg, rgba(230,230,230,.4) 10%, rgba(248,248,248,.2) 10%);
+  background: linear-gradient(rgba(230,230,230,.4) 5%, rgba(248,248,248,.2) 5%);
   background-size: 20px 20px;
 }
 html {
@@ -163,7 +163,7 @@ header ul li a i {
   justify-content: center;
   height: 40px;
   /*background: #eee;*/
-  box-shadow: 0 -1px 2px 1px #eee;
+  box-shadow: 0 -1px 1px 0 #eee;
 }
 footer {
   display: flex;
