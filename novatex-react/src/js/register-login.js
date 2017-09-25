@@ -55,7 +55,8 @@ class RegisterLogin extends Component {
   emailIsLegal = (ev) => {
     if (ev.target.nextElementSibling.nextElementSibling.innerText.includes('登录')) return;
     const {email} = this.state;
-    email.isLegal = (/^[A-Za-z][\w]{2,10}@([0-9A-Za-z]{3,5}\.){1,3}[a-z]{1,3}$/.test(email.value)) ? true : false;
+    email.isLegal = (/^[0-9A-Za-z]{2,12}@([0-9A-Za-z]{2,5}\.){1,3}[a-z]{1,3}$/.test(email.value)) ? true : false;
+    // email.isLegal = (/^[A-Za-z][\w]{2,10}@([0-9A-Za-z]{3,5}\.){1,3}[a-z]{1,3}$/.test(email.value)) ? true : false;
     this.setState({
       email,
     });

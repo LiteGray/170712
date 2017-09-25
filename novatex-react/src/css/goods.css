@@ -3,12 +3,21 @@ section {
   min-height: calc(100vh - 80px);
 }
 section .banner {
-  margin: auto;
+  margin: 4px auto;
   /**/
-  height: calc(100vh - 44px);
-  transition: 2s;
-  box-shadow: 2px 1px 2px 2px #ddd;
+  height: calc(100vh - 48px);
+  /*margin-top: 6px;*/
+  /*transition: 2s;*/
+  overflow: hidden;
+  box-shadow: 0 4px 34px 0 rgba(170,170,170,1);
   /*background: lightsalmon;*/
+}
+section .banner:hover {
+  box-shadow: 0 4px 24px 0 rgba(170,170,170,1);
+}
+section .banner img {
+  width: 100%;
+  height: 100%;
 }
 section .banner0 {
   background: rgba(33,163,213,.4);
@@ -47,10 +56,13 @@ section ul li {
   min-width: 110px;
   min-height: 180px;
   border: 1px solid #eee;
-  box-shadow: 1px 1px 1px 1px #ddd;
+  border-radius: .8vw;
+  /*overflow: hidden;*/
+  background: #fff;
+  box-shadow: 4px 4px 24px 0 rgba(238,238,238,1);
 }
 section ul li:hover {
-  box-shadow: 0 4px 4px 1px #bbb;
+  box-shadow: 2px 4px 8px 0 rgba(238,238,238,.8);
 }
 section ul li:nth-of-type(4n+1) {
   margin-left: 0;
@@ -62,18 +74,20 @@ section ul li dl dt {
   overflow: hidden;
   /*transition: 1s;*/
   /*opacity: .8;*/
-  background: #eee;
+  background: #fff;
 }
 section ul li dl dt img.picGoods-min {
   transition: 1s;
   width: 100%;
   height: 100%;
-  box-shadow: 0 0 4px 2px #ccc;
+  /*border-radius: .2vw .2vw 0 0;*/
+  /*box-shadow: 0 0 4px 2px #ccc;*/
 }
 section ul li dl dt img.picGoods-min:hover {
   width: 110%;
   height: 110%;
-  transform: translateX(-5%);
+  /*transform: translateZ(100px);*/
+  transform: translateX(-5%) translateY(-5%);
 }
 section ul li dl dd {
   display: flex;

@@ -15,7 +15,7 @@ body {
   /*overflow: auto;*/
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(rgba(200,200,200,.4) 5%, rgba(200,200,200,.2) 5%);
+  background: linear-gradient(45deg, rgba(230,230,230,.4) 10%, rgba(248,248,248,.2) 10%);
   background-size: 20px 20px;
 }
 html {
@@ -77,7 +77,7 @@ input {
   justify-content: center;
   height: 40px;
   background: #ddd;
-  box-shadow: 0 1px 2px 1px #ccc;
+  box-shadow: 0 1px 20px 0 rgba(100,100,100,.4);
 }
 header {
   position: relative;
@@ -163,14 +163,14 @@ header ul li a i {
   justify-content: center;
   height: 40px;
   /*background: #eee;*/
-  box-shadow: 0 -1px 2px 2px #eee;
+  box-shadow: 0 -1px 2px 1px #eee;
 }
 footer {
   display: flex;
   justify-content: center;
   align-items: center;
   /*width: 1080px;*/
-  border-top: 2px solid #ddd;
+  /*border-top: 2px solid #ddd;*/
 }
 footer p {
   font-size: 12px;
