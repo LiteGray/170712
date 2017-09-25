@@ -6684,8 +6684,8 @@ class App extends Component {
       dataUser: [
         {
           userId: 1,
-          email: 'momo0@gmail.com',
-          password: '15280807171',
+          email: 'momo@gmail.com',
+          password: '@15280807171',
           isLogin: false,
           carts: [
             {goodsId: 1010101, name: 'SFJ-3335', price: '166', pic_min: '../SFJ-3335-min.jpg', num: 1},
@@ -6748,6 +6748,10 @@ class App extends Component {
         }
       }
     };
+  };
+
+  componentDidMount = () => {
+    this.lazyLoading();
   };
 
   moreNavToggle = (ev) => {
@@ -6962,6 +6966,27 @@ class App extends Component {
     this.setState({
       dataGoodsDetail
     });
+  };
+
+  lazyLoading = () => {
+    //懒加载
+    const imgs = document.querySelectorAll('img');
+    let Lazyloading = function () {
+      lazyLoading(imgs);
+    };
+    window.addEventListener('scroll', Lazyloading);
+
+    function lazyLoading(eles) {
+      eles.forEach(e => {
+        if (e.getBoundingClientRect().top < window.innerHeight) {
+          const dataSrc = e.getAttribute('data-src');
+          if (dataSrc) {
+            e.src = dataSrc;
+            e.removeAttribute('data-src');
+          }
+        }
+      });
+    }
   };
 
   render() {

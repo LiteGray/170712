@@ -165,12 +165,12 @@ class RegisterLogin extends Component {
           <b onClick={this.loginToRegister}>else 注册</b>
           <input
             type="text"
-            placeholder="邮箱"
+            placeholder="momo@gmail.com"
             onChange={emailChange}
           />
           <input
             type="password"
-            placeholder="密码"
+            placeholder="@15280807171"
             onChange={passwordChange}
           />
           <a

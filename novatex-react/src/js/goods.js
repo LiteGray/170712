@@ -29,7 +29,7 @@ class GoodsList extends Component {
         <dl>
           <dt>
             <Link to="./detail" onClick={goodsDetailSelect}>
-              <img src={require(`../img/${pic_min}`)} alt="" className="picGoods-min" />
+              <img data-src={require(`../img/${pic_min}`)} alt="" className="picGoods-min" />
             </Link>
           </dt>
           <dd style={{position: 'relative'}}>
