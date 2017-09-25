@@ -19,7 +19,10 @@ class Banner extends Component {
   }
 
   componentDidMount = () => {
-    this.bannerAutoPlay();
+    const {bannerAutoPlay} = this;
+    setTimeout(() => {
+      bannerAutoPlay();
+    }, 2000);
   };
 
   componentWillUnmount = () => {

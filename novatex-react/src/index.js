@@ -6968,9 +6968,10 @@ class App extends Component {
     });
   };
 
+  //懒加载
   lazyLoading = () => {
-    //懒加载
     const imgs = document.querySelectorAll('img');
+    lazyLoading(imgs);
     let Lazyloading = function () {
       lazyLoading(imgs);
     };
@@ -7007,6 +7008,7 @@ class App extends Component {
       cartLineDel,
       orderAdd,
       goodsDetailSelect,
+      lazyLoading,
     } = this;
 
     return (
@@ -7039,6 +7041,7 @@ class App extends Component {
               moreNavToggle={moreNavToggle}
               cartAdd={cartAdd}
               goodsDetailSelect={goodsDetailSelect}
+              lazyLoading={lazyLoading}
             />);
         }}
         />
@@ -7074,6 +7077,7 @@ class App extends Component {
               dataGoodsDetail={dataGoodsDetail}
               carts={dataUserLogined.carts}
               cartAdd={cartAdd}
+              lazyLoading={lazyLoading}
             />);
         }}
         />

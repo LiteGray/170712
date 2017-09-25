@@ -109,7 +109,12 @@ class Detail extends Component {
   render() {
     const {viewToggle} = this;
     const {view} = this.state;
-    const {dataGoodsDetail, carts, cartAdd} = this.props;
+    const {
+      dataGoodsDetail,
+      carts,
+      cartAdd,
+      lazyLoading,
+    } = this.props;
     const {goodsId, title, price, pic, num_sale, detail} = dataGoodsDetail;
     return (
       <div id="detail" className="autoWidth">
@@ -146,6 +151,7 @@ class Detail extends Component {
             return (
               <DetailGoods
                 detailGoods={detail.goods}
+                lazyLoading={lazyLoading}
               />);
           }}
           />

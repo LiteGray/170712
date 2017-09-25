@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 
 class DetailGoods extends Component {
+  componentDidMount = () => {
+    const {lazyLoading} = this.props;
+    lazyLoading();
+  };
+
   render() {
     const {detailGoods} = this.props;
     const {property, pic} = detailGoods;
@@ -43,9 +48,9 @@ class DetailGoods extends Component {
         </div>
         <ul className="goods-detail-img">
           <li>
-            <img src={require(`../../img/detail/${pic[0]}`)} alt="" />
-            <img src={require(`../../img/detail/${pic[1]}`)} alt="" />
-            <img src={require(`../../img/detail/${pic[2]}`)} alt="" />
+            <img data-src={require(`../../img/detail/${pic[0]}`)} alt="" />
+            <img data-src={require(`../../img/detail/${pic[1]}`)} alt="" />
+            <img data-src={require(`../../img/detail/${pic[2]}`)} alt="" />
           </li>
         </ul>
       </div>

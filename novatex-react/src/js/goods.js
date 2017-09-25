@@ -51,6 +51,11 @@ class GoodsList extends Component {
 }
 
 class Goods extends Component {
+  componentDidMount = () => {
+    const {lazyLoading} = this.props;
+    lazyLoading();
+  };
+
   render() {
     const {dataGoods, carts, moreNavToggle, cartAdd, goodsDetailSelect} = this.props;
     const list = dataGoods.map(e => {
