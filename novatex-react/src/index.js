@@ -7023,7 +7023,7 @@ class App extends Component {
         />
         <Route path="/login" render={({history}) => {
           if (dataUserLogined.isLogin) {
-            history.push('/');
+            history.push('/cart');
           }
           return (
             <RegisterLogin
