@@ -7032,7 +7032,8 @@ class App extends Component {
               userLogin={userLogin}
               dataUserLogined={dataUserLogined}
             />);
-        }} />
+        }}
+        />
         <Route exact path="/" render={() => {
           return (
             <Goods
