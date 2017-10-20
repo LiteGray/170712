@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>play</title>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <style>
+        html,
+        body{
+            background-image: linear-gradient(90deg, rgba(200,200,200,0.6) 5%, rgba(200,200,200,0.4) 5%);
+        }
+        ul{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-content: space-around;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border: 20px solid #fff;
+            border-right-width: 50px;
+            border-left-width: 40px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        ul li{
+            width: 9.1%;
+            height: 8.8%;
+            box-shadow: 5px 5px 10px #ccc;
+        }
+        li.class0{
+            border-radius: 50% 50% 0 0;
+        }
+        li.class1{
+            border-radius: 50% 50% 10% 10%;
+        }
+        li.class2{
+            border-radius: 0 50% 50% 50%;
+        }
+        li.class3{
+            border-radius: 50% 0 50% 50%;
+        }
+        li.class4{
+            border-radius: 50% 50% 0 50%;
+        }
+        li.class5{
+            border-radius: 50% 50% 50% 0;
+        }
+        li.class6{
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div id="another">
+            <section>
+                <a href="play.html?q=0">T</a>
+                <a href="../index.html">F</a>
+            </section>
+            <time></time>
+        </div>
+        <div id="other">
+            <em></em>
+            <a href="../index.html"></a>
+            <time></time>
+        </div>
+        <ul></ul>
+    </div>
+
+    <script src="../js/mTween.js"></script>
+    <script src="../js/tool.js"></script>
+    <script src="../js/play/play.js"></script>
+</body>
+</html>

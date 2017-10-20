@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>alpha</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <style>
+        html,
+        body{
+            background-image: linear-gradient(0deg, rgba(200,200,200,0.6) 5%, rgba(200,200,200,0.4) 5%);
+        }
+        #other time{
+            background: 0;
+        }
+        #other strong{
+            display: block;
+            position: absolute;
+            z-index: 1;
+            top: calc(50% - 4px);
+            left: 16px;
+            width: 2px;
+            height: 2px;
+            border: 3px double rgba(150,150,150,1);
+            border-radius: 50%;
+            background: rgba(200,200,200,1);
+        }
+        .wrap{
+            display: flex;
+        }
+        .container{
+            display: flex;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border: 20px solid #fff;
+            border-right-width: 50px;
+            border-left-width: 40px;
+            border-radius: 20px;
+        }
+        .container ul,
+        .container ol{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-content: space-around;
+            flex: 4.5;
+            position: relative;
+            /*width: 40%;*/
+            height: 100%;
+            overflow: hidden;
+        }
+        .container li{
+            width: 18%;
+            height: 8.4%;
+            border-radius: 20%;
+        }
+        .container ol li{
+            border-radius: 0;
+        }
+        .container p{
+            flex: 1;
+            /*width: 20%;*/
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,0,0,0.4) 20%, rgba(0,0,255,0.4) 20%);
+        }
+        .container li.class0{
+            border-radius: 50% 50% 0 0;
+            border: 8px double transparent;
+            border-bottom-color: rgba(200,200,200,1);
+        }
+        .container li.class1{
+            border-radius: 50% 50% 10% 10%;
+        }
+        .container li.class2{
+            border-radius: 0 50% 50% 50%;
+            border: 8px double rgba(195,195,195,0.6);
+        }
+        .container li.class3{
+            border-radius: 50% 0 50% 50%;
+            border: 8px double transparent;
+            border-bottom-color: rgba(195,195,195,0.6);
+        }
+        .container li.class4{
+            border-radius: 50% 50% 0 50%;
+            border: 8px double transparent;
+            border-left-color: rgba(195,195,195,0.6);
+        }
+        .container li.class5{
+            border-radius: 50% 50% 50% 0;
+            border: 8px double transparent;
+            border-top-color: rgba(200,200,200,0.6);
+        }
+        .container li.class6{
+            border-radius: 50%;
+            border: 8px double rgba(195,195,195,0.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div id="another">
+            <section>
+                <a href="alpha.html">T</a>
+                <a href="../index.html">F</a>
+            </section>
+            <time></time>
+        </div>
+        <div id="other">
+            <strong></strong>
+            <!--<em></em>-->
+            <a href="../index.html"></a>
+            <time></time>
+        </div>
+        <div class="container">
+            <ul></ul>
+            <p></p>
+            <ol></ol>
+        </div>
+    </div>
+    <script src="../js/mTween.js"></script>
+    <script src="../js/tool.js"></script>
+    <script src="../js/alpha/alpha.js"></script>
+</body>
+</html>
