@@ -1,1 +1,0 @@
-JavaScript by litegray 170712
