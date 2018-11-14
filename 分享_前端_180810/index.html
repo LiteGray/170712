@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>分享_前端_180810</title>
+  <link rel="stylesheet" href="css/common.css">
+  <style>
+    ul {
+      padding-left: 2.4rem;
+    }
+
+    summary {
+      outline: 0;
+      user-select: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::before {
+      content: '\25B6';
+      padding-right: .4rem;
+      font-size: .8em;
+      color: var(--gray);
+    }
+
+    details[open] > summary::before {
+      content: '\25BC';
+    }
+  </style>
+</head>
+<body>
+<div id="wrap">
+  <details open>
+    <summary>分享_前端_180810</summary>
+    <ul id="root">
+      <li>
+        <details>
+          <summary>summary</summary>
+          <ul>
+            <li>li0</li>
+            <li>li1</li>
+            <li>li2</li>
+            <li>li3</li>
+            <li>li4</li>
+            <li>li5</li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </details>
+</div>
+
+<script>
+  const data = [
+    {
+      name: 'Pure_CSS',
+      href: '',
+      children: [
+        {
+          name: 'dynamic_image',
+          href: 'html/00_dynamic_image.html',
+          children: null,
+        },
+        {
+          name: 'Loaders',
+          href: '',
+          children: [
+            {
+              name: 'loading',
+              href: 'html/01_loaders_0.html',
+              children: null,
+            },
+            {
+              name: 'battery',
+              href: 'html/01_loaders_1.html',
+              children: null,
+            },
+            {
+              name: 'timer',
+              href: 'html/01_loaders_2.html',
+              children: null,
+            }
+          ]
+        },
+        {
+          name: 'menu',
+          href: 'html/02_menu.html',
+          children: null,
+        },
+        {
+          name: 'tab',
+          href: 'html/03_tab.html',
+          children: null,
+        },
+        {
+          name: 'carousel',
+          href: 'html/04_carousel.html',
+          children: null,
+        }
+      ]
+    },
+    {
+      name: 'Chrome',
+      children: [
+        {
+          name: 'dom展开：⬅️➡️',
+          href: '',
+          children: null,
+        },
+        {
+          name: 'H：隐藏(visibility)',
+          href: '',
+          children: null,
+        },
+        {
+          name: 'dom事件',
+          href: '',
+          children: null,
+        },
+        {
+          name: '数值：alt(.1), shift(10), command(100)',
+          href: '',
+          children: null,
+        },
+        {
+          name: '$0',
+          href: '',
+          children: null,
+        },
+        {
+          name: 'v69+：$0.toggleAttribute()',
+          href: '',
+          children: null,
+        },
+        {
+          name: 'v..：自动提示',
+          href: '',
+          children: null,
+        },
+      ]
+    },
+    {
+      name: '网络',
+      children: [
+        {
+          name: '互联网协议入门',
+          href: 'http://www.ruanyifeng.com/blog/2012/05/internet_protocol_suite_part_i.html',
+          children: null,
+        },
+        {
+          name: 'TCP三次握手?',
+          href: 'https://github.com/jawil/blog/issues/14',
+          children: null,
+        },
+        {
+          name: 'what-happens-when',
+          href: 'https://github.com/skyline75489/what-happens-when-zh_CN/blob/master/README.rst',
+          children: null,
+        },
+      ]
+    },
+    {
+      name: 'More',
+      href: '',
+      children: [
+        {
+          name: '预览',
+          href: 'html/preview.html',
+          children: null,
+        },
+        {
+          name: 'pig_qi',
+          href: 'html/pig_qi.html',
+          children: null,
+        },
+        {
+          name: '参考链接',
+          href: '',
+          children: [
+            {
+              name: 'You-Dont-Need-JavaScript',
+              href: 'https://github.com/you-dont-need/You-Dont-Need-JavaScript',
+              children: null,
+            },
+            {
+              name: '用CSS画小猪佩奇，你就是下一个社会人！',
+              href: 'https://cloud.tencent.com/developer/article/1128472?fromSource=waitui',
+              children: null,
+            },
+          ],
+        },
+      ],
+    },
+  ];
+
+  const createTree = (data) => {
+    let html = '';
+
+    data.forEach((item) => {
+      if (item.children && item.children.length) {
+        html += `
+          <li>
+            <details>
+              <summary>${item.name}</summary>
+              <ul>
+                ${createTree(item.children)}
+              </ul>
+            </details>
+          </li>
+        `;
+      } else {
+        html += item.href
+          ? `<li><a href=${item.href}>${item.name}</a></li>`
+          : `<li><span>${item.name}</span></li>`
+        ;
+      }
+    });
+
+    return html;
+  };
+
+  const root = document.querySelector('#root');
+  root.innerHTML = createTree(data);
+</script>
+</body>
+</html>

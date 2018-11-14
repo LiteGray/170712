@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>tab</title>
+  <link rel="stylesheet" href="../css/common.css"/>
+  <style>
+    body {
+      padding: 1.4rem 2rem;
+    }
+
+    #tab-wrap {
+      /* 局部 */
+      --tab-wrap-border-radius: .5rem;
+      transition: .3s box-shadow ease;
+      display: flex;
+      position: relative;
+      padding-bottom: 10rem;
+      border-radius: var(--tab-wrap-border-radius);
+      box-shadow: 0 .1rem .2rem rgba(0, 0, 0, 0.12), 0 .1rem .14rem rgba(0, 0, 0, 0.24);
+      background: #fff;
+      text-align: center;
+    }
+
+    #tab-wrap:hover {
+      box-shadow: 0 .6rem 1rem var(--gray-lite);
+    }
+
+    input.tab {
+      position: absolute;
+      left: -100rem;
+    }
+
+    input.tab + label {
+      cursor: pointer;
+      transition: 0.3s background-color ease, 0.3s box-shadow ease;
+      flex: 1;
+      padding: 1rem;
+      border-radius: var(--tab-wrap-border-radius) var(--tab-wrap-border-radius) 0 0;
+      box-shadow: 0 -.1rem 0 #eee inset;
+      color: #333;
+      background-color: #f2f2f2;
+    }
+
+    input.tab + label:hover {
+      background-color: #f9f9f9;
+      box-shadow: 0 .1rem 0 #f4f4f4 inset;
+    }
+
+    input.tab:focus + label {
+      background-color: #fff;
+      box-shadow: 0 -1px 0 #fff inset;
+      cursor: default;
+    }
+
+    input.tab:focus + label:hover {
+      box-shadow: 0 -.1rem 0 #fff inset;
+      background-color: #fff;
+    }
+
+    input.tab:first-of-type:not(:last-of-type) + label {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    input.tab:not(:first-of-type):not(:last-of-type) + label {
+      border-radius: 0;
+    }
+
+    input.tab:last-of-type:not(:first-of-type) + label {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    div.tab-content {
+      transition: 1s opacity ease-in, 1.4s transform ease;
+      position: absolute;
+      width: 100%;
+      margin-top: 4.4rem;
+    }
+
+    div.tab-content {
+      z-index: -1;
+      opacity: 0;
+      transform: translateY(-.3rem);
+    }
+
+    input.tab:nth-of-type(1):focus ~ div.tab-content:nth-of-type(1),
+    input.tab:nth-of-type(2):focus ~ div.tab-content:nth-of-type(2),
+    input.tab:nth-of-type(3):focus ~ div.tab-content:nth-of-type(3),
+    input.tab:nth-of-type(4):focus ~ div.tab-content:nth-of-type(4),
+    input.tab:nth-of-type(5):focus ~ div.tab-content:nth-of-type(5) {
+      z-index: auto;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+<section id="tab-wrap">
+  <input type="text" name="tab" id="tab_0" class="tab" autofocus/>
+  <label for="tab_0">Apple</label>
+  <input type="text" name="tab" id="tab_1" class="tab"/>
+  <label for="tab_1">Samsung</label>
+  <input type="text" name="tab" id="tab_2" class="tab"/>
+  <label for="tab_2">OV</label>
+  <input type="text" name="tab" id="tab_3" class="tab"/>
+  <label for="tab_3">Xiaomi</label>
+  <input type="text" name="tab" id="tab_4" class="tab"/>
+  <label for="tab_4">One+</label>
+
+  <div class="tab-content">iPhone X</div>
+  <div class="tab-content">Note 9</div>
+  <div class="tab-content">NEX & FindX</div>
+  <div class="tab-content">小米 8</div>
+  <div class="tab-content">OnePlus 6</div>
+</section>
+</body>
+</html>

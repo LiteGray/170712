@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>timer</title>
+  <link rel="stylesheet" href="../css/common.css"/>
+  <style>
+    .timer {
+      position: relative;
+      width: 30rem;
+      height: 30rem;
+      border-radius: 50%;
+      box-shadow: inset 0 0 .1rem .1rem var(--gray-lite);
+      background: conic-gradient(
+        var(--basic-color_0),
+        var(--basic-color_1),
+        var(--basic-color_2),
+        var(--basic-color_3),
+        var(--basic-color_4),
+        var(--basic-color_5),
+        var(--basic-color_6),
+        var(--basic-color_7),
+        var(--basic-color_8),
+        var(--basic-color_9),
+        var(--basic-color_10),
+        var(--basic-color_11),
+        var(--basic-color_12)
+      );
+      color: var(--basic-color_4);
+    }
+
+    .timer:after,
+    .timer:before {
+      content: "";
+      position: absolute;
+      top: calc(50% - 1rem);
+      left: 50%;
+      border-radius: 1rem;
+      background-color: var(--gray);
+      transform-origin: 0 1rem;
+    }
+
+    .timer:after,
+    .timer:before,
+    #second {
+      transform: rotate(-90deg);
+    }
+
+    .timer:after {
+      width: 10rem;
+      height: 2rem;
+      animation: timer 3600s linear infinite;
+    }
+
+    .timer:before {
+      width: 8rem;
+      height: 2rem;
+      animation: timer 21600s linear infinite;
+    }
+
+    #second {
+      z-index: 1;
+      position: absolute;
+      top: calc(50% - .1rem);
+      left: 50%;
+      width: 14rem;
+      height: .2rem;
+      border-radius: 0 50% 50% 0;
+      background: var(--gray);
+      transform-origin: 0 .1rem;
+      animation: timer 60s linear infinite;
+    }
+
+    @keyframes timer {
+      100% {
+        transform: rotate(270deg)
+      }
+    }
+
+  </style>
+</head>
+<body>
+<div id="loading-wrap">
+  <ul class="loading">
+    <li class="timer">
+      <aside id="second"></aside>
+    </li>
+  </ul>
+</div>
+</body>
+</html>

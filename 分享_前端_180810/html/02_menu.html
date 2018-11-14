@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>menu</title>
+  <link rel="stylesheet" href="../css/common.css"/>
+  <style>
+    #menu li {
+      width: 14rem;
+      margin-bottom: .1rem;
+      background: var(--gray);
+      color: #fff;
+    }
+
+    #menu li.drop-down {
+      position: relative;
+    }
+
+    #menu li > h5::before {
+      content: "\2690";
+      margin-right: .6rem;
+    }
+
+    #menu li > h5 {
+      cursor: pointer;
+      padding: .6rem;
+    }
+
+    #menu li > h5:hover {
+      background: var(--gray-bold);
+    }
+
+    #menu li.drop-down > h5::after {
+      content: "\203a";
+      margin-left: .6rem;
+    }
+
+    #menu li.drop-down ul.submenu {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 14rem;
+    }
+
+    #menu li.drop-down:hover > ul.submenu {
+      display: list-item;
+    }
+  </style>
+</head>
+<body>
+<ul id="menu">
+  <li>
+    <h5>C++</h5>
+  </li>
+  <li class="drop-down">
+    <h5>C</h5>
+    <ul class="submenu">
+      <li class="drop-down">
+        <h5>Java</h5>
+        <ul class="submenu">
+          <li>
+            <h5>Go</h5>
+          </li>
+          <li class="drop-down">
+            <h5>Lisp</h5>
+            <ul class="submenu">
+              <li>
+                <h5>Python</h5>
+              </li>
+              <li>
+                <h5>Perl</h5>
+              </li>
+              <li>
+                <h5>PHP</h5>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h5>Swift</h5>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h5>JavaScript</h5>
+      </li>
+    </ul>
+  </li>
+</ul>
+</body>
+</html>

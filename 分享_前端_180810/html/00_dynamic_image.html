@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>dynamic_image</title>
+  <link rel="stylesheet" href="../css/common.css" />
+  <style>
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    input {
+      cursor: pointer;
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      mix-blend-mode: hue;
+    }
+
+    ::-webkit-color-swatch {
+      border: none;
+    }
+
+    ::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+<input type="color">
+<img src="../image/00_dynamic_image.jpg">
+</body>
+</html>

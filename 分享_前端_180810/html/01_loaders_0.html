@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>loading</title>
+  <link rel="stylesheet" href="../css/common.css"/>
+  <style>
+    @keyframes loading-dot {
+      0% {
+        transform: translateY(0);
+      }
+      20% {
+        transform: translateY(1rem);
+      }
+      40% {
+        transform: translateY(0);
+      }
+    }
+
+    ul.loading {
+      display: flex;
+    }
+
+    li.loading-dot {
+      width: 20rem;
+      height: 20rem;
+      border-radius: 50%;
+      animation: loading-dot 1s ease-in-out infinite;
+    }
+
+    li.loading-dot:not(:first-of-type) {
+      margin-left: 1.4rem;
+    }
+
+    li.loading-dot:nth-child(1) {
+      background-color: var(--basic-color_0);
+      animation-delay: 0s;
+    }
+
+    li.loading-dot:nth-child(2) {
+      background-color: var(--basic-color_1);
+      animation-delay: .1s;
+    }
+
+    li.loading-dot:nth-child(3) {
+      background-color: var(--basic-color_2);
+      animation-delay: .2s;
+    }
+
+    li.loading-dot:nth-child(4) {
+      background-color: var(--basic-color_3);
+      animation-delay: .3s;
+    }
+  </style>
+</head>
+<body>
+<div id="loading-wrap">
+  <ul class="loading">
+    <li class="loading-dot"></li>
+    <li class="loading-dot"></li>
+    <li class="loading-dot"></li>
+    <li class="loading-dot"></li>
+  </ul>
+</div>
+</body>
+</html>
